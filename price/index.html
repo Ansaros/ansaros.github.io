@@ -62,6 +62,7 @@
             <!-- Основная навигация (десктоп) -->
             <nav class="main-nav">
                 <ul>
+                     <li><a href="/">ГЛАВНАЯ</a></li>
                     <li><a href="/price/" class="active">ЦЕНЫ</a></li>
                     <li><a href="/cases/">КЕЙСЫ</a></li>
                     <li><a href="/doctors/">ВРАЧИ</a></li>
@@ -93,6 +94,7 @@
                 <small>dental clinic</small>
             </div>
             <ul>
+                <li><a href="/"><i class="fa-solid fa-house"></i>Главная</a></li>
                 <li><a href="/price/"><i class="fa-solid fa-tenge-sign"></i>Цены</a></li>
                 <li><a href="/cases/"><i class="fa-solid fa-images"></i>Кейсы</a></li>
                 <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i>Врачи</a></li>
@@ -701,7 +703,7 @@
                                 <div class="service-includes">
                                     <h4>Описание:</h4>
                                     <ul>
-                                        <li>Отбеливание ранее депульпированных зубов</li>
+                                        <li>Процедура предназначена для отбеливания потемневших зубов без нерва (после эндодонтического лечения).</li>
                                     </ul>
                                 </div>
                                 <div class="service-note">
@@ -743,6 +745,15 @@
                                     <i class="fa-solid fa-clock"></i>
                                     <span>60 минут</span>
                                 </div>
+                                 <div class="service-includes">
+                                    <h4>Описание:</h4>
+                                    <ul>
+                                        <li>Врач объяснит, как правильно чистить зубы и использовать дополнительные средства (зубная нить, ирригатор, ёршики и др.)</li>
+                                        <li>Научитесь технике эффективной чистки с учётом особенностей прикуса и состояния дёсен</li>
+                                        <li>подберём индивидуальные средства гигиены, подходящие именно вам (щётка, паста, ополаскиватель, доп. средства)</li>
+                                        <li>Ответит на ваши вопросы и даст рекомендации, которые реально работают</li>
+                                    </ul>
+                                </div>
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
                                     <span>Средства идут за отдельную стоимость (зависит от бренда).</span>
@@ -772,7 +783,7 @@
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <div class="price-icon">
+                                <div class="price-icon-karies karies-s">
                                     <i class="fa-solid fa-tooth"></i>
                                 </div>
                                 <div class="service-content-main">
@@ -824,7 +835,7 @@
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <div class="price-icon">
+                                <div class="price-icon-karies karies-m">
                                     <i class="fa-solid fa-tooth"></i>
                                 </div>
                                 <div class="service-content-main">
@@ -876,7 +887,7 @@
                     <div class="service-item featured">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <div class="price-icon">
+                                <div class="price-icon-karies karies-l">
                                     <i class="fa-solid fa-tooth"></i>
                                 </div>
                                 <div class="service-content-main">
@@ -1209,6 +1220,12 @@
                         
                         <div class="service-details">
                             <div class="details-content">
+                                 <div class="service-includes">
+                                    <h4>Описание:</h4>
+                                    <ul>
+                                        <li>Процедура, при которой стоматолог с помощью специального материала снимает точный слепок зубов одной челюсти. Используется для изготовления кап, брекетов, коронок и других конструкций.</li>
+                                    </ul>
+                                </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Снятие слепков одной челюсти (ортодонтия)">
                                         <i class="fa-solid fa-calendar-plus"></i>
@@ -1410,6 +1427,12 @@
                         
                         <div class="service-details">
                             <div class="details-content">
+                                 <div class="service-includes">
+                                    <h4>Описание:</h4>
+                                    <ul>
+                                        <li>Решение для защиты обточенного зуба перед установкой постоянной конструкции.</li>
+                                    </ul>
+                                </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="временная коронка прямой метод">
                                         <i class="fa-solid fa-calendar-plus"></i>
@@ -1441,6 +1464,12 @@
                         
                         <div class="service-details">
                             <div class="details-content">
+                                <div class="service-includes">
+                                    <h4>Описание:</h4>
+                                    <ul>
+                                        <li>Решение для защиты обточенного зуба перед установкой постоянной конструкции.</li>
+                                    </ul>
+                                </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="временная пластмассовая коронка cad/cam">
                                         <i class="fa-solid fa-calendar-plus"></i>
@@ -2054,6 +2083,7 @@
                 <div class="footer-nav">
                     <h3>Навигация</h3>
                     <ul>
+                        <li><a href="/">Главная</a></li>
                         <li><a href="/price/">Цены</a></li>
                         <li><a href="/cases/">Кейсы</a></li>
                         <li><a href="/doctors/">Врачи</a></li>
