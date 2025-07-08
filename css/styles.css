@@ -863,6 +863,10 @@ body {
       .hero-new-content {
         top: 40%;
       }
+
+  .hero-new-image {
+    transform: scale(1.2) translateX(10px) translateY(-20px);
+  }
   .hero-content-prices {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -922,9 +926,10 @@ body {
   }
 
   .hero-new-btn {
-    width: 100%;
-    max-width: 280px;
+    font-size: 0.8rem;
+    width: 170px;
     justify-content: center;
+    align-content: center;
   }
   
   .top-bar {
