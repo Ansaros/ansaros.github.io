@@ -522,6 +522,7 @@ body {
   flex-shrink: 0;
   transition: all 0.3s ease;
   object-fit: cover;
+  border: #956299 solid 4px;
 }
 
  .price-icon-karies {
