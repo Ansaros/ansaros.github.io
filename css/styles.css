@@ -1150,12 +1150,12 @@ body.loaded {
   padding: 80px 0;
 }
 
-.contacts-content {
+/* .contacts-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: start;
-}
+} */
 
 .contacts-info h1 {
   font-size: 2.5rem;
@@ -1169,6 +1169,12 @@ body.loaded {
   font-weight: 600;
   color: #a374aa;
   margin-bottom: 40px;
+}
+
+.contact-block {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 250px;
 }
 
 .contact-block h3 {
@@ -1264,6 +1270,13 @@ body.loaded {
   gap: 10px;
 }
 
+.social-links-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
 
 .social-links .social-link {
   display: flex;
@@ -1288,6 +1301,7 @@ body.loaded {
   position: relative;
   height: 500px;
   border-radius: 15px;
+  width: 600px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -4904,6 +4918,12 @@ body.loaded {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
+  .contact-block {
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
   .price-smaller {
       font-size: 1.3rem;
   }
@@ -4915,6 +4935,7 @@ body.loaded {
   .map-container {
     height: 300px;
     margin-bottom: 40px;
+    width: 95%;
   }
   .hero-content-prices {
     grid-template-columns: 1fr;
@@ -4930,12 +4951,6 @@ body.loaded {
 
   .stories-header-beautiful h2 {
     font-size: 2rem;
-  }
-
-  .contacts-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .case-image-beautiful {
