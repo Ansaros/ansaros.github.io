@@ -1481,6 +1481,11 @@ body {
   text-decoration: none;
   transition: color 0.3s ease;
 }
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 .social-link:hover {
   color: #a374aa;
