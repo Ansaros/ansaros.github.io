@@ -685,6 +685,7 @@ body {
 .ratings-grid {
   display: flex;
   justify-content: center;
+  gap: 40px;
 }
 
 .rating-card {
