@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Основные стили проекта -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="../css/review.css">
 </head>
 <body>
     <!-- ─────── Top Bar ─────── -->
@@ -38,7 +38,6 @@
                 <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
                 <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
-
             </div>
         </div>
     </div>
@@ -46,12 +45,10 @@
     <!-- ─────── Header ─────── -->
     <header class="header">
         <div class="container header-container">
-            <!-- Логотип -->
             <div class="logo">
                 <a href="/">Nelly<span>dental clinic</span></a>
             </div>
 
-            <!-- Основная навигация (десктоп) -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="/">ГЛАВНАЯ</a></li>
@@ -64,7 +61,6 @@
                 </ul>
             </nav>
 
-            <!-- Бургер-меню -->
             <div class="burger" id="burger">
                 <span></span>
                 <span></span>
@@ -94,7 +90,6 @@
                 <li><a href="/contacts/"><i class="fa-solid fa-phone"></i>Контакты</a></li>
                 <li><a href="/reviews/"><i class="fa-solid fa-star"></i>Отзывы</a></li>
                 <li><a href="/media/"><i class="fa-solid fa-play"></i>Медиа</a></li>
-
             </ul>
             <div class="mobile-contact">
                 <a href="tel:+77054026181" class="mobile-phone">
@@ -116,7 +111,7 @@
         </div>
     </nav>
 
-    <!-- ─────── Beautiful Hero Section ─────── -->
+    <!-- ─────── Hero Section ─────── -->
     <section class="media-hero-beautiful">
         <div class="hero-background-media">
             <div class="floating-media-shapes">
@@ -144,7 +139,7 @@
                 </div>
                 
                 <h1 class="hero-title-media">
-                    <span class="title-word-media" data-text="МЕДИА">Отзывы</span>
+                    Отзывы
                     <span class="title-accent-media">центр клиники</span>
                 </h1>
                 
@@ -152,187 +147,35 @@
                     Видеоотзывы наших пациентов.
                 </p>
                 
-                
                 <div class="hero-cta-media">
-                    <button class="scroll-to-videos-btn" onclick="MediaPageUtils.scrollToVideos()">
+                    <button class="scroll-to-videos-btn" onclick="scrollToVideos()">
                         <i class="fa-solid fa-play"></i>
                         <span>Смотреть видео</span>
-                        <div class="btn-ripple"></div>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- ─────── Video Gallery ─────── -->
     <section class="video-gallery-beautiful">
         <div class="container">
-            <div class="gallery-grid-beautiful">
-
-                <!-- Video 1 -->
-                <div class="video-card-beautiful" data-category="reviews" data-video="https://drive.google.com/file/d/1AAFlq4cUp2HR2WW_JO0MA97CCJXRGeJe/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/rev1.png" alt="Отзыв пациента 1" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Отзыв</span>
-                                <span class="video-duration">2:30</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Опыт постоянного пациента: команда, сервис и забота</h3>
-                        <p>Пациентка, которая лечится в клинике не первый раз, делится своим опытом: высокое качество обслуживания, внимательный подход, подробные рекомендации по гигиене и слова благодарности всей команде.</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Отзыв</span>
-                            <span class="tag-beautiful">Лечение</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 2 -->
-                <div class="video-card-beautiful featured" data-category="reviews" data-video="https://drive.google.com/file/d/1TLP8Ziw0Nh4A2Ig8ocJJMrdnGsK6Lj25/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/rev2.png" alt="Отзыв пациента 2" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Отзыв</span>
-                                <span class="video-duration">3:15</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">4K</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Полный курс: лечение, удаление зубов мудрости и установка импланта</h3>
-                        <p>В этом отзыве — история большого лечения: 11 вылеченных зубов, реставрация, безболезненное удаление всех зубов мудрости и установка импланта. Пациентка отмечает профессионализм всей команды и планирует продолжить лечение с брекетами.</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Имплантация</span>
-                            <span class="tag-beautiful">Отзыв</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="video-card-beautiful" data-category="reviews" data-video="https://drive.google.com/file/d/1C2ASPaLqIKkS9PMbnqH67l0530IXnktu/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/rev3.png" alt="Процедура лечения" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Отзыв</span>
-                                <span class="video-duration">4:20</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Процедура установки брекет-системы</h3>
-                        <p>Отзыв об установке брекет-системы для идеальной улыбки</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Брекеты</span>
-                            <span class="tag-beautiful">Отзыв</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 4 -->
-                <div class="video-card-beautiful" data-category="reviews" data-video="https://drive.google.com/file/d/106LEqv8zb0YqTNu1ntdPu-9sweAzhch_/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/rev4.png" alt="О клинике" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Отзыв</span>
-                                <span class="video-duration">1:45</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Мой путь к здоровой улыбке — отзыв о враче и клинике</h3>
-                        <p>В этом видео наш пациент делится своим опытом лечения в нашей клинике и рассказывает о работе своего врача. Посмотрите реальную историю и убедитесь в качестве нашей работы!</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Лечение</span>
-                            <span class="tag-beautiful">Отзыв</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 5 -->
-                <div class="video-card-beautiful" data-category="reviews" data-video="https://drive.google.com/file/d/10XUF8O3ktMxf2CEFRD6H38oaOTHIaYmR/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/rev5.png" alt="Обучающее видео" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Отзыв</span>
-                                <span class="video-duration">3:50</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Отзыв на полный курс лечения</h3>
-                        <p>“Когда доверяешь профессионалам — невозможное становится реальным! Смотрите, как наш пациент прошёл полный путь восстановления — больше 20 зубов, современное лечение и только положительные эмоции о клинике, враче и команде!</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Лечение</span>
-                            <span class="tag-beautiful">Советы</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 6 -->
-                <div class="video-card-beautiful" data-category="reviews" data-video="https://drive.google.com/file/d/1NN5Yt5uPES59uoLWZ697nF0NnUKYpWse/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/rev6.png" alt="Отзыв пациента 6" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Отзыв</span>
-                                <span class="video-duration">2:10</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                       <h3>Комплексное лечение: терапия, имплантация, ортопедия и профессиональная чистка</h3>
-<p>Пациент делится впечатлениями о терапевтическом, имплантационном и ортопедическом лечении, а также профессиональной чистке. Отмечает хорошую работу врачей и персонала, удобство и заботу. Пенсионерам — скидка 10%!</p>
-
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Лечение</span>
-                            <span class="tag-beautiful">Отзыв</span>
-                        </div>
-                    </div>
+            <div id="videoGallery">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Загружаем видео...</div>
                 </div>
             </div>
-            
         </div>
     </section>
 
-
     <!-- ─────── Video Modal ─────── -->
     <div class="video-modal-beautiful" id="videoModal">
-        <div class="modal-overlay-beautiful"></div>
+        <div class="modal-overlay-beautiful" onclick="closeModal()"></div>
         <div class="modal-content-beautiful">
             <div class="modal-header-beautiful">
                 <h3 id="modalTitle">Видео</h3>
-                <button class="close-button-beautiful" id="closeModal">
+                <button class="close-button-beautiful" onclick="closeModal()">
                     <i class="fa-solid fa-times"></i>
                 </button>
             </div>
@@ -345,16 +188,6 @@
                             allow="autoplay; encrypted-media" 
                             allowfullscreen>
                     </iframe>
-                </div>
-                <div class="video-controls-beautiful">
-                    <button class="control-btn-beautiful" id="prevVideo">
-                        <i class="fa-solid fa-chevron-left"></i>
-                        <span>Предыдущее</span>
-                    </button>
-                    <button class="control-btn-beautiful" id="nextVideo">
-                        <span>Следующее</span>
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -377,7 +210,6 @@
                     <p>Запишите видеоотзыв о лечении в нашей клинике и помогите другим пациентам сделать правильный выбор</p>
                     
                     <div class="cta-benefits-media">
-
                         <div class="benefit-media">
                             <div class="benefit-icon-media">
                                 <i class="fa-solid fa-video"></i>
@@ -430,8 +262,8 @@
                         <li><a href="/cases/">Кейсы</a></li>
                         <li><a href="/doctors/">Врачи</a></li>
                         <li><a href="/contacts/">Контакты</a></li>
-                        <li><a href="/contacts/">Отзывы</a></li>
-                        <li><a href="/media/">Медия</a></li>
+                        <li><a href="/reviews/">Отзывы</a></li>
+                        <li><a href="/media/">Медиа</a></li>
                     </ul>
                 </div>
 
@@ -441,7 +273,6 @@
                         <a href="https://wa.me/77054026181" class="social-link">WhatsApp</a>
                         <a href="https://www.instagram.com/nelly_dental/" class="social-link">Instagram</a>
                         <a href="https://t.me/nellydentalclinic" class="social-link">Telegram</a>
-
                     </div>
                 </div>
             </div>
@@ -452,7 +283,7 @@
         </div>
     </footer>
 
-    <!-- ─────── JS ─────── -->
-    <script src="../js/script.js"></script>
+    <!-- ─────── JavaScript ─────── -->
+    <script src="../js/review.js"></script>
 </body>
 </html>

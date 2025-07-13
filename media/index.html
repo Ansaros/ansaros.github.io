@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Основные стили проекта -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="../css/media.css">
 </head>
 <body>
     <!-- ─────── Top Bar ─────── -->
@@ -38,7 +38,6 @@
                 <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
                 <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
-
             </div>
         </div>
     </div>
@@ -46,12 +45,10 @@
     <!-- ─────── Header ─────── -->
     <header class="header">
         <div class="container header-container">
-            <!-- Логотип -->
             <div class="logo">
                 <a href="/">Nelly<span>dental clinic</span></a>
             </div>
 
-            <!-- Основная навигация (десктоп) -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="/">ГЛАВНАЯ</a></li>
@@ -64,7 +61,6 @@
                 </ul>
             </nav>
 
-            <!-- Бургер-меню -->
             <div class="burger" id="burger">
                 <span></span>
                 <span></span>
@@ -92,7 +88,7 @@
                 <li><a href="/cases/"><i class="fa-solid fa-images"></i>Кейсы</a></li>
                 <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i>Врачи</a></li>
                 <li><a href="/contacts/"><i class="fa-solid fa-phone"></i>Контакты</a></li>
-                <li><a href="/contacts/"><i class="fa-solid fa-star"></i>Отзывы</a></li>
+                <li><a href="/reviews/"><i class="fa-solid fa-star"></i>Отзывы</a></li>
                 <li><a href="/media/"><i class="fa-solid fa-play"></i>Медиа</a></li>
             </ul>
             <div class="mobile-contact">
@@ -115,7 +111,7 @@
         </div>
     </nav>
 
-    <!-- ─────── Beautiful Hero Section ─────── -->
+    <!-- ─────── Hero Section ─────── -->
     <section class="media-hero-beautiful">
         <div class="hero-background-media">
             <div class="floating-media-shapes">
@@ -148,12 +144,11 @@
                 </h1>
                 
                 <p class="hero-subtitle-media">
-                    Процедуры лечения и жизнь клиники. 
+                    Процедуры лечения и жизнь клиники.
                 </p>
                 
-                
                 <div class="hero-cta-media">
-                    <button class="scroll-to-videos-btn" onclick="MediaPageUtils.scrollToVideos()">
+                    <button class="scroll-to-videos-btn" onclick="scrollToVideos()">
                         <i class="fa-solid fa-play"></i>
                         <span>Смотреть видео</span>
                         <div class="btn-ripple"></div>
@@ -171,19 +166,11 @@
                 <p>Выберите интересующую вас тему</p>
             </div>
             
-            <div class="media-filter-buttons">
-                <button class="media-filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-grid-2"></i>
-                    <span>Все видео</span>
-                </button>
-                <button class="media-filter-btn" data-filter="clinic">
-                    <i class="fa-solid fa-building"></i>
-                    <span>О клинике</span>
-                </button>
-                <button class="media-filter-btn" data-filter="oborudovanie">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <span>Оборудование</span>
-                </button>
+            <div class="media-filter-buttons" id="filterButtons">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Загружаем категории...</div>
+                </div>
             </div>
         </div>
     </section>
@@ -191,193 +178,22 @@
     <!-- ─────── Video Gallery ─────── -->
     <section class="video-gallery-beautiful">
         <div class="container">
-            <div class="gallery-grid-beautiful">
-
-                                <!-- Video 7 -->
-
-                <div class="video-card-beautiful" data-category="clinic" data-video="https://drive.google.com/file/d/1r2Q-njRk13_GfL_A1Q8uR7MADxOOUbpO/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/material.png" alt="Обучающее видео" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">О клинике</span>
-                                <span class="video-duration">0:58</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Материалы Asteria и Micherium</h3>
-                        <p>Asteria<br>
--долговременность на износ и стойкость (проверено)<br>
--отличные эстетические свойства <br>
-Micherium <br>
--свойства состава близки к эмали зуба  <br>
--отлично держит нагрузку <br>
--высокие эстетические свойства</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Материалы</span>
-                        </div>
-                    </div>
-                </div>
-
-                    <!-- Video 8-->
-
-                    <div class="video-card-beautiful" data-category="clinic" data-video="https://drive.google.com/file/d/1IDnDrkyjMJUC5fZ9e4dxTg5y69p5GmL7/preview">
-                        <div class="video-thumbnail-beautiful">
-                            <img src="../img/neskolko.png" alt="Обучающее видео" loading="lazy">
-                            <div class="video-overlay-beautiful">
-                                <div class="play-button-beautiful">
-                                    <i class="fa-solid fa-play"></i>
-                                </div>
-                                <div class="video-info-overlay">
-                                    <span class="video-category">О клинике</span>
-                                    <span class="video-duration">0:39</span>
-                                </div>
-                            </div>
-                            <div class="video-quality-badge">HD</div>
-                        </div>
-                        <div class="video-content-beautiful">
-                            <h3>Лечение 3-4 зубов за один прием</h3>
-                            <p>
-Современные стоматологические технологии позволяют проводить лечение сразу нескольких зубов за один визит. Это особенно удобно для тех, кто ценит свое время и хочет минимизировать количество походов к стоматологу☝🏻
-Преимущества лечения нескольких зубов за один прием:<br>
-1. Экономия времени: Всего один визит вместо нескольких.<br>
-2. Удобство: Меньше стрессовых ситуаций, связанных с походами к стоматологу.<br>
-3. Комплексный подход: Возможность сразу решить несколько проблем с зубами.<br>
-4. Снижение общей стоимости лечения: Часто комплексное лечение обходится дешевле, чем поэтапное.</p>
-                            <div class="video-tags-beautiful">
-                                <span class="tag-beautiful primary">Лечение</span>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- Video 8-->
-
-                    <div class="video-card-beautiful" data-category="clinic" data-video="https://drive.google.com/file/d/1to6YkSiqdowTihUlihv74pG0PIvkkgAG/preview">
-                        <div class="video-thumbnail-beautiful">
-                            <img src="../img/corp-preview.png" alt="Обучающее видео" loading="lazy">
-                            <div class="video-overlay-beautiful">
-                                <div class="play-button-beautiful">
-                                    <i class="fa-solid fa-play"></i>
-                                </div>
-                                <div class="video-info-overlay">
-                                    <span class="video-category">О клинике</span>
-                                    <span class="video-duration">0:17</span>
-                                </div>
-                            </div>
-                            <div class="video-quality-badge">HD</div>
-                        </div>
-                        <div class="video-content-beautiful">
-                            <h3>Корпоратив Nelly Dental</h3>
-                            <p>Мы знаем секрет идеальной улыбки… И секрет идеального корпоратива! 😁🎄</p>
-                            <div class="video-tags-beautiful">
-                                <span class="tag-beautiful primary">Команда</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                <!-- Video 9 -->
-
-                        <div class="video-card-beautiful" data-category="oborudovanie" data-video="https://drive.google.com/file/d/1JneUu6GS6djm5-4a40MJ0d9fvjK_gQZc/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/nakonec.png" alt="Обучающее видео" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Оборудование</span>
-                                <span class="video-duration">0:56</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Наконечники</h3>
-                        <p>Повышающий наконечник — важный инструмент в арсенале современного стоматолога. Его основное преимущество заключается в возможности увеличения скорости вращения инструментов, что открывает ряд полезных возможностей:<br>
-                        1. Более быстрое лечение: С повышающим наконечником врач может быстрее обрабатывать зубные ткани, что значительно сокращает время, необходимое для выполнения процедур.<br>
-
-2. Высокая точность работы: Ускоренное вращение позволяет достигать более точных результатов, особенно при препарировании зубов под пломбы, коронки или виниры.<br>
-
-3. Комфорт для пациента: Сокращение времени, проведенного в стоматологическом кресле, делает процесс лечения менее утомительным и стрессовым для пациента.<br>
-
-4. Эффективность полировки: Наконечник также повышает качество полировки, что способствует более гладкому и эстетичному финишу пломб и реставраций.<br>
-
-Использование повышающего наконечника — это современный подход к стоматологическому лечению, который делает его быстрее, точнее и комфортнее.
-                        
-                        </p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Оборудование</span>
-                        </div>
-                    </div>
-                </div>
-
-                                <!-- Video 10 -->
-
-                <div class="video-card-beautiful" data-category="oborudovanie" data-video="https://drive.google.com/file/d/1Wv1yU_VOaW93_JCeMUTgXunFZVb63rSf/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/ronde.png" alt="Обучающее видео" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Оборудование</span>
-                                <span class="video-duration">0:54</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Наконечник рондефлекс</h3>
-                        <p>“Когда доверяешь профессионалам — невозможное становится реальным! Смотрите, как наш пациент прошёл полный путь восстановления — больше 20 зубов, современное лечение и только положительные эмоции о клинике, враче и команде!</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Оборудование</span>
-                        </div>
-                    </div>
-                </div>
-                                <!-- Video 11 -->
-
-                <div class="video-card-beautiful" data-category="oborudovanie" data-video="https://drive.google.com/file/d/1PEsopEC9ff34ZX1XNm9A8VzF-D6nOQUg/preview">
-                    <div class="video-thumbnail-beautiful">
-                        <img src="../img/melag.png" alt="Обучающее видео" loading="lazy">
-                        <div class="video-overlay-beautiful">
-                            <div class="play-button-beautiful">
-                                <i class="fa-solid fa-play"></i>
-                            </div>
-                            <div class="video-info-overlay">
-                                <span class="video-category">Оборудование</span>
-                                <span class="video-duration">0:09</span>
-                            </div>
-                        </div>
-                        <div class="video-quality-badge">HD</div>
-                    </div>
-                    <div class="video-content-beautiful">
-                        <h3>Стерелизация автоклавом Melag euroklav 23</h3>
-                        <p>“Когда доверяешь профессионалам — невозможное становится реальным! Смотрите, как наш пациент прошёл полный путь восстановления — больше 20 зубов, современное лечение и только положительные эмоции о клинике, враче и команде!</p>
-                        <div class="video-tags-beautiful">
-                            <span class="tag-beautiful primary">Оборудование</span>
-                        </div>
-                    </div>
+            <div class="gallery-grid-beautiful" id="videoGallery">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Загружаем видео...</div>
                 </div>
             </div>
-            
         </div>
     </section>
 
-
     <!-- ─────── Video Modal ─────── -->
     <div class="video-modal-beautiful" id="videoModal">
-        <div class="modal-overlay-beautiful"></div>
+        <div class="modal-overlay-beautiful" onclick="closeModal()"></div>
         <div class="modal-content-beautiful">
             <div class="modal-header-beautiful">
                 <h3 id="modalTitle">Видео</h3>
-                <button class="close-button-beautiful" id="closeModal">
+                <button class="close-button-beautiful" onclick="closeModal()">
                     <i class="fa-solid fa-times"></i>
                 </button>
             </div>
@@ -387,7 +203,7 @@ Micherium <br>
                             width="100%" 
                             height="100%" 
                             frameborder="0" 
-                            allow="autoplay; encrypted-media" 
+                            allow="fullscreen" 
                             allowfullscreen>
                     </iframe>
                 </div>
@@ -404,8 +220,6 @@ Micherium <br>
             </div>
         </div>
     </div>
-
-
 
     <!-- ─────── Footer ─────── -->
     <footer class="footer">
@@ -430,7 +244,7 @@ Micherium <br>
                         <li><a href="/doctors/">Врачи</a></li>
                         <li><a href="/contacts/">Контакты</a></li>
                         <li><a href="/reviews/">Отзывы</a></li>
-                        <li><a href="/media/">Медия</a></li>
+                        <li><a href="/media/">Медиа</a></li>
                     </ul>
                 </div>
 
@@ -440,7 +254,6 @@ Micherium <br>
                         <a href="https://wa.me/77054026181" class="social-link">WhatsApp</a>
                         <a href="https://www.instagram.com/nelly_dental/" class="social-link">Instagram</a>
                         <a href="https://t.me/nellydentalclinic" class="social-link">Telegram</a>
-
                     </div>
                 </div>
             </div>
@@ -451,7 +264,7 @@ Micherium <br>
         </div>
     </footer>
 
-    <!-- ─────── JS ─────── -->
-    <script src="../js/script.js"></script>
+    <!-- ─────── JavaScript ─────── -->
+    <script src="../js/media.js"></script>
 </body>
 </html>
