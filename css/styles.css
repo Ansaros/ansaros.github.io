@@ -684,7 +684,7 @@ body {
 
 .ratings-grid {
   display: flex;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
 }
 
@@ -695,6 +695,7 @@ body {
   border-radius: 15px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
+  flex: 1;
 }
 
 .rating-icon img {
