@@ -2,16 +2,129 @@
 const CONFIG = {
   API_KEY: "AIzaSyAPNoe4hXwejLxnUr04bqEeWZRE7VqJYP4",
   SPREADSHEET_ID: "1Ez6HZNuqi81NKBOXdfgQiClwnZy3pDIkiKuID-hnPEQ",
-  RANGE: "Медия!A:F", // Предполагаем колонки: A=Название, B=Описание, C=Фото, D=Ссылка на видео, E=Категория, F=Длительность
+  RANGES: {
+    ru: "Media!A:F", // Русский лист
+    kz: "Media_KZ!A:F", // Казахский лист
+    en: "Media_EN!A:F", // Английский лист
+  },
   CACHE_DURATION: 5 * 60 * 1000, // 5 минут кеширования
 }
 
+// ===== ПЕРЕВОДЫ =====
+const translations = {
+  ru: {
+    address: "Улы Дала, 35, Город Астана",
+    schedule: "Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00",
+    nav_home: "ГЛАВНАЯ",
+    nav_prices: "ЦЕНЫ",
+    nav_cases: "КЕЙСЫ",
+    nav_doctors: "ВРАЧИ",
+    nav_contacts: "КОНТАКТЫ",
+    nav_reviews: "ОТЗЫВЫ",
+    nav_media: "МЕДИА",
+    hero_title: "МЕДИА",
+    hero_subtitle: "центр клиники",
+    hero_description: "Процедуры лечения и жизнь клиники.",
+    watch_videos: "Смотреть видео",
+    categories_title: "Категории видео",
+    categories_subtitle: "Выберите интересующую вас тему",
+    loading_categories: "Загружаем категории...",
+    loading_videos: "Загружаем видео...",
+    video_title: "Видео",
+    prev_video: "Предыдущее",
+    next_video: "Следующее",
+    footer_description: "Стоматология 5 звезд",
+    footer_navigation: "Навигация",
+    footer_social: "Мы в соцсетях",
+    copyright: "© 2025 Nelly dental clinic. Все права защищены.",
+    all_videos: "Все видео",
+    about_clinic: "О клинике",
+    equipment: "Оборудование",
+    no_videos: "Видео не найдены. Проверьте подключение к интернету.",
+    error_loading: "Ошибка загрузки видео:",
+    try_again: "Попробовать снова",
+  },
+  kz: {
+    address: "Ұлы Дала, 35, Астана қаласы",
+    schedule: "Дс-Жм 10:00-19:00  Сб, Жс 10:00-16:00",
+    nav_home: "БАСТЫ БЕТ",
+    nav_prices: "БАҒАЛАР",
+    nav_cases: "ЖҰМЫСТАР",
+    nav_doctors: "ДӘРІГЕРЛЕР",
+    nav_contacts: "БАЙЛАНЫС",
+    nav_reviews: "ПІКІРЛЕР",
+    nav_media: "МЕДИА",
+    hero_title: "МЕДИА",
+    hero_subtitle: "клиника орталығы",
+    hero_description: "Емдеу процедуралары және клиника өмірі.",
+    watch_videos: "Бейне көру",
+    categories_title: "Бейне санаттары",
+    categories_subtitle: "Сізді қызықтыратын тақырыпты таңдаңыз",
+    loading_categories: "Санаттарды жүктеп жатырмыз...",
+    loading_videos: "Бейнелерді жүктеп жатырмыз...",
+    video_title: "Бейне",
+    prev_video: "Алдыңғы",
+    next_video: "Келесі",
+    footer_description: "5 жұлдызды стоматология",
+    footer_navigation: "Навигация",
+    footer_social: "Біз әлеуметтік желілерде",
+    copyright: "© 2025 Nelly dental clinic. Барлық құқықтар қорғалған.",
+    all_videos: "Барлық бейне",
+    about_clinic: "Клиника туралы",
+    equipment: "Жабдықтар",
+    no_videos: "Бейнелер табылмады. Интернет байланысын тексеріңіз.",
+    error_loading: "Бейнелерді жүктеу қатесі:",
+    try_again: "Қайта көру",
+  },
+  en: {
+    address: "Uly Dala, 35, Astana City",
+    schedule: "Mon-Fri 10:00-19:00  Sat, Sun 10:00-16:00",
+    nav_home: "HOME",
+    nav_prices: "PRICES",
+    nav_cases: "CASES",
+    nav_doctors: "DOCTORS",
+    nav_contacts: "CONTACTS",
+    nav_reviews: "REVIEWS",
+    nav_media: "MEDIA",
+    hero_title: "MEDIA",
+    hero_subtitle: "clinic center",
+    hero_description: "Treatment procedures and clinic life.",
+    watch_videos: "Watch videos",
+    categories_title: "Video categories",
+    categories_subtitle: "Choose a topic that interests you",
+    loading_categories: "Loading categories...",
+    loading_videos: "Loading videos...",
+    video_title: "Video",
+    prev_video: "Previous",
+    next_video: "Next",
+    footer_description: "5-star dentistry",
+    footer_navigation: "Navigation",
+    footer_social: "We are on social networks",
+    copyright: "© 2025 Nelly dental clinic. All rights reserved.",
+    all_videos: "All videos",
+    about_clinic: "About clinic",
+    equipment: "Equipment",
+    no_videos: "No videos found. Check your internet connection.",
+    error_loading: "Error loading videos:",
+    try_again: "Try again",
+  },
+}
+
 // ===== КЕШИРОВАНИЕ =====
-let videoCache = null
-let cacheTimestamp = null
+let videoCache = {
+  ru: null,
+  kz: null,
+  en: null,
+}
+let cacheTimestamp = {
+  ru: null,
+  kz: null,
+  en: null,
+}
 let currentVideoIndex = 0
 let filteredVideos = []
 let currentFilter = "all"
+let currentLanguage = localStorage.getItem("language") || "ru"
 
 // ===== УТИЛИТЫ =====
 function formatGoogleDriveUrl(url) {
@@ -47,8 +160,8 @@ function formatGoogleDriveImageUrl(url) {
   return url
 }
 
-function isCacheValid() {
-  return videoCache && cacheTimestamp && Date.now() - cacheTimestamp < CONFIG.CACHE_DURATION
+function isCacheValid(lang = currentLanguage) {
+  return videoCache[lang] && cacheTimestamp[lang] && Date.now() - cacheTimestamp[lang] < CONFIG.CACHE_DURATION
 }
 
 function getCategoryIcon(category) {
@@ -62,32 +175,131 @@ function getCategoryIcon(category) {
 
 function getCategoryName(category) {
   const names = {
-    clinic: "О клинике",
-    oborudovanie: "Оборудование",
-    all: "Все видео",
+    clinic: translations[currentLanguage].about_clinic,
+    oborudovanie: translations[currentLanguage].equipment,
+    all: translations[currentLanguage].all_videos,
   }
   return names[category] || category
 }
 
+// ===== СИСТЕМА ПЕРЕВОДОВ =====
+function translatePage() {
+  const elements = document.querySelectorAll("[data-translate]")
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate")
+    if (translations[currentLanguage] && translations[currentLanguage][key]) {
+      element.textContent = translations[currentLanguage][key]
+    }
+  })
+
+  // Обновляем заголовок страницы
+  const titles = {
+    ru: "Медиа - Nelly dental clinic",
+    kz: "Медиа - Nelly dental clinic",
+    en: "Media - Nelly dental clinic",
+  }
+  document.title = titles[currentLanguage] || titles.ru
+
+  // Обновляем атрибут lang
+  document.documentElement.lang = currentLanguage
+}
+
+async function switchLanguage(lang) {
+  const previousLanguage = currentLanguage
+  currentLanguage = lang
+  localStorage.setItem("language", lang)
+
+  // Обновляем активные кнопки языка
+  document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+
+  translatePage()
+
+  // Показываем индикатор загрузки
+  const gallery = document.getElementById("videoGallery")
+  const filterButtons = document.getElementById("filterButtons")
+
+  gallery.innerHTML = `
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">${translations[currentLanguage].loading_videos}</div>
+    </div>
+  `
+
+  filterButtons.innerHTML = `
+    <div class="loading-container">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">${translations[currentLanguage].loading_categories}</div>
+    </div>
+  `
+
+  try {
+    // Загружаем видео для нового языка
+    const videos = await loadVideosFromSheet(lang)
+    renderFilterButtons(videos)
+    renderVideoGallery(videos)
+    currentFilter = "all" // Сбрасываем фильтр
+  } catch (error) {
+    console.error(`Ошибка при переключении на язык ${lang}:`, error)
+
+    // Возвращаемся к предыдущему языку при ошибке
+    currentLanguage = previousLanguage
+    localStorage.setItem("language", previousLanguage)
+
+    // Восстанавливаем активные кнопки
+    document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
+      btn.classList.remove("active")
+    })
+    document.querySelectorAll(`[data-lang="${previousLanguage}"]`).forEach((btn) => {
+      btn.classList.add("active")
+    })
+
+    gallery.innerHTML = `
+      <div class="error-message">
+        <i class="fa-solid fa-exclamation-triangle"></i>
+        <p>${translations[currentLanguage].error_loading} ${error.message}</p>
+        <button onclick="location.reload()">
+          ${translations[currentLanguage].try_again}
+        </button>
+      </div>
+    `
+  }
+}
+
 // ===== ЗАГРУЗКА ДАННЫХ =====
-async function loadVideosFromSheet() {
-  if (isCacheValid()) {
-    console.log("Используем кешированные данные")
-    return videoCache
+async function loadVideosFromSheet(lang = currentLanguage) {
+  if (isCacheValid(lang)) {
+    console.log(`Используем кешированные данные для языка: ${lang}`)
+    return videoCache[lang]
   }
 
   try {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${CONFIG.SPREADSHEET_ID}/values/${CONFIG.RANGE}?key=${CONFIG.API_KEY}`
+    const range = CONFIG.RANGES[lang] || CONFIG.RANGES.ru
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${CONFIG.SPREADSHEET_ID}/values/${range}?key=${CONFIG.API_KEY}`
 
     const response = await fetch(url)
 
     if (!response.ok) {
+      // Если лист для языка не найден, используем русский как fallback
+      if (lang !== "ru") {
+        console.warn(`Лист для языка ${lang} не найден, используем русский`)
+        return await loadVideosFromSheet("ru")
+      }
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
     const data = await response.json()
 
     if (!data.values || data.values.length === 0) {
+      // Если данных нет, используем русский как fallback
+      if (lang !== "ru") {
+        console.warn(`Нет данных для языка ${lang}, используем русский`)
+        return await loadVideosFromSheet("ru")
+      }
       throw new Error("Нет данных в таблице")
     }
 
@@ -107,14 +319,21 @@ async function loadVideosFromSheet() {
       }))
       .filter((video) => video.videoUrl) // Фильтруем видео без ссылок
 
-    // Кешируем данные
-    videoCache = videos
-    cacheTimestamp = Date.now()
+    // Кешируем данные для конкретного языка
+    videoCache[lang] = videos
+    cacheTimestamp[lang] = Date.now()
 
-    console.log(`Загружено ${videos.length} видео из Google Sheets`)
+    console.log(`Загружено ${videos.length} видео из Google Sheets для языка: ${lang}`)
     return videos
   } catch (error) {
-    console.error("Ошибка загрузки данных:", error)
+    console.error(`Ошибка загрузки данных для языка ${lang}:`, error)
+
+    // Если это не русский язык, пробуем загрузить русский как fallback
+    if (lang !== "ru") {
+      console.warn(`Используем русский язык как fallback для ${lang}`)
+      return await loadVideosFromSheet("ru")
+    }
+
     throw error
   }
 }
@@ -150,7 +369,7 @@ function renderVideoGallery(videos) {
     gallery.innerHTML = `
       <div class="error-message">
         <i class="fa-solid fa-exclamation-triangle"></i>
-        <p>Видео не найдены. Проверьте подключение к интернету.</p>
+        <p>${translations[currentLanguage].no_videos}</p>
       </div>
     `
     return
@@ -218,7 +437,10 @@ function filterVideos(category) {
   document.querySelector(`[data-filter="${category}"]`).classList.add("active")
 
   // Фильтруем видео
-  const filteredData = category === "all" ? videoCache : videoCache.filter((video) => video.category === category)
+  const filteredData =
+    category === "all"
+      ? videoCache[currentLanguage]
+      : videoCache[currentLanguage].filter((video) => video.category === category)
 
   renderVideoGallery(filteredData)
 }
@@ -346,15 +568,45 @@ function initMobileMenu() {
   }
 }
 
+// ===== ИНИЦИАЛИЗАЦИЯ ЯЗЫКОВЫХ ПЕРЕКЛЮЧАТЕЛЕЙ =====
+function initLanguageSwitchers() {
+  // Десктопные кнопки языка
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage(lang)
+    })
+  })
+
+  // Мобильные кнопки языка
+  document.querySelectorAll(".mobile-lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage(lang)
+    })
+  })
+
+  // Устанавливаем активный язык при загрузке
+  document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+}
+
 // ===== ОБРАБОТЧИКИ СОБЫТИЙ =====
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("Страница загружена, начинаем загрузку видео...")
+
+  // Инициализируем переводы
+  translatePage()
+
+  // Инициализируем языковые переключатели
+  initLanguageSwitchers()
 
   // Инициализируем мобильное меню
   initMobileMenu()
 
   try {
-    const videos = await loadVideosFromSheet()
+    const videos = await loadVideosFromSheet(currentLanguage)
     renderFilterButtons(videos)
     renderVideoGallery(videos)
   } catch (error) {
@@ -364,9 +616,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     gallery.innerHTML = `
       <div class="error-message">
         <i class="fa-solid fa-exclamation-triangle"></i>
-        <p>Ошибка загрузки видео: ${error.message}</p>
+        <p>${translations[currentLanguage].error_loading} ${error.message}</p>
         <button onclick="location.reload()">
-          Попробовать снова
+          ${translations[currentLanguage].try_again}
         </button>
       </div>
     `
@@ -392,10 +644,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===== ОБНОВЛЕНИЕ КЕША =====
 // Автоматическое обновление каждые 5 минут
 setInterval(async () => {
-  if (!isCacheValid()) {
-    console.log("Кеш устарел, обновляем данные...")
+  if (!isCacheValid(currentLanguage)) {
+    console.log(`Кеш устарел для языка ${currentLanguage}, обновляем данные...`)
     try {
-      const videos = await loadVideosFromSheet()
+      const videos = await loadVideosFromSheet(currentLanguage)
       renderFilterButtons(videos)
       filterVideos(currentFilter) // Применяем текущий фильтр
     } catch (error) {
@@ -406,27 +658,51 @@ setInterval(async () => {
 
 // ===== УТИЛИТЫ ДЛЯ ОТЛАДКИ =====
 window.MediaGalleryDebug = {
-  clearCache: () => {
-    videoCache = null
-    cacheTimestamp = null
-    console.log("Кеш очищен")
+  clearCache: (lang = null) => {
+    if (lang) {
+      videoCache[lang] = null
+      cacheTimestamp[lang] = null
+      console.log(`Кеш очищен для языка: ${lang}`)
+    } else {
+      videoCache = { ru: null, kz: null, en: null }
+      cacheTimestamp = { ru: null, kz: null, en: null }
+      console.log("Весь кеш очищен")
+    }
   },
 
-  reloadVideos: async function () {
-    this.clearCache()
+  reloadVideos: async function (lang = currentLanguage) {
+    this.clearCache(lang)
     try {
-      const videos = await loadVideosFromSheet()
+      const videos = await loadVideosFromSheet(lang)
       renderFilterButtons(videos)
       renderVideoGallery(videos)
-      console.log("Видео перезагружены")
+      console.log(`Видео перезагружены для языка: ${lang}`)
     } catch (error) {
       console.error("Ошибка перезагрузки:", error)
     }
   },
 
-  showCache: () => {
-    console.log("Кешированные данные:", videoCache)
-    console.log("Время кеша:", new Date(cacheTimestamp))
+  showCache: (lang = null) => {
+    if (lang) {
+      console.log(`Кешированные данные для ${lang}:`, videoCache[lang])
+      console.log(`Время кеша для ${lang}:`, new Date(cacheTimestamp[lang]))
+    } else {
+      console.log("Все кешированные данные:", videoCache)
+      console.log("Время кеша:", cacheTimestamp)
+    }
+  },
+
+  loadAllLanguages: async () => {
+    const languages = ["ru", "kz", "en"]
+    for (const lang of languages) {
+      try {
+        console.log(`Загружаем данные для языка: ${lang}`)
+        await loadVideosFromSheet(lang)
+      } catch (error) {
+        console.error(`Ошибка загрузки для ${lang}:`, error)
+      }
+    }
+    console.log("Загрузка всех языков завершена")
   },
 
   testImageUrl: (url) => {
@@ -445,5 +721,13 @@ window.MediaGalleryDebug = {
 
   filterVideos: (category) => {
     filterVideos(category)
+  },
+
+  switchLanguage: (lang) => {
+    switchLanguage(lang)
+  },
+
+  getCurrentLanguage: () => {
+    return currentLanguage
   },
 }

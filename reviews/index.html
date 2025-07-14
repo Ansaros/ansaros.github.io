@@ -22,11 +22,11 @@
             <div class="top-bar-info">
                 <div class="info-item">
                     <i class="fa-solid fa-location-dot icon"></i>
-                    <span class="top">Улы Дала, 35, Город Астана</span>
+                    <span class="top" data-translate="address">Улы Дала, 35, Город Астана</span>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-clock icon"></i>
-                    <span class="top">Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</span>
+                    <span class="top" data-translate="schedule">Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</span>
                 </div>
                 <div class="info-item phone">
                     <i class="fa-solid fa-phone icon"></i>
@@ -34,10 +34,19 @@
                 </div>
             </div>
 
-            <div class="social-icons">
-                <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+            <div class="top-bar-right">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="kz">KZ</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -51,13 +60,13 @@
 
             <nav class="main-nav">
                 <ul>
-                    <li><a href="/">ГЛАВНАЯ</a></li>
-                    <li><a href="/price/">ЦЕНЫ</a></li>
-                    <li><a href="/cases/">КЕЙСЫ</a></li>
-                    <li><a href="/doctors/">ВРАЧИ</a></li>
-                    <li><a href="/contacts/">КОНТАКТЫ</a></li>
-                    <li><a href="/reviews/" class="active">ОТЗЫВЫ</a></li>
-                    <li><a href="/media/">МЕДИА</a></li>
+                    <li><a href="/" data-translate="nav_home">ГЛАВНАЯ</a></li>
+                    <li><a href="/price/" data-translate="nav_prices">ЦЕНЫ</a></li>
+                    <li><a href="/cases/" data-translate="nav_cases">КЕЙСЫ</a></li>
+                    <li><a href="/doctors/" data-translate="nav_doctors">ВРАЧИ</a></li>
+                    <li><a href="/contacts/" data-translate="nav_contacts">КОНТАКТЫ</a></li>
+                    <li><a href="/reviews/" class="active" data-translate="nav_reviews">ОТЗЫВЫ</a></li>
+                    <li><a href="/media/" data-translate="nav_media">МЕДИА</a></li>
                 </ul>
             </nav>
 
@@ -82,14 +91,22 @@
                 <span>Nelly</span>
                 <small>dental clinic</small>
             </div>
+
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <button class="mobile-lang-btn active" data-lang="ru">Русский</button>
+                <button class="mobile-lang-btn" data-lang="kz">Қазақша</button>
+                <button class="mobile-lang-btn" data-lang="en">English</button>
+            </div>
+
             <ul>
-                <li><a href="/"><i class="fa-solid fa-house"></i>Главная</a></li>
-                <li><a href="/price/"><i class="fa-solid fa-tenge-sign"></i>Цены</a></li>
-                <li><a href="/cases/"><i class="fa-solid fa-images"></i>Кейсы</a></li>
-                <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i>Врачи</a></li>
-                <li><a href="/contacts/"><i class="fa-solid fa-phone"></i>Контакты</a></li>
-                <li><a href="/reviews/"><i class="fa-solid fa-star"></i>Отзывы</a></li>
-                <li><a href="/media/"><i class="fa-solid fa-play"></i>Медиа</a></li>
+                <li><a href="/"><i class="fa-solid fa-house"></i><span data-translate="nav_home">Главная</span></a></li>
+                <li><a href="/price/"><i class="fa-solid fa-tenge-sign"></i><span data-translate="nav_prices">Цены</span></a></li>
+                <li><a href="/cases/"><i class="fa-solid fa-images"></i><span data-translate="nav_cases">Кейсы</span></a></li>
+                <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i><span data-translate="nav_doctors">Врачи</span></a></li>
+                <li><a href="/contacts/"><i class="fa-solid fa-phone"></i><span data-translate="nav_contacts">Контакты</span></a></li>
+                <li><a href="/reviews/"><i class="fa-solid fa-star"></i><span data-translate="nav_reviews">Отзывы</span></a></li>
+                <li><a href="/media/"><i class="fa-solid fa-play"></i><span data-translate="nav_media">Медиа</span></a></li>
             </ul>
             <div class="mobile-contact">
                 <a href="tel:+77054026181" class="mobile-phone">
@@ -133,24 +150,24 @@
         <div class="container">
             <div class="hero-content-media">
                 <div class="breadcrumb-media">
-                    <a href="/">Главная</a>
+                    <a href="/" data-translate="nav_home">Главная</a>
                     <span class="separator">✦</span>
-                    <span>Отзывы</span>
+                    <span data-translate="nav_reviews">Отзывы</span>
                 </div>
                 
                 <h1 class="hero-title-media">
-                    Отзывы
-                    <span class="title-accent-media">центр клиники</span>
+                    <span data-translate="hero_title">Отзывы</span>
+                    <span class="title-accent-media" data-translate="hero_subtitle">центр клиники</span>
                 </h1>
                 
-                <p class="hero-subtitle-media">
+                <p class="hero-subtitle-media" data-translate="hero_description">
                     Видеоотзывы наших пациентов.
                 </p>
                 
                 <div class="hero-cta-media">
                     <button class="scroll-to-videos-btn" onclick="scrollToVideos()">
                         <i class="fa-solid fa-play"></i>
-                        <span>Смотреть видео</span>
+                        <span data-translate="watch_videos">Смотреть видео</span>
                     </button>
                 </div>
             </div>
@@ -163,7 +180,7 @@
             <div id="videoGallery">
                 <div class="loading-container">
                     <div class="loading-spinner"></div>
-                    <div class="loading-text">Загружаем видео...</div>
+                    <div class="loading-text" data-translate="loading_videos">Загружаем видео...</div>
                 </div>
             </div>
         </div>
@@ -174,7 +191,7 @@
         <div class="modal-overlay-beautiful" onclick="closeModal()"></div>
         <div class="modal-content-beautiful">
             <div class="modal-header-beautiful">
-                <h3 id="modalTitle">Видео</h3>
+                <h3 id="modalTitle" data-translate="video_title">Видео</h3>
                 <button class="close-button-beautiful" onclick="closeModal()">
                     <i class="fa-solid fa-times"></i>
                 </button>
@@ -185,7 +202,7 @@
                             width="100%" 
                             height="100%" 
                             frameborder="0" 
-                            allow="autoplay; encrypted-media" 
+                            allow="fullscreen" 
                             allowfullscreen>
                     </iframe>
                 </div>
@@ -206,32 +223,32 @@
         <div class="container">
             <div class="cta-content-media">
                 <div class="cta-text-media">
-                    <h2>Хотите поделиться своим опытом?</h2>
-                    <p>Запишите видеоотзыв о лечении в нашей клинике и помогите другим пациентам сделать правильный выбор</p>
+                    <h2 data-translate="cta_title">Хотите поделиться своим опытом?</h2>
+                    <p data-translate="cta_description">Запишите видеоотзыв о лечении в нашей клинике и помогите другим пациентам сделать правильный выбор</p>
                     
                     <div class="cta-benefits-media">
                         <div class="benefit-media">
                             <div class="benefit-icon-media">
                                 <i class="fa-solid fa-video"></i>
                             </div>
-                            <span>Профессиональная съемка</span>
+                            <span data-translate="benefit_professional">Профессиональная съемка</span>
                         </div>
                         <div class="benefit-media">
                             <div class="benefit-icon-media">
                                 <i class="fa-solid fa-star"></i>
                             </div>
-                            <span>Ваш отзыв поможет другим</span>
+                            <span data-translate="benefit_help">Ваш отзыв поможет другим</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="cta-action-media">
                     <a href="https://go.2gis.com/mgWtB" class="cta-btn-media">
-                        <span>Оставить отзыв</span>
+                        <span data-translate="leave_review">Оставить отзыв</span>
                         <div class="btn-glow-media"></div>
                     </a>
                     <div class="cta-contact-media">
-                        <span>Или позвоните:</span>
+                        <span data-translate="or_call">Или позвоните:</span>
                         <a href="tel:+77054026181">+7 705 402 61 81</a>
                     </div>
                 </div>
@@ -247,27 +264,27 @@
                     <div class="footer-logo">
                         <a href="/">Nelly dental clinic</a>
                     </div>
-                    <p>Стоматология 5 звезд</p>
-                    <p>Улы Дала, 35, Город Астана</p>
-                    <p>Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</p>
+                    <p data-translate="footer_description">Стоматология 5 звезд</p>
+                    <p data-translate="address">Улы Дала, 35, Город Астана</p>
+                    <p data-translate="schedule">Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</p>
                     <p>+7 705 402 61 81</p>
                 </div>
 
                 <div class="footer-nav">
-                    <h3>Навигация</h3>
+                    <h3 data-translate="footer_navigation">Навигация</h3>
                     <ul>
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/price/">Цены</a></li>
-                        <li><a href="/cases/">Кейсы</a></li>
-                        <li><a href="/doctors/">Врачи</a></li>
-                        <li><a href="/contacts/">Контакты</a></li>
-                        <li><a href="/reviews/">Отзывы</a></li>
-                        <li><a href="/media/">Медиа</a></li>
+                        <li><a href="/" data-translate="nav_home">Главная</a></li>
+                        <li><a href="/price/" data-translate="nav_prices">Цены</a></li>
+                        <li><a href="/cases/" data-translate="nav_cases">Кейсы</a></li>
+                        <li><a href="/doctors/" data-translate="nav_doctors">Врачи</a></li>
+                        <li><a href="/contacts/" data-translate="nav_contacts">Контакты</a></li>
+                        <li><a href="/reviews/" data-translate="nav_reviews">Отзывы</a></li>
+                        <li><a href="/media/" data-translate="nav_media">Медиа</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-social">
-                    <h3>Мы в соцсетях</h3>
+                    <h3 data-translate="footer_social">Мы в соцсетях</h3>
                     <div class="social-links">
                         <a href="https://wa.me/77054026181" class="social-link">WhatsApp</a>
                         <a href="https://www.instagram.com/nelly_dental/" class="social-link">Instagram</a>
@@ -277,7 +294,7 @@
             </div>
 
             <div class="copyright">
-                <p>© 2025 Nelly dental clinic. Все права защищены.</p>
+                <p data-translate="copyright">© 2025 Nelly dental clinic. Все права защищены.</p>
             </div>
         </div>
     </footer>

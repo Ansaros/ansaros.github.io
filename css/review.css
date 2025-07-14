@@ -37,6 +37,12 @@ body {
   gap: 30px;
 }
 
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .info-item {
   display: flex;
   align-items: center;
@@ -62,6 +68,69 @@ body {
 
 .social-icon:hover {
   color: #8e5a91;
+}
+
+/* ===== LANGUAGE SWITCHER ===== */
+.language-switcher {
+  display: flex;
+  gap: 5px;
+  background: white;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: 0 2px 10px rgba(163, 116, 170, 0.1);
+}
+
+.lang-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(163, 116, 170, 0.1);
+  color: #a374aa;
+}
+
+.lang-btn.active {
+  background: #a374aa;
+  color: white;
+}
+
+.mobile-language-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.mobile-lang-btn {
+  padding: 12px 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.mobile-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-lang-btn.active {
+  background: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
 }
 
 /* ===== HEADER ===== */
@@ -201,7 +270,7 @@ body {
 
 .mobile-logo {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 0 30px;
 }
 
