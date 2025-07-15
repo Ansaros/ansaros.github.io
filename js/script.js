@@ -690,26 +690,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const showcaseImages = document.querySelector('.before-after-showcase')
     
     // Sample data for different cases
-    const caseData = {
-      1: {
-        before: '/img/do6.jfif',
-        after: '/img/posle6.jfif',
-        title: 'Коронки цирконевые',
-        tags: ['E-max', 'Коронки']
-      },
-      2: {
-        before: '/img/do7.jfif',
-        after: '/img/posle7.jfif',
-        title: 'Закрытие тремы брекетами',
-        tags: ['Брекеты', 'Ортодонтия']
-      },
-      3: {
-        before: '/img/do4.jfif',
-        after: '/img/posle4.jfif',
-        title: 'Брекет-система: металлические лигатурные',
-        tags: ['Ортодонтия', 'Брекет-система']
-      }
-    }
+ const caseData = {
+  1: {
+    before: "/img/do6.jfif",
+    after: "/img/posle6.jfif",
+    titleKey: "showcase_case_1_title", // Используем ключи вместо текста
+    tagKeys: ["tag_emax", "tag_crowns_general"]
+  },
+  2: {
+    before: "/img/do7.jfif", 
+    after: "/img/posle7.jfif",
+    titleKey: "showcase_case_2_title",
+    tagKeys: ["tag_braces", "tag_orthodontics"]
+  },
+  3: {
+    before: "/img/do4.jfif",
+    after: "/img/posle4.jfif", 
+    titleKey: "showcase_case_3_title",
+    tagKeys: ["tag_orthodontics", "tag_braces_system"]
+  }
+}
     
     thumbnails.forEach(thumbnail => {
       thumbnail.addEventListener('click', () => {
@@ -1962,4 +1962,767 @@ const DoctorsPageUtils = {
 window.DoctorsPageUtils = DoctorsPageUtils
 
 // Add some additional CSS for enhanced animations
+// ===== ПЕРЕВОДЫ =====
+const translations = {
+  ru: {
+    address: "Улы Дала, 35, Город Астана",
+    schedule: "Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00",
+    nav_home: "ГЛАВНАЯ",
+    nav_prices: "ЦЕНЫ",
+    nav_cases: "КЕЙСЫ",
+    nav_doctors: "ВРАЧИ",
+    nav_contacts: "КОНТАКТЫ",
+    nav_reviews: "ОТЗЫВЫ",
+    nav_media: "МЕДИА",
+    contacts_title: "КОНТАКТЫ",
+    contacts_subtitle: "В АСТАНЕ",
+    address_title: "УЛЫ ДАЛА 35",
+    address_details: "Z05T9H7, г. Астана, Нура район",
+    address_street: "Проспект Улы Дала, д. 35, НП: 9",
+    whatsapp_btn: "НАПИСАТЬ В WHATSAPP",
+    working_hours_title: "ВРЕМЯ РАБОТЫ",
+    working_hours_weekdays: "Понедельник - Пятница: 10:00 до 19:00",
+    working_hours_weekend: "Суббота - Воскресенье: 10:00 до 16:00",
+    social_networks_title: "СОЦСЕТИ",
+    footer_description: "Стоматология 5 звезд",
+    footer_navigation: "Навигация",
+    footer_social: "Мы в соцсетях",
+    copyright: "© 2025 Nelly dental clinic. Все права защищены.",
+  },
+  kz: {
+    address: "Ұлы Дала, 35, Астана қаласы",
+    schedule: "Дс-Жм 10:00-19:00  Сб, Жс 10:00-16:00",
+    nav_home: "БАСТЫ БЕТ",
+    nav_prices: "БАҒАЛАР",
+    nav_cases: "ЖҰМЫСТАР",
+    nav_doctors: "ДӘРІГЕРЛЕР",
+    nav_contacts: "БАЙЛАНЫС",
+    nav_reviews: "ПІКІРЛЕР",
+    nav_media: "МЕДИА",
+    contacts_title: "БАЙЛАНЫС",
+    contacts_subtitle: "АСТАНАДА",
+    address_title: "ҰЛЫ ДАЛА 35",
+    address_details: "Z05T9H7, Астана қ., Нұра ауданы",
+    address_street: "Ұлы Дала даңғылы, 35 үй, НП: 9",
+    whatsapp_btn: "WHATSAPP-КА ЖАЗУ",
+    working_hours_title: "ЖҰМЫС УАҚЫТЫ",
+    working_hours_weekdays: "Дүйсенбі - Жұма: 10:00-дан 19:00-ға дейін",
+    working_hours_weekend: "Сенбі - Жексенбі: 10:00-дан 16:00-ға дейін",
+    social_networks_title: "ӘЛЕУМЕТТІК ЖЕЛІЛЕР",
+    footer_description: "5 жұлдызды стоматология",
+    footer_navigation: "Навигация",
+    footer_social: "Біз әлеуметтік желілерде",
+    copyright: "© 2025 Nelly dental clinic. Барлық құқықтар қорғалған.",
+  },
+  en: {
+    address: "Uly Dala, 35, Astana City",
+    schedule: "Mon-Fri 10:00-19:00  Sat, Sun 10:00-16:00",
+    nav_home: "HOME",
+    nav_prices: "PRICES",
+    nav_cases: "CASES",
+    nav_doctors: "DOCTORS",
+    nav_contacts: "CONTACTS",
+    nav_reviews: "REVIEWS",
+    nav_media: "MEDIA",
+    contacts_title: "CONTACTS",
+    contacts_subtitle: "IN ASTANA",
+    address_title: "ULY DALA 35",
+    address_details: "Z05T9H7, Astana city, Nura district",
+    address_street: "Uly Dala Avenue, 35, NP: 9",
+    whatsapp_btn: "WRITE TO WHATSAPP",
+    working_hours_title: "WORKING HOURS",
+    working_hours_weekdays: "Monday - Friday: 10:00 to 19:00",
+    working_hours_weekend: "Saturday - Sunday: 10:00 to 16:00",
+    social_networks_title: "SOCIAL NETWORKS",
+    footer_description: "5-star dentistry",
+    footer_navigation: "Navigation",
+    footer_social: "We are on social networks",
+    copyright: "© 2025 Nelly dental clinic. All rights reserved.",
+  },
+}
 
+// ===== ТЕКУЩИЙ ЯЗЫК =====
+let currentLanguage = localStorage.getItem("language") || "ru"
+
+// ===== СИСТЕМА ПЕРЕВОДОВ =====
+function translatePage() {
+  const elements = document.querySelectorAll("[data-translate]")
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate")
+    if (translations[currentLanguage] && translations[currentLanguage][key]) {
+      element.textContent = translations[currentLanguage][key]
+    }
+  })
+
+  // Обновляем заголовок страницы
+  const titles = {
+    ru: "Контакты - Nelly dental clinic",
+    kz: "Байланыс - Nelly dental clinic",
+    en: "Contacts - Nelly dental clinic",
+  }
+  document.title = titles[currentLanguage] || titles.ru
+
+  // Обновляем атрибут lang
+  document.documentElement.lang = currentLanguage
+}
+
+function switchLanguage(lang) {
+  currentLanguage = lang
+  localStorage.setItem("language", lang)
+
+  // Обновляем активные кнопки языка
+  document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+
+  translatePage()
+}
+
+// ===== МОБИЛЬНОЕ МЕНЮ =====
+function initMobileMenu() {
+  const burger = document.getElementById("burger")
+  const mobileNav = document.getElementById("mobileNav")
+  const menuOverlay = document.getElementById("menuOverlay")
+  const closeMenu = document.getElementById("closeMenu")
+
+  if (burger && mobileNav && menuOverlay && closeMenu) {
+    // Открытие меню
+    burger.addEventListener("click", () => {
+      burger.classList.add("active")
+      mobileNav.classList.add("open")
+      menuOverlay.classList.add("active")
+      document.body.style.overflow = "hidden"
+    })
+
+    // Закрытие меню
+    function closeMobileMenu() {
+      burger.classList.remove("active")
+      mobileNav.classList.remove("open")
+      menuOverlay.classList.remove("active")
+      document.body.style.overflow = ""
+    }
+
+    closeMenu.addEventListener("click", closeMobileMenu)
+    menuOverlay.addEventListener("click", closeMobileMenu)
+
+    // Закрытие при клике на ссылку
+    const mobileLinks = mobileNav.querySelectorAll("a")
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMobileMenu)
+    })
+  }
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ ЯЗЫКОВЫХ ПЕРЕКЛЮЧАТЕЛЕЙ =====
+function initLanguageSwitchers() {
+  // Десктопные кнопки языка
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage(lang)
+    })
+  })
+
+  // Мобильные кнопки языка
+  document.querySelectorAll(".mobile-lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage(lang)
+    })
+  })
+
+  // Устанавливаем активный язык при загрузке
+  document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ =====
+document.addEventListener("DOMContentLoaded", () => {
+  // Инициализируем переводы
+  translatePage()
+
+  // Инициализируем языковые переключатели
+  initLanguageSwitchers()
+
+  // Инициализируем мобильное меню
+  initMobileMenu()
+})
+
+// ===== ПЕРЕВОДЫ =====
+const translations_cases = {
+  ru: {
+    // Общие переводы
+    address: "Улы Дала, 35, Город Астана",
+    schedule: "Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00",
+    nav_home: "ГЛАВНАЯ",
+    nav_prices: "ЦЕНЫ",
+    nav_cases: "КЕЙСЫ",
+    nav_doctors: "ВРАЧИ",
+    nav_contacts: "КОНТАКТЫ",
+    nav_reviews: "ОТЗЫВЫ",
+    nav_media: "МЕДИА",
+    footer_description: "Стоматология 5 звезд",
+    footer_navigation: "Навигация",
+    footer_social: "Мы в соцсетях",
+    copyright: "© 2025 Nelly dental clinic. Все права защищены.",
+
+    // Переводы для страницы кейсов
+    cases_breadcrumb: "Кейсы лечения",
+    cases_title_1: "ИСТОРИИ",
+    cases_title_2: "УСПЕХА", 
+    cases_title_3: "наших пациентов",
+    cases_subtitle: "Каждая улыбка — это уникальная история преображения. Посмотрите на реальные результаты работы наших специалистов.",
+    cases_stat_1: "Успешных случаев",
+    cases_stat_2: "Довольных пациентов",
+    before_label: "ДО",
+    after_label: "ПОСЛЕ",
+    showcase_title: "Полная реконструкция улыбки",
+    tag_rehabilitation: "Реабилитация",
+    tag_crowns: "Коронки",
+    tag_treatment: "Лечение",
+    tag_therapy: "Терапия",
+    tag_orthodontics: "Ортодонтия",
+    tag_braces: "Брекет-система",
+    tag_fillings: "Пломбы",
+    tag_aesthetics: "Эстетика",
+    tag_restoration: "Восстановление",
+    tag_whitening: "Отбеливание",
+    tag_endodontics: "Эндодонтия",
+    tag_xray: "Рентген",
+    tag_pediatric: "Детская",
+    
+    // Кейсы
+    case_1_title: "Комплексное восстановление улыбки",
+    case_1_description: "Пациентка обратилась в клинику с жалобами на неэстетичный вид старых реставраций и боль в одном из зубов💁🏻‍♀️<br>На первом этапе терапевтом было проведено качественное эндодонтическое лечение и полная замена реставраций.<br>Для восстановления функциональности и эстетики пациентка была направлена к врачу-ортопеду.<br>Финальный этап — установка коронок и виниров, возвращающих уверенность в улыбке🦷<br>Результат — заслуга командной работы врачей клиники: точность, согласованность и забота о каждом этапе лечения💪🏻",
+    
+    case_2_title: "Лечение контактного кариеса",
+    case_2_description: "Пациент проходил ортодонтическое лечение, но из-за плохого ухода налёт скопился между зубами, с внутренней стороны, и развился контактный кариес.<br>Что сделали?<br>* Вылечили контактный кариес 1.1 и 2.1<br>* Местная анестезия + изоляция коффердамом<br>* Сняли дугу для качественной обработки<br>* Работа заняла 2 часа<br>* Материал: Micherium (Italy)",
+    
+    case_3_title: "Брекет-система: металлические лигатурные",
+    case_3_description: "Пациентка обратилась на долечивание, и за это время мы уже достигли значительных улучшений! Исправление прикуса, выравнивание зубного ряда — уверенно движемся к красивой и здоровой улыбке.",
+    case_3_duration: "Срок лечения: 8 месяцев",
+    
+    case_4_title: "Полная реконструкция улыбки",
+    case_4_description: "Сложный случай:<br>Пациентка обратилась без зубов на верхней челюсти и с разрушенными зубами снизу.<br><br>🔧 Проведена большая работа:<br>• Установлено 8 имплантов сверху<br>• Подготовлено 8 нижних зубов под циркон<br>• Зафиксировано 16 коронок сверху и 8 снизу<br><br>✅ Результат — красивая, функциональная улыбка.<br>Пациентка теперь ест без дискомфорта и чувствует себя отлично!<br><br>Мы восстанавливаем не только зубы, но и уверенность 💪",
+    
+    case_5_title: "Восстановление жевательной поверхности",
+    case_5_description: "На приёме — зуб с ранее установленной пломбой.<br>Визуально — лишь небольшое потемнение рядом с краем реставрации. Пациент не ощущает боли🤯<br>Но мы знаем: если есть хоть малейшее подозрение — лучше проверить глубже🙌🏻<br><br>После снятия старой пломбы открылась реальная картина — под ней развился глубокий кариес, который уже начал разрушать ткани😩<br><br>Аккуратно, шаг за шагом очищаем полость, сохраняя максимум здоровых тканей.<br>Работаем под коффердамом — это наша гарантия стерильности, точности и комфорта для пациента.<br><br>Результат — зуб как новый:<br>восстановлена форма, функция и естественная эстетика.<br>Даже при ближайшем рассмотрении — не скажешь, что он лечен.<br>Пациент уходит довольный и с благодарной улыбкой🤗",
+    case_5_duration: "1 визит",
+    
+    case_6_title: "Эстетика зубов",
+    case_6_description: "Пациент обратился с жалобами на внешний вид улыбки. Визуально — тёмные пятна на передних зубах.<br><br>Что выявили:<br>При осмотре диагностировали скрытые кариозные поражения, затрагивающие эстетику зоны улыбки.<br><br>Что сделали:<br>✔️ Удалили поражённые ткани<br>✔️ Провели очистку<br>✔️ Восстановили форму и цвет с помощью эстетичных реставраций<br><br>Результат:<br>Чистые, естественные, сияющие зубы — и довольный пациент с уверенной улыбкой 😁",
+    
+    case_7_title: "Закрытие диастемы путем реставрации композитом",
+    case_7_description: "Пациент обратился с выраженной диастемой — щелью между передними зубами, которая давно вызывала дискомфорт и неуверенность.<br>🛠 Мы провели точную и аккуратную работу:<br>• Выполнена композитная реставрация без обтачивания<br>• Подобран идеальный цвет и форма под натуральные зубы<br>• Щель устранена всего за одно посещение<br><br>✅ Результат — аккуратная, естественная улыбка.<br>Пациент сразу отметил, как изменилось его восприятие себя: теперь улыбается свободно и с удовольствием.",
+    
+    case_8_title: "Отбеливание зубов",
+    case_8_description: "Пациент обратился с пожеланием осветлить зубы — естественный цвет стал тусклым со временем из-за кофе.<br>💡 Проведено профессиональное отбеливание в клинике:<br>• Безопасная система с контролем чувствительности<br>• Один визит — до нескольких тонов светлее<br>• Эмаль не пострадала, эффект — мгновенный<br><br>✅ Результат — свежая, яркая улыбка, без искусственного \"перебела\".<br>Пациент остался доволен и отметил, что стал чаще улыбаться.<br>Отбеливание — это не только про эстетику, но и про уверенность в себе ✨",
+    
+    case_9_title: "Отбеливание зубов",
+    case_9_description: "Мужчина обратился с желанием освежить цвет зубов — налёт от кофе и сигарет портил общий вид улыбки.<br>🦷 За одно посещение провели клиническое отбеливание:<br>• Использовали современную систему, щадящую эмаль<br>• Учитыли индивидуальную чувствительность зубов<br>• Оттенок стал светлее на 3–4 тона<br><br>✅ Результат — естественно белые зубы без «перебела».<br>Улыбка стала выразительнее, лицо — моложе.<br>Иногда достаточно одного шага, чтобы выглядеть свежее и увереннее 🔥",
+    
+    case_10_title: "Эндодонтическое лечение с рентген-контролем",
+    case_10_description: "На данном клиническом случае представлено лечение корневого канала с обязательным рентген-контролем на этапах:<br>📍 В процессе — проводим рентген-снимок с инструментом внутри канала, чтобы точно определить длину и анатомию, избежать пропуска участков и контролировать глубину обработки.<br>📍 После — оцениваем качество пломбировки: плотность, герметичность и отсутствие пустот.<br><br>Такой подход помогает предотвратить осложнения в будущем и обеспечивает надёжный и долгосрочный результат.",
+    
+    case_11_title: "Механическая и медикаментозая обработка каналов",
+    case_11_description: "Пациент обратился с жалобами на резкую боль и припухлость десны в области зуба.<br>После диагностики было выявлено воспаление в корневой системе. Мы провели качественную механическую и медикаментозную обработку каналов, соблюдая все современные протоколы.<br>✅ Лечение проводилось под микроскопом, что позволило точно обработать каналы даже при сложной анатомии.<br>На снимках динамика за 1 неделю. Видно положительное изменение: воспаление уходит, ткань восстанавливается.<br>Благодаря своевременному обращению и грамотному подходу, зуб удалось сохранить без удаления и имплантации.",
+    
+    case_12_title: "Лечение пульпита у подростка с несформированным корнем",
+    case_12_description: "Сложный клинический случай, который требует высокой точности и опыта.<br>У подростков корень ещё не до конца сформирован, и стандартное лечение здесь неподходяще. Важно сохранить жизнеспособность окружающих тканей и не нарушить естественное развитие зуба.<br>✅ Работа проводилась под микроскопом это позволяет видеть мельчайшие анатомические детали, точно очистить и запломбировать каналы, не повредив незрелые структуры.",
+    
+    // Истории пациентов
+    stories_title: "Истории наших пациентов",
+    stories_subtitle: "Читайте реальные отзывы людей, которые изменили свою жизнь благодаря красивой улыбке",
+    story_1_text: "\"Нужно было экстренно лечить зуб и искала ближайшую стоматологию. Очень высокий сервис, администратор, врач все очень эмпатичные люди. Вылечили очень тщательно. Цена- качество абсолютно соответствует. Плюс после лечения узнавали как самочувствие. Однозначно буду постоянным клиентом 😻\"",
+    story_1_treatment: "Лечение кариеса",
+    story_2_text: "\"Очень нравится доктор Нелли Ринатовна. Такое доброе сердце и золотые руки. Желаю процветания клинике. Кстати приезжаю я с Кокшетау\"",
+    story_2_treatment: "Лечение кариеса",
+    story_3_text: "\"Отличная стоматология. Вылечил себе здесь 10 зубов наверное, суммарно. Выбрал её после прохождения консультаций в 5 соседних клиниках. Ни разу не пожалел. Доктора настоящие профессионалы, все зубы сделали на вид как родные.\"",
+    story_3_treatment: "Комплексное лечение",
+    
+    // CTA секция
+    cta_title: "Готовы к преображению?",
+    cta_subtitle: "Запишитесь на бесплатную консультацию и узнайте, как мы можем изменить вашу улыбку",
+    cta_benefit_1: "Бесплатная консультация и план лечения",
+    cta_benefit_2: "3D-моделирование будущей улыбки",
+    cta_benefit_3: "Гарантия на все виды работ",
+    cta_button: "Записаться на консультацию",
+    cta_or_call: "Или позвоните:",
+    tag_zirconia_crowns: "Коронки цирконевые",
+    tag_emax: "E-max",
+    tag_crowns_general: "Коронки",
+    tag_braces_closure: "Закрытие тремы брекетами",
+    tag_braces: "Брекеты",
+    tag_orthodontics: "Ортодонтия",
+    tag_metal_braces: "Брекет-система: металлические лигатурные",
+    tag_braces_system: "Брекет-система",
+  },
+
+  kz: {
+    // Общие переводы
+    address: "Ұлы Дала, 35, Астана қаласы",
+    schedule: "Дс-Жм 10:00-19:00  Сб, Жс 10:00-16:00",
+    nav_home: "БАСТЫ БЕТ",
+    nav_prices: "БАҒАЛАР",
+    nav_cases: "ЖҰМЫСТАР",
+    nav_doctors: "ДӘРІГЕРЛЕР",
+    nav_contacts: "БАЙЛАНЫС",
+    nav_reviews: "ПІКІРЛЕР",
+    nav_media: "МЕДИА",
+    footer_description: "5 жұлдызды стоматология",
+    footer_navigation: "Навигация",
+    footer_social: "Біз әлеуметтік желілерде",
+    copyright: "© 2025 Nelly dental clinic. Барлық құқықтар қорғалған.",
+
+    // Переводы для страницы кейсов
+    cases_breadcrumb: "Емдеу жағдайлары",
+    cases_title_1: "ТАБЫС",
+    cases_title_2: "ТАРИХЫ",
+    cases_title_3: "біздің пациенттердің",
+    cases_subtitle: "Әрбір күлкі — бұл өзгерудің ерекше тарихы. Біздің мамандардың нақты нәтижелерін көріңіз.",
+    cases_stat_1: "Табысты жағдайлар",
+    cases_stat_2: "Қанағаттанған пациенттер",
+    before_label: "ДЕЙІН",
+    after_label: "КЕЙІН",
+    showcase_title: "Күлкінің толық қайта құрылысы",
+    tag_rehabilitation: "Оңалту",
+    tag_crowns: "Тәждер",
+    tag_treatment: "Емдеу",
+    tag_therapy: "Терапия",
+    tag_orthodontics: "Ортодонтия",
+    tag_braces: "Брекет жүйесі",
+    tag_fillings: "Пломбалар",
+    tag_aesthetics: "Эстетика",
+    tag_restoration: "Қалпына келтіру",
+    tag_whitening: "Ағарту",
+    tag_endodontics: "Эндодонтия",
+    tag_xray: "Рентген",
+    tag_pediatric: "Балалар",
+    
+    // Кейсы
+    case_1_title: "Күлкінің кешенді қалпына келтірілуі",
+    case_1_description: "Пациент клиникаға ескі реставрациялардың эстетикалық емес көрінісі және тістердің біреуіндегі ауырсыну туралы шағыммен жүгінді💁🏻‍♀️<br>Бірінші кезеңде терапевт сапалы эндодонтиялық емдеу және реставрацияларды толық ауыстыру жүргізді.<br>Функционалдық және эстетикалық қалпына келтіру үшін пациент ортопед дәрігерге жіберілді.<br>Соңғы кезең — күлкіге сенімділік қайтаратын тәждер мен винирлерді орнату🦷<br>Нәтиже — клиника дәрігерлерінің командалық жұмысының арқасы: дәлдік, үйлесімділік және емдеудің әрбір кезеңіне қамқорлық💪🏻",
+    
+    case_2_title: "Байланыс кариесін емдеу",
+    case_2_description: "Пациент ортодонтиялық емдеуден өтті, бірақ нашар күтім салдарынан тістер арасында, ішкі жағынан налет жиналып, байланыс кариесі дамыды.<br>Не істедік?<br>* 1.1 және 2.1 байланыс кариесін емдедік<br>* Жергілікті анестезия + коффердаммен оқшаулау<br>* Сапалы өңдеу үшін доғаны алып тастадық<br>* Жұмыс 2 сағат уақыт алды<br>* Материал: Micherium (Italy)",
+    
+    case_3_title: "Брекет жүйесі: металл лигатуралы",
+    case_3_description: "Пациент қосымша емдеуге жүгінді, және осы уақыт ішінде біз айтарлықтай жақсартуларға қол жеткіздік! Тістің түзетілуі, тіс қатарының тегістелуі — әдемі және дені сау күлкіге сенімді түрде жылжып жатырмыз.",
+    case_3_duration: "Емдеу мерзімі: 8 ай",
+    
+    case_4_title: "Күлкінің толық қайта құрылысы",
+    case_4_description: "Күрделі жағдай:<br>Пациент жоғарғы жақсыз тіссіз және төменгі жақтағы бүлінген тістермен жүгінді.<br><br>🔧 Үлкен жұмыс жүргізілді:<br>• Жоғарыға 8 имплант орнатылды<br>• Төменгі 8 тісті циркон астына дайындалды<br>• Жоғарыға 16 және төменгі жаққа 8 тәж бекітілді<br><br>✅ Нәтиже — әдемі, функционалды күлкі.<br>Пациент енді ыңғайсыздықсыз тамақ ішеді және өзін тамаша сезінеді!<br><br>Біз тек тістерді ғана емес, сенімділікті де қалпына келтіреміз 💪",
+    
+    case_5_title: "Шайнау бетінің қалпына келтірілуі",
+    case_5_description: "Қабылдауда — бұрын орнатылған пломбасы бар тіс.<br>Көрнекі түрде — реставрация шетіндегі аз ғана қараю. Пациент ауырсынуды сезінбейді🤯<br>Бірақ біз білеміз: егер ең кішкентай күдік болса — тереңірек тексеру жақсы🙌🏻<br><br>Ескі пломбаны алып тастағаннан кейін нақты көрініс ашылды — астында терең кариес дамып, тіндерді бұзып бастаған😩<br><br>Ұқыпты, қадам сайын қуысты тазалаймыз, дені сау тіндердің максимумын сақтаймыз.<br>Коффердам астында жұмыс істейміз — бұл біздің стерильділік, дәлдік және пациент үшін жайлылықтың кепілдігі.<br><br>Нәтиже — тіс жаңадай:<br>пішін, функция және табиғи эстетика қалпына келтірілді.<br>Тіпті жақын қарағанда да — емделгенін айта алмайсың.<br>Пациент қанағаттанып және алғыс күлкісімен кетеді🤗",
+    case_5_duration: "1 келу",
+    
+    case_6_title: "Тістердің эстетикасы",
+    case_6_description: "Пациент күлкінің сыртқы түріне шағыммен жүгінді. Көрнекі түрде — алдыңғы тістердегі қараң дақтар.<br><br>Не анықтадық:<br>Тексеру кезінде күлкі аймағының эстетикасына әсер ететін жасырын кариозды зақымдануларды диагноздадық.<br><br>Не істедік:<br>✔️ Зақымданған тіндерді алып тастадық<br>✔️ Тазалау жүргіздік<br>✔️ Эстетикалық реставрациялар арқылы пішін мен түсті қалпына келтірдік<br><br>Нәтиже:<br>Таза, табиғи, жарқыраған тістер — және сенімді күлкісі бар қанағаттанған пациент 😁",
+    
+    case_7_title: "Диастеманы композитпен реставрациялау арқылы жабу",
+    case_7_description: "Пациент айқын диастемамен — алдыңғы тістер арасындағы саңылаумен жүгінді, бұл ұзақ уақыт бойы ыңғайсыздық пен сенімсіздік тудырды.<br>🛠 Біз дәл және ұқыпты жұмыс жүргіздік:<br>• Тегістеусіз композитті реставрация орындалды<br>• Табиғи тістерге сәйкес мінсіз түс пен пішін таңдалды<br>• Саңылау бір ғана келуде жойылды<br><br>✅ Нәтиже — ұқыпты, табиғи күлкі.<br>Пациент өзінің өзін қабылдауы қалай өзгергенін бірден атап өтті: енді еркін және ләззатпен күледі.",
+    
+    case_8_title: "Тістерді ағарту",
+    case_8_description: "Пациент тістерді ашу тілегімен жүгінді — табиғи түс уақыт өте келе кофе салдарынан күңгірт болды.<br>💡 Клиникада кәсіби ағарту жүргізілді:<br>• Сезімталдықты бақылаумен қауіпсіз жүйе<br>• Бір келу — бірнеше тон ашық<br>• Эмаль зақымданбады, әсер — лезде<br><br>✅ Нәтиже — жаңа, жарқын күлкі, жасанды \"ақтықсыз\".<br>Пациент қанағаттанды және жиі күлетінін атап өтті.<br>Ағарту — бұл тек эстетика туралы ғана емес, сонымен қатар өзіне сенімділік туралы ✨",
+    
+    case_9_title: "Тістерді ағарту",
+    case_9_description: "Ер адам тістердің түсін жаңарту тілегімен жүгінді — кофе мен темекіден налет күлкінің жалпы түрін бұзды.<br>🦷 Бір келуде клиникалық ағарту жүргізілді:<br>• Эмальды аялайтын заманауи жүйені қолдандық<br>• Тістердің жеке сезімталдығын ескердік<br>• Реңк 3-4 тонға ашық болды<br><br>✅ Нәтиже — \"ақтықсыз\" табиғи ақ тістер.<br>Күлкі айқынырақ, бет — жасырақ болды.<br>Кейде жаңа және сенімді көрінуге бір қадам жеткілікті 🔥",
+    
+    case_10_title: "Рентген бақылауымен эндодонтиялық емдеу",
+    case_10_description: "Бұл клиникалық жағдайда кезеңдерде міндетті рентген бақылауымен тамыр арнасын емдеу ұсынылған:<br>📍 Процесте — арна ішіндегі құралмен рентген суретін түсіреміз, ұзындық пен анатомияны дәл анықтау, учаскелерді өткізіп алмау және өңдеу тереңдігін бақылау үшін.<br>📍 Кейін — пломбалау сапасын бағалаймыз: тығыздық, герметикалық және бос орындардың жоқтығы.<br><br>Мұндай тәсіл болашақта асқынуларды болдырмауға көмектеседі және сенімді және ұзақ мерзімді нәтижені қамтамасыз етеді.",
+    
+    case_11_title: "Арналардың механикалық және дәрілік өңделуі",
+    case_11_description: "Пациент тіс аймағындағы қызыл ауырсыну және қызыл ісінуге шағыммен жүгінді.<br>Диагностикадан кейін тамыр жүйесінде қабыну анықталды. Біз барлық заманауи хаттамаларды сақтай отырып, арналардың сапалы механикалық және дәрілік өңделуін жүргіздік.<br>✅ Емдеу микроскоп астында жүргізілді, бұл күрделі анатомия кезінде де арналарды дәл өңдеуге мүмкіндік берді.<br>Суреттерде 1 аптаға арналған динамика. Оң өзгеріс көрінеді: қабыну кетеді, тін қалпына келеді.<br>Уақтылы жүгіну және сауатты тәсіл арқасында тісті алып тастамай және имплантациясыз сақтауға мүмкіндік болды.",
+    
+    case_12_title: "Қалыптаспаған тамыры бар жасөспірімде пульпитті емдеу",
+    case_12_description: "Жоғары дәлдік пен тәжірибе талап ететін күрделі клиникалық жағдай.<br>Жасөспірімдерде тамыр әлі толық қалыптаспаған, және стандартты емдеу мұнда жарамсыз. Қоршаған тіндердің өмір сүру қабілетін сақтау және тістің табиғи дамуын бұзбау маңызды.<br>✅ Жұмыс микроскоп астында жүргізілді, бұл ең кішкентай анатомиялық бөлшектерді көруге, жетілмеген құрылымдарды зақымдамай арналарды дәл тазалауға және пломбалауға мүмкіндік береді.",
+    
+    // Истории пациентов
+    stories_title: "Біздің пациенттердің тарихы",
+    stories_subtitle: "Әдемі күлкі арқасында өз өмірін өзгерткен адамдардың нақты пікірлерін оқыңыз",
+    story_1_text: "\"Тісті шұғыл емдеу керек болды және ең жақын стоматологияны іздедім. Өте жоғары сервис, әкімші, дәрігер барлығы өте эмпатиялы адамдар. Өте мұқият емдеді. Баға-сапа мүлдем сәйкес келеді. Сонымен қатар емдеуден кейін жағдайды сұрады. Міндетті түрде тұрақты клиент боламын 😻\"",
+    story_1_treatment: "Кариесті емдеу",
+    story_2_text: "\"Дәрігер Нелли Ринатовна өте ұнайды. Мұндай мейірімді жүрек пен алтын қолдар. Клиникаға гүлденуді тілеймін. Айтпақшы, мен Көкшетауден келемін\"",
+    story_2_treatment: "Кариесті емдеу",
+    story_3_text: "\"Тамаша стоматология. Мұнда өзіме 10 тісті емдеттім шамамен, жалпы алғанда. Оны 5 көрші клиникада кеңес алғаннан кейін таңдадым. Ешқашан өкінбедім. Дәрігерлер нағыз кәсіпқойлар, барлық тістерді туған сияқты жасады.\"",
+    story_3_treatment: "Кешенді емдеу",
+    
+    // CTA секция
+    cta_title: "Өзгеруге дайынсыз ба?",
+    cta_subtitle: "Тегін кеңесуге жазылыңыз және біз сіздің күлкіңізді қалай өзгерте алатынымызды біліңіз",
+    cta_benefit_1: "Тегін кеңес және емдеу жоспары",
+    cta_benefit_2: "Болашақ күлкінің 3D-модельдеуі",
+    cta_benefit_3: "Барлық жұмыс түрлеріне кепілдік",
+    cta_button: "Кеңесуге жазылу",
+    cta_or_call: "Немесе телефон шалыңыз:",
+    tag_zirconia_crowns: "Циркон тәждері",
+    tag_emax: "E-max",
+    tag_crowns_general: "Тәждер",
+    tag_braces_closure: "Брекеттермен тремманы жабу",
+    tag_braces: "Брекеттер",
+    tag_orthodontics: "Ортодонтия",
+    tag_metal_braces: "Брекет жүйесі: металл лигатуралы",
+    tag_braces_system: "Брекет жүйесі",
+  },
+
+  en: {
+    // Общие переводы
+    address: "Uly Dala, 35, Astana City",
+    schedule: "Mon-Fri 10:00-19:00  Sat, Sun 10:00-16:00",
+    nav_home: "HOME",
+    nav_prices: "PRICES",
+    nav_cases: "CASES",
+    nav_doctors: "DOCTORS",
+    nav_contacts: "CONTACTS",
+    nav_reviews: "REVIEWS",
+    nav_media: "MEDIA",
+    footer_description: "5-star dentistry",
+    footer_navigation: "Navigation",
+    footer_social: "We are on social networks",
+    copyright: "© 2025 Nelly dental clinic. All rights reserved.",
+
+    // Переводы для страницы кейсов
+    cases_breadcrumb: "Treatment Cases",
+    cases_title_1: "SUCCESS",
+    cases_title_2: "STORIES",
+    cases_title_3: "of our patients",
+    cases_subtitle: "Every smile is a unique transformation story. See the real results of our specialists' work.",
+    cases_stat_1: "Successful cases",
+    cases_stat_2: "Satisfied patients",
+    before_label: "BEFORE",
+    after_label: "AFTER",
+    showcase_title: "Complete smile reconstruction",
+    tag_rehabilitation: "Rehabilitation",
+    tag_crowns: "Crowns",
+    tag_treatment: "Treatment",
+    tag_therapy: "Therapy",
+    tag_orthodontics: "Orthodontics",
+    tag_braces: "Braces system",
+    tag_fillings: "Fillings",
+    tag_aesthetics: "Aesthetics",
+    tag_restoration: "Restoration",
+    tag_whitening: "Whitening",
+    tag_endodontics: "Endodontics",
+    tag_xray: "X-ray",
+    tag_pediatric: "Pediatric",
+    
+    // Кейсы
+    case_1_title: "Comprehensive smile restoration",
+    case_1_description: "The patient came to the clinic with complaints about the unaesthetic appearance of old restorations and pain in one of the teeth💁🏻‍♀️<br>At the first stage, the therapist performed high-quality endodontic treatment and complete replacement of restorations.<br>To restore functionality and aesthetics, the patient was referred to an orthopedic doctor.<br>The final stage is the installation of crowns and veneers that restore confidence in the smile🦷<br>The result is the merit of the clinic doctors' teamwork: precision, coordination and care for each stage of treatment💪🏻",
+    
+    case_2_title: "Contact caries treatment",
+    case_2_description: "The patient was undergoing orthodontic treatment, but due to poor care, plaque accumulated between the teeth, on the inner side, and contact caries developed.<br>What we did?<br>* Treated contact caries 1.1 and 2.1<br>* Local anesthesia + rubber dam isolation<br>* Removed the arch for quality processing<br>* Work took 2 hours<br>* Material: Micherium (Italy)",
+    
+    case_3_title: "Braces system: metal ligature",
+    case_3_description: "The patient came for additional treatment, and during this time we have already achieved significant improvements! Bite correction, alignment of the dental row - we are confidently moving towards a beautiful and healthy smile.",
+    case_3_duration: "Treatment period: 8 months",
+    
+    case_4_title: "Complete smile reconstruction",
+    case_4_description: "Complex case:<br>The patient came without teeth on the upper jaw and with destroyed teeth below.<br><br>🔧 Great work was done:<br>• 8 implants installed on top<br>• 8 lower teeth prepared for zirconia<br>• 16 crowns fixed on top and 8 below<br><br>✅ Result - beautiful, functional smile.<br>The patient now eats without discomfort and feels great!<br><br>We restore not only teeth, but also confidence 💪",
+    
+    case_5_title: "Chewing surface restoration",
+    case_5_description: "At the appointment - a tooth with a previously installed filling.<br>Visually - only a slight darkening near the edge of the restoration. The patient does not feel pain🤯<br>But we know: if there is even the slightest suspicion - it's better to check deeper🙌🏻<br><br>After removing the old filling, the real picture opened up - deep caries developed under it, which had already begun to destroy tissues😩<br><br>Carefully, step by step, we clean the cavity, preserving the maximum of healthy tissues.<br>We work under a rubber dam - this is our guarantee of sterility, precision and comfort for the patient.<br><br>Result - the tooth is like new:<br>shape, function and natural aesthetics are restored.<br>Even upon close examination - you can't tell it's been treated.<br>The patient leaves satisfied and with a grateful smile🤗",
+    case_5_duration: "1 visit",
+    
+    case_6_title: "Dental aesthetics",
+    case_6_description: "The patient complained about the appearance of the smile. Visually - dark spots on the front teeth.<br><br>What we found:<br>During examination, we diagnosed hidden carious lesions affecting the aesthetics of the smile zone.<br><br>What we did:<br>✔️ Removed affected tissues<br>✔️ Performed cleaning<br>✔️ Restored shape and color using aesthetic restorations<br><br>Result:<br>Clean, natural, shining teeth - and a satisfied patient with a confident smile 😁",
+    
+    case_7_title: "Diastema closure by composite restoration",
+    case_7_description: "The patient came with a pronounced diastema - a gap between the front teeth, which had long caused discomfort and insecurity.<br>🛠 We performed precise and careful work:<br>• Composite restoration performed without grinding<br>• Perfect color and shape selected to match natural teeth<br>• Gap eliminated in just one visit<br><br>✅ Result - neat, natural smile.<br>The patient immediately noted how his self-perception changed: now he smiles freely and with pleasure.",
+    
+    case_8_title: "Teeth whitening",
+    case_8_description: "The patient came with a desire to lighten teeth - the natural color became dull over time due to coffee.<br>💡 Professional whitening was performed in the clinic:<br>• Safe system with sensitivity control<br>• One visit - up to several tones lighter<br>• Enamel was not damaged, effect - instant<br><br>✅ Result - fresh, bright smile, without artificial \"over-whitening\".<br>The patient was satisfied and noted that he began to smile more often.<br>Whitening is not only about aesthetics, but also about self-confidence ✨",
+    
+    case_9_title: "Teeth whitening",
+    case_9_description: "A man came with a desire to refresh the color of his teeth - plaque from coffee and cigarettes spoiled the overall appearance of his smile.<br>🦷 Clinical whitening was performed in one visit:<br>• Used a modern system that spares enamel<br>• Took into account individual tooth sensitivity<br>• Shade became 3-4 tones lighter<br><br>✅ Result - naturally white teeth without \"over-whitening\".<br>The smile became more expressive, the face - younger.<br>Sometimes one step is enough to look fresher and more confident 🔥",
+    
+    case_10_title: "Endodontic treatment with X-ray control",
+    case_10_description: "This clinical case presents root canal treatment with mandatory X-ray control at stages:<br>📍 In process - we take an X-ray with the instrument inside the canal to accurately determine length and anatomy, avoid missing areas and control processing depth.<br>📍 After - we evaluate the quality of filling: density, tightness and absence of voids.<br><br>This approach helps prevent complications in the future and ensures reliable and long-term results.",
+    
+    case_11_title: "Mechanical and medicamental canal processing",
+    case_11_description: "The patient complained of sharp pain and gum swelling in the tooth area.<br>After diagnosis, inflammation in the root system was detected. We performed high-quality mechanical and medicamental canal processing, following all modern protocols.<br>✅ Treatment was performed under a microscope, which allowed precise canal processing even with complex anatomy.<br>The images show dynamics over 1 week. Positive change is visible: inflammation goes away, tissue recovers.<br>Thanks to timely treatment and competent approach, the tooth was saved without extraction and implantation.",
+    
+    case_12_title: "Pulpitis treatment in adolescent with unformed root",
+    case_12_description: "A complex clinical case that requires high precision and experience.<br>In adolescents, the root is not yet fully formed, and standard treatment is not suitable here. It's important to preserve the viability of surrounding tissues and not disrupt the natural development of the tooth.<br>✅ Work was performed under a microscope, which allows seeing the smallest anatomical details, precisely cleaning and filling canals without damaging immature structures.",
+    
+    // Истории пациентов
+    stories_title: "Our patients' stories",
+    stories_subtitle: "Read real reviews from people who changed their lives thanks to a beautiful smile",
+    story_1_text: "\"I needed urgent dental treatment and was looking for the nearest dentistry. Very high service, administrator, doctor are all very empathetic people. They treated very carefully. Price-quality absolutely matches. Plus, after treatment they asked about well-being. I will definitely be a regular client 😻\"",
+    story_1_treatment: "Caries treatment",
+    story_2_text: "\"I really like Dr. Nelly Rinatovna. Such a kind heart and golden hands. I wish prosperity to the clinic. By the way, I come from Kokshetau\"",
+    story_2_treatment: "Caries treatment",
+    story_3_text: "\"Excellent dentistry. I treated about 10 teeth here, in total. I chose it after consultations in 5 neighboring clinics. Never regretted it. The doctors are real professionals, all teeth were made to look like native ones.\"",
+    story_3_treatment: "Complex treatment",
+    
+    // CTA секция
+    cta_title: "Ready for transformation?",
+    cta_subtitle: "Book a free consultation and find out how we can change your smile",
+    cta_benefit_1: "Free consultation and treatment plan",
+    cta_benefit_2: "3D modeling of future smile",
+    cta_benefit_3: "Guarantee for all types of work",
+    cta_button: "Book consultation",
+    cta_or_call: "Or call:",
+    tag_zirconia_crowns: "Zirconia crowns",
+    tag_emax: "E-max",
+    tag_crowns_general: "Crowns",
+    tag_braces_closure: "Gap closure with braces",
+    tag_braces: "Braces",
+    tag_orthodontics: "Orthodontics",
+    tag_metal_braces: "Braces system: metal ligature",
+    tag_braces_system: "Braces system",
+  },
+}
+
+// ===== ТЕКУЩИЙ ЯЗЫК =====
+let currentLanguage_cases = localStorage.getItem("language") || "ru"
+
+// ===== СИСТЕМА ПЕРЕВОДОВ =====
+function translatePage() {
+  const elements = document.querySelectorAll("[data-translate]")
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate")
+    if (translations_cases[currentLanguage_cases] && translations_cases[currentLanguage_cases][key]) {
+      // Для элементов с HTML содержимым используем innerHTML
+      if (key.includes('description') || key.includes('text')) {
+        element.innerHTML = translations_cases[currentLanguage_cases][key]
+      } else {
+        element.textContent = translations_cases[currentLanguage_cases][key]
+      }
+    }
+  })
+
+  // Обновляем заголовок страницы
+  const titles = {
+    ru: "Кейсы - Nelly dental clinic",
+    kz: "Жағдайлар - Nelly dental clinic",
+    en: "Cases - Nelly dental clinic",
+  }
+  document.title = titles[currentLanguage_cases] || titles.ru
+
+  // Обновляем атрибут lang
+  document.documentElement.lang = currentLanguage_cases
+
+  // Обновляем data-text атрибуты для анимированных заголовков
+  const titleWords = document.querySelectorAll('.title-word[data-text]')
+  titleWords.forEach(word => {
+    const key = word.getAttribute('data-translate')
+    if (key && translations_cases[currentLanguage_cases] && translations_cases[currentLanguage_cases][key]) {
+      word.setAttribute('data-text', translations_cases[currentLanguage_cases][key])
+    }
+  })
+}
+
+function switchLanguage(lang) {
+  currentLanguage_cases = lang
+  localStorage.setItem("language", lang)
+
+  // Обновляем активные кнопки языка
+  document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+
+  translatePage()
+}
+
+// ===== МОБИЛЬНОЕ МЕНЮ =====
+function initMobileMenu() {
+  const burger = document.getElementById("burger")
+  const mobileNav = document.getElementById("mobileNav")
+  const menuOverlay = document.getElementById("menuOverlay")
+  const closeMenu = document.getElementById("closeMenu")
+
+  if (burger && mobileNav && menuOverlay && closeMenu) {
+    // Открытие меню
+    burger.addEventListener("click", () => {
+      burger.classList.add("active")
+      mobileNav.classList.add("open")
+      menuOverlay.classList.add("active")
+      document.body.style.overflow = "hidden"
+    })
+
+    // Закрытие меню
+    function closeMobileMenu() {
+      burger.classList.remove("active")
+      mobileNav.classList.remove("open")
+      menuOverlay.classList.remove("active")
+      document.body.style.overflow = ""
+    }
+
+    closeMenu.addEventListener("click", closeMobileMenu)
+    menuOverlay.addEventListener("click", closeMobileMenu)
+
+    // Закрытие при клике на ссылку
+    const mobileLinks = mobileNav.querySelectorAll("a")
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMobileMenu)
+    })
+  }
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ ЯЗЫКОВЫХ ПЕРЕКЛЮЧАТЕЛЕЙ =====
+function initLanguageSwitchers() {
+  // Десктопные кнопки языка
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage(lang)
+    })
+  })
+
+  // Мобильные кнопки языка
+  document.querySelectorAll(".mobile-lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage(lang)
+    })
+  })
+
+  // Устанавливаем активный язык при загрузке
+  document.querySelectorAll(`[data-lang="${currentLanguage_cases}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+}
+
+// ===== АНИМАЦИЯ СЧЕТЧИКОВ =====
+function initCounterAnimation() {
+  const counters = document.querySelectorAll('.stat-beautiful[data-count]')
+  
+  const animateCounter = (counter) => {
+    const target = parseInt(counter.getAttribute('data-count'))
+    const numberElement = counter.querySelector('.stat-number')
+    const duration = 2000 // 2 секунды
+    const step = target / (duration / 16) // 60 FPS
+    let current = 0
+    
+    const timer = setInterval(() => {
+      current += step
+      if (current >= target) {
+        current = target
+        clearInterval(timer)
+      }
+      
+      if (target === 98) {
+        numberElement.textContent = Math.floor(current) + '%'
+      } else {
+        numberElement.textContent = Math.floor(current) + '+'
+      }
+    }, 16)
+  }
+  
+  // Intersection Observer для запуска анимации при появлении в viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target)
+        observer.unobserve(entry.target)
+      }
+    })
+  })
+  
+  counters.forEach(counter => observer.observe(counter))
+}
+
+// ===== СЛАЙДЕРЫ ДО/ПОСЛЕ =====
+function initBeforeAfterSliders() {
+  const sliders = document.querySelectorAll('.before-after-slider')
+  
+  sliders.forEach(slider => {
+    const handle = slider.querySelector('.slider-handle')
+    const afterImg = slider.querySelector('.after-img')
+    
+    if (!handle || !afterImg) return
+    
+    let isDragging = false
+    
+    const updateSlider = (x) => {
+      const rect = slider.getBoundingClientRect()
+      const position = Math.max(0, Math.min(1, (x - rect.left) / rect.width))
+      
+      afterImg.style.clipPath = `inset(0 ${100 - position * 100}% 0 0)`
+      handle.style.left = `${position * 100}%`
+    }
+    
+    // Mouse events
+    handle.addEventListener('mousedown', (e) => {
+      isDragging = true
+      e.preventDefault()
+    })
+    
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        updateSlider(e.clientX)
+      }
+    })
+    
+    document.addEventListener('mouseup', () => {
+      isDragging = false
+    })
+    
+    // Touch events
+    handle.addEventListener('touchstart', (e) => {
+      isDragging = true
+      e.preventDefault()
+    })
+    
+    document.addEventListener('touchmove', (e) => {
+      if (isDragging) {
+        updateSlider(e.touches[0].clientX)
+      }
+    })
+    
+    document.addEventListener('touchend', () => {
+      isDragging = false
+    })
+    
+    // Click on slider
+    slider.addEventListener('click', (e) => {
+      if (e.target !== handle) {
+        updateSlider(e.clientX)
+      }
+    })
+    
+    // Initialize at 50%
+    updateSlider(slider.getBoundingClientRect().left + slider.getBoundingClientRect().width / 2)
+  })
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ =====
+document.addEventListener("DOMContentLoaded", () => {
+  // Инициализируем переводы
+  translatePage()
+
+  // Инициализируем языковые переключатели
+  initLanguageSwitchers()
+
+  // Инициализируем мобильное меню
+  initMobileMenu()
+
+  // Инициализируем анимацию счетчиков
+  initCounterAnimation()
+
+  // Инициализируем слайдеры до/после
+  initBeforeAfterSliders()
+})
+
+// ===== ПЛАВНАЯ ПРОКРУТКА =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute('href'))
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  })
+})

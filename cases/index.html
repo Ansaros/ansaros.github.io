@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кейсы - Nelly dental clinic</title>
+    <title data-translate="page_title">Кейсы - Nelly dental clinic</title>
     <link rel="icon" type="image/png" href="../img/logo.jpg">
-
     <!-- Шрифты и иконки -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,27 +21,32 @@
             <div class="top-bar-info">
                 <div class="info-item">
                     <i class="fa-solid fa-location-dot icon"></i>
-                    <span class="top">Улы Дала, 35, Город Астана</span>
+                    <span class="top" data-translate="address">Улы Дала, 35, Город Астана</span>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-clock icon"></i>
-                    <span class="top">Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</span>
+                    <span class="top" data-translate="schedule">Пн-Пт 10:00-19:00 Сб, Вс 10:00-16:00</span>
                 </div>
                 <div class="info-item phone">
                     <i class="fa-solid fa-phone icon"></i>
                     <span>+7 705 402 61 81</span>
                 </div>
             </div>
-
-            <div class="social-icons">
-                <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://t.me/nellydentalclinic" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
-
+            <div class="top-bar-right">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="kz">KZ</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://t.me/nellydentalclinic" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+                </div>
             </div>
         </div>
     </div>
-
     <!-- ─────── Header ─────── -->
     <header class="header">
         <div class="container header-container">
@@ -50,20 +54,18 @@
             <div class="logo">
                 <a href="/">Nelly<span>dental clinic</span></a>
             </div>
-
             <!-- Основная навигация (десктоп) -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="/">ГЛАВНАЯ</a></li>
-                    <li><a href="/price/">ЦЕНЫ</a></li>
-                    <li><a href="/cases/" class="active">КЕЙСЫ</a></li>
-                    <li><a href="/doctors/">ВРАЧИ</a></li>
-                    <li><a href="/contacts/">КОНТАКТЫ</a></li>
-                    <li><a href="/reviews/">ОТЗЫВЫ</a></li>
-                    <li><a href="/media/">МЕДИА</a></li>
+                    <li><a href="/" data-translate="nav_home">ГЛАВНАЯ</a></li>
+                    <li><a href="/price/" data-translate="nav_prices">ЦЕНЫ</a></li>
+                    <li><a href="/cases/" class="active" data-translate="nav_cases">КЕЙСЫ</a></li>
+                    <li><a href="/doctors/" data-translate="nav_doctors">ВРАЧИ</a></li>
+                    <li><a href="/contacts/" data-translate="nav_contacts">КОНТАКТЫ</a></li>
+                    <li><a href="/reviews/" data-translate="nav_reviews">ОТЗЫВЫ</a></li>
+                    <li><a href="/media/" data-translate="nav_media">МЕДИА</a></li>
                 </ul>
             </nav>
-
             <!-- Бургер-меню -->
             <div class="burger" id="burger">
                 <span></span>
@@ -72,10 +74,8 @@
             </div>
         </div>
     </header>
-
     <!-- Оверлей для мобильного меню -->
     <div class="menu-overlay" id="menuOverlay"></div>
-
     <!-- Мобильное меню -->
     <nav class="mobile-nav" id="mobileNav">
         <button class="close-menu" id="closeMenu">
@@ -86,14 +86,20 @@
                 <span>Nelly</span>
                 <small>dental clinic</small>
             </div>
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <button class="mobile-lang-btn active" data-lang="ru">Русский</button>
+                <button class="mobile-lang-btn" data-lang="kz">Қазақша</button>
+                <button class="mobile-lang-btn" data-lang="en">English</button>
+            </div>
             <ul>
-                <li><a href="/"><i class="fa-solid fa-house"></i>Главная</a></li>
-                <li><a href="/price/"><i class="fa-solid fa-tenge-sign"></i>Цены</a></li>
-                <li><a href="/cases/"><i class="fa-solid fa-images"></i>Кейсы</a></li>
-                <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i>Врачи</a></li>
-                <li><a href="/contacts/"><i class="fa-solid fa-phone"></i>Контакты</a></li>
-                <li><a href="/contacts/"><i class="fa-solid fa-star"></i>Отзывы</a></li>
-                <li><a href="/media/"><i class="fa-solid fa-play"></i>Медиа</a></li>
+                <li><a href="/"><i class="fa-solid fa-house"></i><span data-translate="nav_home">Главная</span></a></li>
+                <li><a href="/price/"><i class="fa-solid fa-tenge-sign"></i><span data-translate="nav_prices">Цены</span></a></li>
+                <li><a href="/cases/"><i class="fa-solid fa-images"></i><span data-translate="nav_cases">Кейсы</span></a></li>
+                <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i><span data-translate="nav_doctors">Врачи</span></a></li>
+                <li><a href="/contacts/"><i class="fa-solid fa-phone"></i><span data-translate="nav_contacts">Контакты</span></a></li>
+                <li><a href="/reviews/"><i class="fa-solid fa-star"></i><span data-translate="nav_reviews">Отзывы</span></a></li>
+                <li><a href="/media/"><i class="fa-solid fa-play"></i><span data-translate="nav_media">Медиа</span></a></li>
             </ul>
             <div class="mobile-contact">
                 <a href="tel:+77054026181" class="mobile-phone">
@@ -107,14 +113,13 @@
                     <a href="https://wa.me/77054026181" class="mobile-social-link">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
-                     <a href="https://t.me/nellydentalclinic" class="mobile-social-link">
+                    <a href="https://t.me/nellydentalclinic" class="mobile-social-link">
                         <i class="fa-brands fa-telegram"></i>
                     </a>
                 </div>
             </div>
         </div>
     </nav>
-
     <!-- ─────── Beautiful Hero Section ─────── -->
     <section class="cases-hero-beautiful">
         <div class="hero-background">
@@ -125,46 +130,41 @@
                 <div class="shape shape-4"></div>
             </div>
         </div>
-        
         <div class="container">
             <div class="hero-content-beautiful">
                 <div class="hero-text-beautiful">
                     <div class="breadcrumb-beautiful">
-                        <a href="/">Главная</a>
+                        <a href="/" data-translate="nav_home">Главная</a>
                         <span class="separator">✦</span>
-                        <span>Кейсы лечения</span>
+                        <span data-translate="cases_breadcrumb">Кейсы лечения</span>
                     </div>
-                    
                     <h1 class="hero-title-beautiful">
-                        <span class="title-word" data-text="ИСТОРИИ">ИСТОРИИ</span>
-                        <span class="title-word" data-text="УСПЕХА">УСПЕХА</span>
-                        <span class="title-accent">наших пациентов</span>
+                        <span class="title-word" data-text="ИСТОРИИ" data-translate="cases_title_1">ИСТОРИИ</span>
+                        <span class="title-word" data-text="УСПЕХА" data-translate="cases_title_2">УСПЕХА</span>
+                        <span class="title-accent" data-translate="cases_title_3">наших пациентов</span>
                     </h1>
-                    
-                    <p class="hero-subtitle-beautiful">
-                        Каждая улыбка — это уникальная история преображения. 
+                    <p class="hero-subtitle-beautiful" data-translate="cases_subtitle">
+                        Каждая улыбка — это уникальная история преображения.
                         Посмотрите на реальные результаты работы наших специалистов.
                     </p>
-                    
                     <div class="hero-stats-beautiful">
                         <div class="stat-beautiful" data-count="500">
                             <div class="stat-number">0+</div>
-                            <div class="stat-label">Успешных случаев</div>
+                            <div class="stat-label" data-translate="cases_stat_1">Успешных случаев</div>
                         </div>
                         <div class="stat-beautiful" data-count="98">
                             <div class="stat-number">0%</div>
-                            <div class="stat-label">Довольных пациентов</div>
+                            <div class="stat-label" data-translate="cases_stat_2">Довольных пациентов</div>
                         </div>
                     </div>
                 </div>
-                
                 <div class="hero-visual-beautiful">
                     <div class="showcase-container">
                         <div class="showcase-main">
                             <div class="before-after-showcase">
                                 <div class="showcase-image before">
                                     <img src="../img/do6.jfif" alt="До лечения">
-                                    <div class="image-label">ДО</div>
+                                    <div class="image-label" data-translate="before_label">ДО</div>
                                 </div>
                                 <div class="showcase-divider">
                                     <div class="divider-line"></div>
@@ -172,18 +172,17 @@
                                 </div>
                                 <div class="showcase-image after">
                                     <img src="../img/posle6.jfif" alt="После лечения">
-                                    <div class="image-label">ПОСЛЕ</div>
+                                    <div class="image-label" data-translate="after_label">ПОСЛЕ</div>
                                 </div>
                             </div>
                             <div class="showcase-info">
-                                <h3>Полная реконструкция улыбки</h3>
+                                <h3 data-translate="showcase_title">Полная реконструкция улыбки</h3>
                                 <div class="showcase-tags">
-                                    <span class="tag">Реабилитация</span>
-                                    <span class="tag">Коронки</span>
+                                    <span class="tag" data-translate="tag_rehabilitation">Реабилитация</span>
+                                    <span class="tag" data-translate="tag_crowns">Коронки</span>
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="showcase-thumbnails">
                             <div class="thumbnail active" data-case="1">
                                 <img src="../img/posle6.jfif" alt="Кейс 1">
@@ -200,8 +199,6 @@
             </div>
         </div>
     </section>
-
-
     <!-- ─────── Cases Gallery ─────── -->
     <section class="cases-gallery-beautiful">
         <div class="container">
@@ -212,21 +209,20 @@
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do5.jpeg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle5.jpeg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Комплексное восстановление улыбки</h3>
+                            <h3 data-translate="case_1_title">Комплексное восстановление улыбки</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -235,13 +231,8 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">Пациентка обратилась в клинику с жалобами на неэстетичный вид старых реставраций и боль в одном из зубов💁🏻‍♀️<br>
-На первом этапе терапевтом было проведено качественное эндодонтическое лечение и полная замена реставраций.<br>
-Для восстановления функциональности и эстетики пациентка была направлена к врачу-ортопеду.<br>
-Финальный этап — установка коронок и виниров, возвращающих уверенность в улыбке🦷<br>
-Результат — заслуга командной работы врачей клиники: точность, согласованность и забота о каждом этапе лечения💪🏻</p>
+                        <p class="case-description" data-translate="case_1_description">Пациентка обратилась в клинику с жалобами на неэстетичный вид старых реставраций и боль в одном из зубов💁🏻‍♀️<br>На первом этапе терапевтом было проведено качественное эндодонтическое лечение и полная замена реставраций.<br>Для восстановления функциональности и эстетики пациентка была направлена к врачу-ортопеду.<br>Финальный этап — установка коронок и виниров, возвращающих уверенность в улыбке🦷<br>Результат — заслуга командной работы врачей клиники: точность, согласованность и забота о каждом этапе лечения💪🏻</p>
                         <div class="case-details-beautiful">
-
                             <div class="detail-item">
                                 <i class="fa-solid fa-user-doctor"></i>
                                 <span>Нелли Ринатовна</span>
@@ -249,22 +240,21 @@
                             <div class="detail-item">
                                 <i class="fa-solid fa-user-doctor"></i>
                                 <span>Ешмуханбетов Женис Айтжанович</span>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Case 2: Orthodontics -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do7.jfif" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle7.jpg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
@@ -273,7 +263,7 @@
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Лечение контактного кариеса</h3>
+                            <h3 data-translate="case_2_title">Лечение контактного кариеса</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -282,38 +272,30 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">Пациент проходил ортодонтическое лечение, но из-за плохого ухода налёт скопился между зубами, с внутренней стороны, и развился контактный кариес.<br>
-Что сделали?<br>
-* Вылечили контактный кариес 1.1 и 2.1<br>
-* Местная анестезия + изоляция коффердамом<br>
-* Сняли дугу для качественной обработки<br>
-* Работа заняла 2 часа<br>
-* Материал: Micherium (Italy)</p>
+                        <p class="case-description" data-translate="case_2_description">Пациент проходил ортодонтическое лечение, но из-за плохого ухода налёт скопился между зубами, с внутренней стороны, и развился контактный кариес.<br>Что сделали?<br>* Вылечили контактный кариес 1.1 и 2.1<br>* Местная анестезия + изоляция коффердамом<br>* Сняли дугу для качественной обработки<br>* Работа заняла 2 часа<br>* Материал: Micherium (Italy)</p>
                         <div class="case-details-beautiful">
-
                             <div class="detail-item">
                                 <i class="fa-solid fa-user-doctor"></i>
                                 <span>Нелли Ринатовна</span>
                             </div>
                         </div>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Лечение</span>
-                            <span class="tag">Терапия</span>
+                            <span class="tag primary" data-translate="tag_treatment">Лечение</span>
+                            <span class="tag" data-translate="tag_therapy">Терапия</span>
                         </div>
                     </div>
                 </div>
-
                 <!-- Case 3: Therapy -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do4.jfif" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle4.jfif" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
@@ -322,7 +304,7 @@
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Брекет-система: металлические лигатурные</h3>
+                            <h3 data-translate="case_3_title">Брекет-система: металлические лигатурные</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -331,11 +313,11 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">Пациентка обратилась на долечивание, и за это время мы уже достигли значительных улучшений! Исправление прикуса, выравнивание зубного ряда — уверенно движемся к красивой и здоровой улыбке.</p>
+                        <p class="case-description" data-translate="case_3_description">Пациентка обратилась на долечивание, и за это время мы уже достигли значительных улучшений! Исправление прикуса, выравнивание зубного ряда — уверенно движемся к красивой и здоровой улыбке.</p>
                         <div class="case-details-beautiful">
                             <div class="detail-item">
                                 <i class="fa-solid fa-clock"></i>
-                                <span>Срок лечения: 8 месяцев</span>
+                                <span data-translate="case_3_duration">Срок лечения: 8 месяцев</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fa-solid fa-user-doctor"></i>
@@ -343,33 +325,31 @@
                             </div>
                         </div>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Ортодонтия</span>
-                            <span class="tag">Брекет-система</span>
+                            <span class="tag primary" data-translate="tag_orthodontics">Ортодонтия</span>
+                            <span class="tag" data-translate="tag_braces">Брекет-система</span>
                         </div>
                     </div>
                 </div>
-
                 <!-- Case 4: Veneers -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do6.jfif" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle6.jfif" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Полная реконструкция улыбки</h3>
+                            <h3 data-translate="case_4_title">Полная реконструкция улыбки</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -378,47 +358,33 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">Сложный случай:<br>
-Пациентка обратилась без зубов на верхней челюсти и с разрушенными зубами снизу.<br>
-
-🔧 Проведена большая работа:<br>
-• Установлено 8 имплантов сверху<br>
-• Подготовлено 8 нижних зубов под циркон<br>
-• Зафиксировано 16 коронок сверху и 8 снизу<br>
-
-✅ Результат — красивая, функциональная улыбка.<br>
-Пациентка теперь ест без дискомфорта и чувствует себя отлично!<br>
-
-Мы восстанавливаем не только зубы, но и уверенность 💪</p>
-
+                        <p class="case-description" data-translate="case_4_description">Сложный случай:<br>Пациентка обратилась без зубов на верхней челюсти и с разрушенными зубами снизу.<br>🔧 Проведена большая работа:<br>• Установлено 8 имплантов сверху<br>• Подготовлено 8 нижних зубов под циркон<br>• Зафиксировано 16 коронок сверху и 8 снизу<br>✅ Результат — красивая, функциональная улыбка.<br>Пациентка теперь ест без дискомфорта и чувствует себя отлично!<br>Мы восстанавливаем не только зубы, но и уверенность 💪</p>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Коронки</span>
-                            <span class="tag">Реабилитация</span>
+                            <span class="tag primary" data-translate="tag_crowns">Коронки</span>
+                            <span class="tag" data-translate="tag_rehabilitation">Реабилитация</span>
                         </div>
                     </div>
                 </div>
-
                 <!-- Case 5: Implants -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do8.jfif" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle8.jfif" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Восстановление жевательной поверхности</h3>
+                            <h3 data-translate="case_5_title">Восстановление жевательной поверхности</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -427,23 +393,11 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">На приёме — зуб с ранее установленной пломбой.<br>
-Визуально — лишь небольшое потемнение рядом с краем реставрации. Пациент не ощущает боли🤯<br>
-Но мы знаем: если есть хоть малейшее подозрение — лучше проверить глубже🙌🏻<br>
-
-После снятия старой пломбы открылась реальная картина — под ней развился глубокий кариес, который уже начал разрушать ткани😩<br>
-
-Аккуратно, шаг за шагом очищаем полость, сохраняя максимум здоровых тканей.<br>
-Работаем под коффердамом — это наша гарантия стерильности, точности и комфорта для пациента.<br>
-
-Результат — зуб как новый:<br>
-восстановлена форма, функция и естественная эстетика.<br>
-Даже при ближайшем рассмотрении — не скажешь, что он лечен.<br>
-Пациент уходит довольный и с благодарной улыбкой🤗</p>
+                        <p class="case-description" data-translate="case_5_description">На приёме — зуб с ранее установленной пломбой.<br>Визуально — лишь небольшое потемнение рядом с краем реставрации. Пациент не ощущает боли🤯<br>Но мы знаем: если есть хоть малейшее подозрение — лучше проверить глубже🙌🏻<br>После снятия старой пломбы открылась реальная картина — под ней развился глубокий кариес, который уже начал разрушать ткани😩<br>Аккуратно, шаг за шагом очищаем полость, сохраняя максимум здоровых тканей.<br>Работаем под коффердамом — это наша гарантия стерильности, точности и комфорта для пациента.<br>Результат — зуб как новый:<br>восстановлена форма, функция и естественная эстетика.<br>Даже при ближайшем рассмотрении — не скажешь, что он лечен.<br>Пациент уходит довольный и с благодарной улыбкой🤗</p>
                         <div class="case-details-beautiful">
                             <div class="detail-item">
                                 <i class="fa-solid fa-clock"></i>
-                                <span>1 визит</span>
+                                <span data-translate="case_5_duration">1 визит</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fa-solid fa-user-doctor"></i>
@@ -451,33 +405,31 @@
                             </div>
                         </div>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Пломбы</span>
-                            <span class="tag">Терапия</span>
+                            <span class="tag primary" data-translate="tag_fillings">Пломбы</span>
+                            <span class="tag" data-translate="tag_therapy">Терапия</span>
                         </div>
                     </div>
                 </div>
-
                 <!-- Case 6: Whitening -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do9.jpg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle9.jpg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Эстетика зубов</h3>
+                            <h3 data-translate="case_6_title">Эстетика зубов</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -486,18 +438,7 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">Пациент обратился с жалобами на внешний вид улыбки. Визуально — тёмные пятна на передних зубах.<br>
-
-Что выявили:<br>
-При осмотре диагностировали скрытые кариозные поражения, затрагивающие эстетику зоны улыбки.<br>
-
-Что сделали:<br>
-✔️ Удалили поражённые ткани<br>
-✔️ Провели очистку<br>
-✔️ Восстановили форму и цвет с помощью эстетичных реставраций<br>
-
-Результат:<br>
-Чистые, естественные, сияющие зубы — и довольный пациент с уверенной улыбкой 😁</p>
+                        <p class="case-description" data-translate="case_6_description">Пациент обратился с жалобами на внешний вид улыбки. Визуально — тёмные пятна на передних зубах.<br>Что выявили:<br>При осмотре диагностировали скрытые кариозные поражения, затрагивающие эстетику зоны улыбки.<br>Что сделали:<br>✔️ Удалили поражённые ткани<br>✔️ Провели очистку<br>✔️ Восстановили форму и цвет с помощью эстетичных реставраций<br>Результат:<br>Чистые, естественные, сияющие зубы — и довольный пациент с уверенной улыбкой 😁</p>
                         <div class="case-details-beautiful">
                             <div class="detail-item">
                                 <i class="fa-solid fa-user-doctor"></i>
@@ -505,32 +446,31 @@
                             </div>
                         </div>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Эстетика</span>
-                            <span class="tag">Восстановление</span>
+                            <span class="tag primary" data-translate="tag_aesthetics">Эстетика</span>
+                            <span class="tag" data-translate="tag_restoration">Восстановление</span>
                         </div>
                     </div>
                 </div>
-                 <!-- Case 7: Diastema -->
+                <!-- Case 7: Diastema -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do10.jpeg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle10.jpeg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Закрытие диастемы путем реставрации композитом</h3>
+                            <h3 data-translate="case_7_title">Закрытие диастемы путем реставрации композитом</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -539,43 +479,33 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">
-Пациент обратился с выраженной диастемой — щелью между передними зубами, которая давно вызывала дискомфорт и неуверенность.<br>
-🛠 Мы провели точную и аккуратную работу:<br>
-• Выполнена композитная реставрация без обтачивания<br>
-• Подобран идеальный цвет и форма под натуральные зубы<br>
-• Щель устранена всего за одно посещение<br>
-
-✅ Результат — аккуратная, естественная улыбка.<br>
-Пациент сразу отметил, как изменилось его восприятие себя: теперь улыбается свободно и с удовольствием.<br>
+                        <p class="case-description" data-translate="case_7_description">Пациент обратился с выраженной диастемой — щелью между передними зубами, которая давно вызывала дискомфорт и неуверенность.<br>🛠 Мы провели точную и аккуратную работу:<br>• Выполнена композитная реставрация без обтачивания<br>• Подобран идеальный цвет и форма под натуральные зубы<br>• Щель устранена всего за одно посещение<br>✅ Результат — аккуратная, естественная улыбка.<br>Пациент сразу отметил, как изменилось его восприятие себя: теперь улыбается свободно и с удовольствием.</p>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Коронки</span>
-                            <span class="tag">Реабилитация</span>
+                            <span class="tag primary" data-translate="tag_restoration">Реставрация</span>
+                            <span class="tag" data-translate="tag_aesthetics">Эстетика</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Case 9: whitening -->
+                <!-- Case 8: whitening -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do12.jpeg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle12.jpeg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Отбеливание зубов</h3>
+                            <h3 data-translate="case_8_title">Отбеливание зубов</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -584,44 +514,33 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">
-Пациент обратился с пожеланием осветлить зубы — естественный цвет стал тусклым со временем из-за кофе.<br>
-💡 Проведено профессиональное отбеливание в клинике:<br>
-• Безопасная система с контролем чувствительности<br>
-• Один визит — до нескольких тонов светлее<br>
-• Эмаль не пострадала, эффект — мгновенный<br>
-
-✅ Результат — свежая, яркая улыбка, без искусственного "перебела".<br>
-Пациент остался доволен и отметил, что стал чаще улыбаться.<br>
-Отбеливание — это не только про эстетику, но и про уверенность в себе ✨
+                        <p class="case-description" data-translate="case_8_description">Пациент обратился с пожеланием осветлить зубы — естественный цвет стал тусклым со временем из-за кофе.<br>💡 Проведено профессиональное отбеливание в клинике:<br>• Безопасная система с контролем чувствительности<br>• Один визит — до нескольких тонов светлее<br>• Эмаль не пострадала, эффект — мгновенный<br>✅ Результат — свежая, яркая улыбка, без искусственного "перебела".<br>Пациент остался доволен и отметил, что стал чаще улыбаться.<br>Отбеливание — это не только про эстетику, но и про уверенность в себе ✨</p>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Эстетика</span>
-                            <span class="tag">Отбеливание</span>
+                            <span class="tag primary" data-translate="tag_whitening">Отбеливание</span>
+                            <span class="tag" data-translate="tag_aesthetics">Эстетика</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Case 11: whitening -->
+                <!-- Case 9: whitening -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do13.jpeg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle13.jpeg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Отбеливание зубов</h3>
+                            <h3 data-translate="case_9_title">Отбеливание зубов</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -630,44 +549,33 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">
-Мужчина обратился с желанием освежить цвет зубов — налёт от кофе и сигарет портил общий вид улыбки.<br>
-🦷 За одно посещение провели клиническое отбеливание:<br>
-• Использовали современную систему, щадящую эмаль<br>
-• Учитыли индивидуальную чувствительность зубов<br>
-• Оттенок стал светлее на 3–4 тона<br>
-
-✅ Результат — естественно белые зубы без «перебела».<br>
-Улыбка стала выразительнее, лицо — моложе.<br>
-Иногда достаточно одного шага, чтобы выглядеть свежее и увереннее 🔥
+                        <p class="case-description" data-translate="case_9_description">Мужчина обратился с желанием освежить цвет зубов — налёт от кофе и сигарет портил общий вид улыбки.<br>🦷 За одно посещение провели клиническое отбеливание:<br>• Использовали современную систему, щадящую эмаль<br>• Учитыли индивидуальную чувствительность зубов<br>• Оттенок стал светлее на 3–4 тона<br>✅ Результат — естественно белые зубы без «перебела».<br>Улыбка стала выразительнее, лицо — моложе.<br>Иногда достаточно одного шага, чтобы выглядеть свежее и увереннее 🔥</p>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Эстетика</span>
-                            <span class="tag">Отбеливание</span>
+                            <span class="tag primary" data-translate="tag_whitening">Отбеливание</span>
+                            <span class="tag" data-translate="tag_aesthetics">Эстетика</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Case 12: endo -->
+                <!-- Case 10: endo -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do21.jpeg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle21.jpeg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Эндодонтическое лечение с рентген-контролем</h3>
+                            <h3 data-translate="case_10_title">Эндодонтическое лечение с рентген-контролем</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -676,39 +584,33 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">
-На данном клиническом случае представлено лечение корневого канала с обязательным рентген-контролем на этапах:<br>
-📍 В процессе — проводим рентген-снимок с инструментом внутри канала, чтобы точно определить длину и анатомию, избежать пропуска участков и контролировать глубину обработки.<br>
-📍 После — оцениваем качество пломбировки: плотность, герметичность и отсутствие пустот.<br><br>
-Такой подход помогает предотвратить осложнения в будущем и обеспечивает надёжный и долгосрочный результат.
+                        <p class="case-description" data-translate="case_10_description">На данном клиническом случае представлено лечение корневого канала с обязательным рентген-контролем на этапах:<br>📍 В процессе — проводим рентген-снимок с инструментом внутри канала, чтобы точно определить длину и анатомию, избежать пропуска участков и контролировать глубину обработки.<br>📍 После — оцениваем качество пломбировки: плотность, герметичность и отсутствие пустот.<br><br>Такой подход помогает предотвратить осложнения в будущем и обеспечивает надёжный и долгосрочный результат.</p>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Эндодонтия</span>
-                            <span class="tag">Рентген</span>
+                            <span class="tag primary" data-translate="tag_endodontics">Эндодонтия</span>
+                            <span class="tag" data-translate="tag_xray">Рентген</span>
                         </div>
                     </div>
                 </div>
-
-                 <!-- Case 13: endo -->
+                <!-- Case 11: endo -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do20.jpeg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle20.jpeg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Механическая и медикаментозая обработка каналов</h3>
+                            <h3 data-translate="case_11_title">Механическая и медикаментозая обработка каналов</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -717,40 +619,33 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">
-Пациент обратился с жалобами на резкую боль и припухлость десны в области зуба.<br>
-После диагностики было выявлено воспаление в корневой системе. Мы провели качественную механическую и медикаментозную обработку каналов, соблюдая все современные протоколы.<br>
-✅ Лечение проводилось под микроскопом, что позволило точно обработать каналы даже при сложной анатомии.<br>
-На снимках динамика за 1 неделю. Видно положительное изменение: воспаление уходит, ткань восстанавливается.<br>
-Благодаря своевременному обращению и грамотному подходу, зуб удалось сохранить без удаления и имплантации.
+                        <p class="case-description" data-translate="case_11_description">Пациент обратился с жалобами на резкую боль и припухлость десны в области зуба.<br>После диагностики было выявлено воспаление в корневой системе. Мы провели качественную механическую и медикаментозную обработку каналов, соблюдая все современные протоколы.<br>✅ Лечение проводилось под микроскопом, что позволило точно обработать каналы даже при сложной анатомии.<br>На снимках динамика за 1 неделю. Видно положительное изменение: воспаление уходит, ткань восстанавливается.<br>Благодаря своевременному обращению и грамотному подходу, зуб удалось сохранить без удаления и имплантации.</p>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Эндодонтия</span>
-                            <span class="tag">Рентген</span>
+                            <span class="tag primary" data-translate="tag_endodontics">Эндодонтия</span>
+                            <span class="tag" data-translate="tag_xray">Рентген</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Case 14: endo -->
+                <!-- Case 12: endo -->
                 <div class="case-card-beautiful">
                     <div class="case-image-beautiful">
                         <div class="before-after-slider">
                             <div class="slider-image before-img">
                                 <img src="../img/do22.jpeg" alt="До лечения">
-                                <div class="image-overlay">ДО</div>
+                                <div class="image-overlay" data-translate="before_label">ДО</div>
                             </div>
                             <div class="slider-image after-img">
                                 <img src="../img/posle22.jpeg" alt="После лечения">
-                                <div class="image-overlay">ПОСЛЕ</div>
+                                <div class="image-overlay" data-translate="after_label">ПОСЛЕ</div>
                             </div>
                             <div class="slider-handle">
                                 <div class="handle-button">⟷</div>
                             </div>
                         </div>
-
                     </div>
                     <div class="case-content-beautiful">
                         <div class="case-header-beautiful">
-                            <h3>Лечение пульпита у подростка с несформированным корнем</h3>
+                            <h3 data-translate="case_12_title">Лечение пульпита у подростка с несформированным корнем</h3>
                             <div class="case-rating">
                                 <span class="star">★</span>
                                 <span class="star">★</span>
@@ -759,29 +654,23 @@
                                 <span class="star">★</span>
                             </div>
                         </div>
-                        <p class="case-description">
-Сложный клинический случай, который требует высокой точности и опыта.<br>
-У подростков корень ещё не до конца сформирован, и стандартное лечение здесь неподходяще. Важно сохранить жизнеспособность окружающих тканей и не нарушить естественное развитие зуба.<br>
-✅ Работа проводилась под микроскопом это позволяет видеть мельчайшие анатомические детали, точно очистить и запломбировать каналы, не повредив незрелые структуры.
+                        <p class="case-description" data-translate="case_12_description">Сложный клинический случай, который требует высокой точности и опыта.<br>У подростков корень ещё не до конца сформирован, и стандартное лечение здесь неподходяще. Важно сохранить жизнеспособность окружающих тканей и не нарушить естественное развитие зуба.<br>✅ Работа проводилась под микроскопом это позволяет видеть мельчайшие анатомические детали, точно очистить и запломбировать каналы, не повредив незрелые структуры.</p>
                         <div class="case-tags-beautiful">
-                            <span class="tag primary">Эндодонтия</span>
-                            <span class="tag">Рентген</span>
+                            <span class="tag primary" data-translate="tag_endodontics">Эндодонтия</span>
+                            <span class="tag" data-translate="tag_pediatric">Детская</span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
     <!-- ─────── Patient Stories ─────── -->
     <section class="patient-stories-beautiful">
         <div class="container">
             <div class="stories-header-beautiful">
-                <h2>Истории наших пациентов</h2>
-                <p>Читайте реальные отзывы людей, которые изменили свою жизнь благодаря красивой улыбке</p>
+                <h2 data-translate="stories_title">Истории наших пациентов</h2>
+                <p data-translate="stories_subtitle">Читайте реальные отзывы людей, которые изменили свою жизнь благодаря красивой улыбке</p>
             </div>
-            
             <div class="stories-carousel">
                 <div class="story-card-beautiful">
                     <div class="story-avatar">
@@ -795,16 +684,15 @@
                             <span class="star">★</span>
                             <span class="star">★</span>
                         </div>
-                        <blockquote>
+                        <blockquote data-translate="story_1_text">
                             "Нужно было экстренно лечить зуб и искала ближайшую стоматологию. Очень высокий сервис, администратор, врач все очень эмпатичные люди. Вылечили очень тщательно. Цена- качество абсолютно соответствует. Плюс после лечения узнавали как самочувствие. Однозначно буду постоянным клиентом 😻"
                         </blockquote>
                         <div class="story-author">
                             <h4>Дилара</h4>
-                            <p>Лечение кариеса</p>
+                            <p data-translate="story_1_treatment">Лечение кариеса</p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="story-card-beautiful">
                     <div class="story-avatar">
                         <img src="../img/avatar.jpg" alt="Айнагуль">
@@ -818,16 +706,15 @@
                             <span class="star">★</span>
                             <span class="star">★</span>
                         </div>
-                        <blockquote>
+                        <blockquote data-translate="story_2_text">
                             "Очень нравится доктор Нелли Ринатовна. Такое доброе сердце и золотые руки. Желаю процветания клинике. Кстати приезжаю я с Кокшетау"
                         </blockquote>
                         <div class="story-author">
                             <h4>Айнагуль Бейсембаева</h4>
-                            <p>Лечение кариеса</p>
+                            <p data-translate="story_2_treatment">Лечение кариеса</p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="story-card-beautiful">
                     <div class="story-avatar">
                         <img src="../img/avatar.jpg" alt="Fol Man">
@@ -841,20 +728,18 @@
                             <span class="star">★</span>
                             <span class="star">★</span>
                         </div>
-                        <blockquote>
+                        <blockquote data-translate="story_3_text">
                             "Отличная стоматология. Вылечил себе здесь 10 зубов наверное, суммарно. Выбрал её после прохождения консультаций в 5 соседних клиниках. Ни разу не пожалел. Доктора настоящие профессионалы, все зубы сделали на вид как родные."
                         </blockquote>
                         <div class="story-author">
                             <h4>Fol Man</h4>
-                            <p>Комплексное лечение</p>
+                            <p data-translate="story_3_treatment">Комплексное лечение</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
-
     <!-- ─────── Beautiful CTA ─────── -->
     <section class="cta-beautiful">
         <div class="cta-background">
@@ -864,43 +749,39 @@
                 <div class="cta-shape cta-shape-3"></div>
             </div>
         </div>
-        
         <div class="container">
             <div class="cta-content-beautiful">
                 <div class="cta-text-beautiful">
-                    <h2>Готовы к преображению?</h2>
-                    <p>Запишитесь на бесплатную консультацию и узнайте, как мы можем изменить вашу улыбку</p>
-                    
+                    <h2 data-translate="cta_title">Готовы к преображению?</h2>
+                    <p data-translate="cta_subtitle">Запишитесь на бесплатную консультацию и узнайте, как мы можем изменить вашу улыбку</p>
                     <div class="cta-benefits-beautiful">
                         <div class="benefit-beautiful">
                             <div class="benefit-icon">✓</div>
-                            <span>Бесплатная консультация и план лечения</span>
+                            <span data-translate="cta_benefit_1">Бесплатная консультация и план лечения</span>
                         </div>
                         <div class="benefit-beautiful">
                             <div class="benefit-icon">✓</div>
-                            <span>3D-моделирование будущей улыбки</span>
+                            <span data-translate="cta_benefit_2">3D-моделирование будущей улыбки</span>
                         </div>
                         <div class="benefit-beautiful">
                             <div class="benefit-icon">✓</div>
-                            <span>Гарантия на все виды работ</span>
+                            <span data-translate="cta_benefit_3">Гарантия на все виды работ</span>
                         </div>
                     </div>
                 </div>
-                
                 <div class="cta-action-beautiful">
                     <a href="../kontakty.html" class="cta-btn-beautiful">
-                        <span>Записаться на консультацию</span>
+                        <span data-translate="cta_button">Записаться на консультацию</span>
                         <div class="btn-glow"></div>
                     </a>
                     <div class="cta-contact-beautiful">
-                        <span>Или позвоните:</span>
+                        <span data-translate="cta_or_call">Или позвоните:</span>
                         <a href="tel:+77054026181">+7 705 402 61 81</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- ─────── Footer ─────── -->
     <footer class="footer">
         <div class="container">
@@ -909,42 +790,37 @@
                     <div class="footer-logo">
                         <a href="/">Nelly dental clinic</a>
                     </div>
-                    <p>Стоматология 5 звезд</p>
-                    <p>Улы Дала, 35, Город Астана</p>
-                    <p>Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</p>
+                    <p data-translate="footer_description">Стоматология 5 звезд</p>
+                    <p data-translate="address">Улы Дала, 35, Город Астана</p>
+                    <p data-translate="schedule">Пн-Пт 10:00-19:00 Сб, Вс 10:00-16:00</p>
                     <p>+7 705 402 61 81</p>
                 </div>
-
                 <div class="footer-nav">
-                    <h3>Навигация</h3>
+                    <h3 data-translate="footer_navigation">Навигация</h3>
                     <ul>
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/price/">Цены</a></li>
-                        <li><a href="/cases/">Кейсы</a></li>
-                        <li><a href="/doctors/">Врачи</a></li>
-                        <li><a href="/contacts/">Контакты</a></li>
-                        <li><a href="/reviews/">Отзывы</a></li>
-                        <li><a href="/media/">Медиа</a></li>
+                        <li><a href="/" data-translate="nav_home">Главная</a></li>
+                        <li><a href="/price/" data-translate="nav_prices">Цены</a></li>
+                        <li><a href="/cases/" data-translate="nav_cases">Кейсы</a></li>
+                        <li><a href="/doctors/" data-translate="nav_doctors">Врачи</a></li>
+                        <li><a href="/contacts/" data-translate="nav_contacts">Контакты</a></li>
+                        <li><a href="/reviews/" data-translate="nav_reviews">Отзывы</a></li>
+                        <li><a href="/media/" data-translate="nav_media">Медиа</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-social">
-                    <h3>Мы в соцсетях</h3>
+                    <h3 data-translate="footer_social">Мы в соцсетях</h3>
                     <div class="social-links">
                         <a href="https://wa.me/77054026181" class="social-link">WhatsApp</a>
                         <a href="https://www.instagram.com/nelly_dental/" class="social-link">Instagram</a>
-                        <a href="https://www.instagram.com/nelly_dental/" class="social-link">Telegram</a>
-
+                        <a href="https://t.me/nellydentalclinic" class="social-link">Telegram</a>
                     </div>
                 </div>
             </div>
-
             <div class="copyright">
-                <p>© 2025 Nelly dental clinic. Все права защищены.</p>
+                <p data-translate="copyright">© 2025 Nelly dental clinic. Все права защищены.</p>
             </div>
         </div>
     </footer>
-
     <!-- ─────── JS ─────── -->
     <script src="../js/script.js"></script>
 </body>
