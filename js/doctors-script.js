@@ -1,8 +1,8 @@
 // ===== КОНФИГУРАЦИЯ GOOGLE SHEETS ДЛЯ ВРАЧЕЙ =====
 const DOCTORS_GOOGLE_SHEETS_CONFIG = {
   API_KEY: "AIzaSyAPNoe4hXwejLxnUr04bqEeWZRE7VqJYP4",
+  // SPREADSHEET_ID and RANGE will be determined dynamically based on language
   SPREADSHEET_ID: "1TuQfnrDrBySjOJWSeksdL8WbrCNfytIypw-u-eRaJzs",
-  RANGE: "Врачи!A:N", // ФИО, Стаж, Специализация, Ссылка на фото, Описание, Сертификат1-7, фото до и после1-4
   CACHE_DURATION: 5 * 60 * 1000, // 5 минут кеширования
 }
 
@@ -10,64 +10,63 @@ const DOCTORS_GOOGLE_SHEETS_CONFIG = {
 class GoogleDriveConverter {
   // Извлечение ID файла из ссылки Google Drive
   static extractFileId(url) {
-    if (!url || typeof url !== 'string') return null;
-    
-    const patterns = [
-      /\/file\/d\/([a-zA-Z0-9-_]+)/,  // Основной паттерн
-      /id=([a-zA-Z0-9-_]+)/,         // Альтернативный
-      /\/d\/([a-zA-Z0-9-_]+)/        // Короткий формат
-    ];
+    if (!url || typeof url !== "string") return null
 
-    for (let pattern of patterns) {
-      const match = url.match(pattern);
+    const patterns = [
+      /\/file\/d\/([a-zA-Z0-9-_]+)/, // Основной паттерн
+      /id=([a-zA-Z0-9-_]+)/, // Альтернативный
+      /\/d\/([a-zA-Z0-9-_]+)/, // Короткий формат
+    ]
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern)
       if (match) {
-        return match[1];
+        return match[1]
       }
     }
-    return null;
+    return null
   }
 
   // Создание thumbnail URL
-  static createThumbnailUrl(fileId, size = 'w1000') {
-    if (!fileId) return null;
-    return `https://drive.google.com/thumbnail?id=${fileId}&sz=${size}`;
+  static createThumbnailUrl(fileId, size = "w1000") {
+    if (!fileId) return null
+    return `https://drive.google.com/thumbnail?id=${fileId}&sz=${size}`
   }
 
   // Создание direct URL
   static createDirectUrl(fileId) {
-    if (!fileId) return null;
-    return `https://drive.google.com/uc?export=view&id=${fileId}`;
+    if (!fileId) return null
+    return `https://drive.google.com/uc?export=view&id=${fileId}`
   }
 
   // Проверка, является ли URL ссылкой Google Drive
   static isGoogleDriveUrl(url) {
-    if (!url || typeof url !== 'string') return false;
-    return url.includes('drive.google.com') && 
-           (url.includes('/file/d/') || url.includes('id=') || url.includes('/d/'));
+    if (!url || typeof url !== "string") return false
+    return url.includes("drive.google.com") && (url.includes("/file/d/") || url.includes("id=") || url.includes("/d/"))
   }
 
   // Конвертация ссылки Google Drive в thumbnail
-  static convertToThumbnail(url, size = 'w1000') {
+  static convertToThumbnail(url, size = "w1000") {
     if (!this.isGoogleDriveUrl(url)) {
-      return url; // Возвращаем оригинальную ссылку, если это не Google Drive
+      return url // Возвращаем оригинальную ссылку, если это не Google Drive
     }
 
-    const fileId = this.extractFileId(url);
+    const fileId = this.extractFileId(url)
     if (!fileId) {
-      console.warn('Не удалось извлечь ID из ссылки Google Drive:', url);
-      return url;
+      console.warn("Не удалось извлечь ID из ссылки Google Drive:", url)
+      return url
     }
 
-    const thumbnailUrl = this.createThumbnailUrl(fileId, size);
-    console.log(`Конвертирована ссылка: ${url} -> ${thumbnailUrl}`);
-    return thumbnailUrl;
+    const thumbnailUrl = this.createThumbnailUrl(fileId, size)
+    console.log(`Конвертирована ссылка: ${url} -> ${thumbnailUrl}`)
+    return thumbnailUrl
   }
 
   // Конвертация массива ссылок
-  static convertUrlsArray(urls, size = 'w1000') {
-    if (!Array.isArray(urls)) return urls;
-    
-    return urls.map(url => this.convertToThumbnail(url, size));
+  static convertUrlsArray(urls, size = "w1000") {
+    if (!Array.isArray(urls)) return urls
+
+    return urls.map((url) => this.convertToThumbnail(url, size))
   }
 }
 
@@ -82,6 +81,8 @@ class DoctorsPageManager {
     this.maxRetries = 3
     this.currentFilter = "all"
     this.imageSize = "w1500" // Размер изображений по умолчанию
+    this.translations = window.translations_doctors || {} // Access global translations
+    this.currentLanguage = window.currentLanguage_doctors || "ru" // Access global current language
 
     this.init()
   }
@@ -91,21 +92,29 @@ class DoctorsPageManager {
       console.log("Инициализация страницы врачей...")
 
       // Инициализация компонентов
-      this.initMobileMenu()
+      this.initMobileMenu() // This is already in the original script, keep it.
       this.initFilters()
       this.initModal()
 
-      // Загрузка данных из Google Sheets
+      // Initial load of doctors data based on current language
       await this.loadDoctorsData()
-
-      // Отображение врачей
-      this.renderDoctors()
 
       console.log("Инициализация страницы врачей завершена успешно")
     } catch (error) {
       console.error("Ошибка инициализации страницы врачей:", error)
-      this.showError("Ошибка загрузки данных о врачах: " + error.message)
+      this.showError(this.translations[this.currentLanguage].error_loading_text + ": " + error.message)
     }
+  }
+
+  // Method to reload doctors data when language changes
+  async reloadDoctorsDataForLanguage(newLang) {
+    this.currentLanguage = newLang
+    this.translations = window.translations_doctors // Ensure translations are up-to-date
+    console.log(`Перезагрузка данных врачей для языка: ${newLang}`)
+    await this.loadDoctorsData()
+    this.renderDoctors() // Re-render after data load
+    this.updateFilters() // Re-render filters with translated names
+    this.updateStats() // Update stats with new data
   }
 
   // ===== ЗАГРУЗКА ДАННЫХ ИЗ GOOGLE SHEETS =====
@@ -116,7 +125,9 @@ class DoctorsPageManager {
     this.updateLoadingStatus("loading")
 
     try {
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${DOCTORS_GOOGLE_SHEETS_CONFIG.SPREADSHEET_ID}/values/${DOCTORS_GOOGLE_SHEETS_CONFIG.RANGE}?key=${DOCTORS_GOOGLE_SHEETS_CONFIG.API_KEY}`
+      const sheetName = this.getDoctorsSheetName(this.currentLanguage)
+      const range = `${sheetName}!A:N`
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${DOCTORS_GOOGLE_SHEETS_CONFIG.SPREADSHEET_ID}/values/${range}?key=${DOCTORS_GOOGLE_SHEETS_CONFIG.API_KEY}`
 
       console.log("Загрузка данных врачей из URL:", url)
 
@@ -147,6 +158,19 @@ class DoctorsPageManager {
       this.handleLoadError(error)
     } finally {
       this.isLoading = false
+    }
+  }
+
+  // Determine the Google Sheet name based on the current language
+  getDoctorsSheetName(lang) {
+    switch (lang) {
+      case "kz":
+        return "Врачи_kz"
+      case "en":
+        return "Врачи_en"
+      case "ru":
+      default:
+        return "Врачи"
     }
   }
 
@@ -181,7 +205,7 @@ class DoctorsPageManager {
   // ===== СОЗДАНИЕ ОБЪЕКТА ВРАЧА =====
   createDoctorObject(row, rowNumber) {
     const name = this.cleanText(row[0])
-    
+
     // Если нет имени, игнорируем эту строку
     if (!name) {
       return null
@@ -202,7 +226,7 @@ class DoctorsPageManager {
       id: `doctor_${rowNumber}`,
       name: name,
       experience: this.cleanText(row[1]) || "",
-      specialization: this.cleanText(row[2]) || "Стоматолог",
+      specialization: this.cleanText(row[2]) || this.translations[this.currentLanguage].specialization_default,
       photoUrl: convertedPhotoUrl,
       originalPhotoUrl: originalPhotoUrl, // Сохраняем оригинальную ссылку
       description: this.cleanText(row[4]) || "",
@@ -250,8 +274,8 @@ class DoctorsPageManager {
           <div class="no-doctors-icon">
             <i class="fa-solid fa-user-doctor"></i>
           </div>
-          <h3>Врачи не найдены</h3>
-          <p>В данный момент информация о врачах недоступна</p>
+          <h3>${this.translations[this.currentLanguage].no_doctors_title}</h3>
+          <p>${this.translations[this.currentLanguage].no_doctors_text}</p>
         </div>
       `
       return
@@ -281,20 +305,21 @@ class DoctorsPageManager {
     return `
       <div class="doctor-card-beautiful ${isMainDoctor ? "featured" : ""}" data-specialization="${doctor.specialization.toLowerCase()}" data-doctor-id="${doctor.id}">
         <div class="doctor-image-beautiful">
-          <img src="${doctor.photoUrl}" alt="${doctor.name}" loading="lazy" onerror="this.src='img/placeholder.svg'" data-original-url="${doctor.originalPhotoUrl || ''}">
+          <img src="${doctor.photoUrl}" alt="${doctor.name}" loading="lazy" onerror="this.src='../img/placeholder.svg'" data-original-url="${doctor.originalPhotoUrl || ""}">
           <div class="doctor-overlay-beautiful">
             <div class="overlay-content-doctors">
               <button class="view-doctor-btn" data-doctor-id="${doctor.id}">
                 <i class="fa-solid fa-info-circle"></i>
-                <span>Подробнее</span>
+                <span>${this.translations[this.currentLanguage].card_view_details}</span>
               </button>
               <button class="book-doctor-btn" data-doctor-name="${doctor.name}">
                 <i class="fa-solid fa-calendar-plus"></i>
-                <span>Записаться</span>
+                <span>${this.translations[this.currentLanguage].card_book_appointment}</span>
               </button>
             </div>
           </div>
-          ${doctor.experience ? `<div class="experience-badge">${doctor.experience}</div>` : ""}
+          ${doctor.experience ? `<div class="experience-badge">${doctor.experience} ${this.translations[this.currentLanguage].card_experience_label}</div>` : ""}
+          ${isMainDoctor ? `<div class="doctor-badge">${this.translations[this.currentLanguage].card_featured_doctor}</div>` : ""}
         </div>
         
         <div class="doctor-content-beautiful">
@@ -313,7 +338,7 @@ class DoctorsPageManager {
           </div>
           
           <p class="doctor-description-beautiful">
-            ${doctor.description || "Опытный специалист с индивидуальным подходом к каждому пациенту."}
+            ${doctor.description || this.translations[this.currentLanguage].card_default_description}
           </p>
           
           <div class="doctor-stats-beautiful">
@@ -322,25 +347,25 @@ class DoctorsPageManager {
                 ? `
               <div class="stat-item">
                 <i class="fa-solid fa-calendar-check"></i>
-                <span>${doctor.experience} стажа</span>
+                <span>${doctor.experience} ${this.translations[this.currentLanguage].card_stat_experience}</span>
               </div>
             `
                 : ""
             }
             <div class="stat-item">
               <i class="fa-solid fa-users"></i>
-              <span>Довольные пациенты</span>
+              <span>${this.translations[this.currentLanguage].card_stat_satisfied_patients}</span>
             </div>
           </div>
           
           <div class="doctor-actions-beautiful">
             <button class="secondary-btn-doctors view-details-btn" data-doctor-id="${doctor.id}">
               <i class="fa-solid fa-info-circle"></i>
-              <span>Подробнее</span>
+              <span>${this.translations[this.currentLanguage].card_view_details}</span>
             </button>
             <button class="primary-btn-doctors" data-doctor-name="${doctor.name}">
               <i class="fa-solid fa-calendar-plus"></i>
-              <span>Записаться</span>
+              <span>${this.translations[this.currentLanguage].card_book_appointment}</span>
             </button>
           </div>
         </div>
@@ -350,16 +375,19 @@ class DoctorsPageManager {
 
   // ===== ПОЛУЧЕНИЕ ОСНОВНОЙ СПЕЦИАЛИЗАЦИИ =====
   getMainSpecialty(specialization) {
-    if (!specialization) return "Стоматолог"
+    if (!specialization) return this.translations[this.currentLanguage].specialization_default
 
     const spec = specialization.toLowerCase()
-    if (spec.includes("терапевт")) return "Терапия"
-    if (spec.includes("ортодонт")) return "Ортодонтия"
-    if (spec.includes("эндодонт")) return "Эндодонтия"
-    if (spec.includes("хирург")) return "Хирургия"
-    if (spec.includes("ортопед")) return "Ортопедия"
+    if (spec.includes("терапевт")) return this.translations[this.currentLanguage].specialization_therapists.slice(0, -1) // Remove 's' for singular
+    if (spec.includes("ортодонт"))
+      return this.translations[this.currentLanguage].specialization_orthodontists.slice(0, -1)
+    if (spec.includes("эндодонт"))
+      return this.translations[this.currentLanguage].specialization_endodontists.slice(0, -2) // Remove 'ts'
+    if (spec.includes("хирург")) return this.translations[this.currentLanguage].specialization_surgeons.slice(0, -1)
+    if (spec.includes("ортопед"))
+      return this.translations[this.currentLanguage].specialization_orthopedists.slice(0, -1)
 
-    return specialization.split(" ")[0] || "Стоматолог"
+    return specialization.split(" ")[0] || this.translations[this.currentLanguage].specialization_default
   }
 
   // ===== ПОЛУЧЕНИЕ ДОПОЛНИТЕЛЬНЫХ СПЕЦИАЛИЗАЦИЙ =====
@@ -368,12 +396,18 @@ class DoctorsPageManager {
     if (!specialization) return additional
 
     const spec = specialization.toLowerCase()
-    if (spec.includes("эстетик") || spec.includes("реставрац")) additional.push("Эстетика")
-    if (spec.includes("эндодонт") || spec.includes("канал")) additional.push("Эндодонтия")
-    if (spec.includes("микроскоп")) additional.push("Микроскоп")
-    if (spec.includes("брекет") || spec.includes("элайнер")) additional.push("Брекеты")
-    if (spec.includes("диагност")) additional.push("Диагностика")
-    if (spec.includes("профилакт")) additional.push("Профилактика")
+    if (spec.includes("эстетик") || spec.includes("реставрац"))
+      additional.push(this.translations[this.currentLanguage].specialization_aesthetic || "Эстетика")
+    if (spec.includes("эндодонт") || spec.includes("канал"))
+      additional.push(this.translations[this.currentLanguage].specialization_endodontists.slice(0, -2) || "Эндодонтия")
+    if (spec.includes("микроскоп"))
+      additional.push(this.translations[this.currentLanguage].specialization_microscope || "Микроскоп")
+    if (spec.includes("брекет") || spec.includes("элайнер"))
+      additional.push(this.translations[this.currentLanguage].specialization_braces || "Брекеты")
+    if (spec.includes("диагност"))
+      additional.push(this.translations[this.currentLanguage].specialization_diagnostics || "Диагностика")
+    if (spec.includes("профилакт"))
+      additional.push(this.translations[this.currentLanguage].specialization_prevention || "Профилактика")
 
     return additional.slice(0, 2)
   }
@@ -405,7 +439,7 @@ class DoctorsPageManager {
 
   // ===== ПОКАЗ ДЕТАЛЬНОЙ ИНФОРМАЦИИ О ВРАЧЕ =====
   showDoctorDetails(doctorId) {
-    const doctor = this.doctorsData.find(d => d.id === doctorId)
+    const doctor = this.doctorsData.find((d) => d.id === doctorId)
     if (!doctor) return
 
     // Заполняем модальное окно данными врача
@@ -413,8 +447,11 @@ class DoctorsPageManager {
     document.getElementById("modalDoctorPhoto").alt = doctor.name
     document.getElementById("modalDoctorName").textContent = doctor.name
     document.getElementById("modalDoctorSpecialization").textContent = doctor.specialization
-    document.getElementById("modalDoctorExperience").textContent = doctor.experience ? `Стаж: ${doctor.experience}` : ""
-    document.getElementById("modalDoctorDescription").textContent = doctor.description || "Опытный специалист с индивидуальным подходом к каждому пациенту."
+    document.getElementById("modalDoctorExperience").textContent = doctor.experience
+      ? `${this.translations[this.currentLanguage].modal_experience_label} ${doctor.experience}`
+      : ""
+    document.getElementById("modalDoctorDescription").textContent =
+      doctor.description || this.translations[this.currentLanguage].card_default_description
 
     // Устанавливаем обработчик для кнопки записи в модальном окне
     const modalBookBtn = document.getElementById("modalBookBtn")
@@ -442,14 +479,18 @@ class DoctorsPageManager {
     }
 
     certificatesSection.style.display = "block"
-    certificatesGrid.innerHTML = certificates.map((cert, index) => `
-      <div class="certificate-item" onclick="window.doctorsManager.showImageViewer('${cert}', 'Сертификат ${index + 1}')">
-        <img src="${cert}" alt="Сертификат ${index + 1}" loading="lazy" onerror="this.parentElement.style.display='none'">
+    certificatesGrid.innerHTML = certificates
+      .map(
+        (cert, index) => `
+      <div class="certificate-item" onclick="window.doctorsManager.showImageViewer('${cert}', '${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}')">
+        <img src="${cert}" alt="${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}" loading="lazy" onerror="this.parentElement.style.display='none'">
         <div class="certificate-overlay">
-          Сертификат ${index + 1}
+          ${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}
         </div>
       </div>
-    `).join("")
+    `,
+      )
+      .join("")
   }
 
   // ===== ОТОБРАЖЕНИЕ ФОТО ДО И ПОСЛЕ =====
@@ -463,14 +504,18 @@ class DoctorsPageManager {
     }
 
     beforeAfterSection.style.display = "block"
-    beforeAfterGrid.innerHTML = photos.map((photo, index) => `
-      <div class="before-after-item" onclick="window.doctorsManager.showImageViewer('${photo}', 'Работа врача ${index + 1}')">
-        <img src="${photo}" alt="Работа врача ${index + 1}" loading="lazy" onerror="this.parentElement.style.display='none'">
+    beforeAfterGrid.innerHTML = photos
+      .map(
+        (photo, index) => `
+      <div class="before-after-item" onclick="window.doctorsManager.showImageViewer('${photo}', '${this.translations[this.currentLanguage].modal_work_label} ${index + 1}')">
+        <img src="${photo}" alt="${this.translations[this.currentLanguage].modal_work_label} ${index + 1}" loading="lazy" onerror="this.parentElement.style.display='none'">
         <div class="before-after-overlay">
-          Работа ${index + 1}
+          ${this.translations[this.currentLanguage].modal_work_label} ${index + 1}
         </div>
       </div>
-    `).join("")
+    `,
+      )
+      .join("")
   }
 
   // ===== ПОКАЗ ПРОСМОТРЩИКА ИЗОБРАЖЕНИЙ =====
@@ -530,7 +575,7 @@ class DoctorsPageManager {
   // ===== ОБРАБОТКА ЗАПИСИ К ВРАЧУ =====
   handleBookingClick(doctorName) {
     try {
-      const message = `Здравствуйте! Хочу записаться на прием к врачу ${doctorName}. Подскажите, пожалуйста, удобное время.`
+      const message = `${this.translations[this.currentLanguage].modal_whatsapp_message_prefix} ${doctorName}. ${this.translations[this.currentLanguage].modal_whatsapp_message_suffix}`
       const encodedMessage = encodeURIComponent(message)
       const whatsappUrl = `https://wa.me/77054026181?text=${encodedMessage}`
 
@@ -547,15 +592,15 @@ class DoctorsPageManager {
     if (!filtersContainer) return
 
     const specializations = Array.from(this.specializations)
-    const filterButtons = [
-      `
-      <button class="doctors-filter-btn active" data-filter="all">
+    const allDoctorsCount = this.doctorsData.length
+
+    let filterButtonsHtml = `
+      <button class="doctors-filter-btn ${this.currentFilter === "all" ? "active" : ""}" data-filter="all">
         <i class="fa-solid fa-users"></i>
-        <span>Все врачи</span>
-        <div class="filter-count">${this.doctorsData.length}</div>
+        <span>${this.translations[this.currentLanguage].filter_all_doctors}</span>
+        <div class="filter-count">${allDoctorsCount}</div>
       </button>
-    `,
-    ]
+    `
 
     specializations.forEach((spec) => {
       const count = this.doctorsData.filter((doctor) => doctor.specialization.toLowerCase().includes(spec)).length
@@ -563,16 +608,16 @@ class DoctorsPageManager {
       const icon = this.getSpecializationIcon(spec)
       const name = this.getSpecializationName(spec)
 
-      filterButtons.push(`
-        <button class="doctors-filter-btn" data-filter="${spec}">
+      filterButtonsHtml += `
+        <button class="doctors-filter-btn ${this.currentFilter === spec ? "active" : ""}" data-filter="${spec}">
           <i class="fa-solid fa-${icon}"></i>
           <span>${name}</span>
           <div class="filter-count">${count}</div>
         </button>
-      `)
+      `
     })
 
-    filtersContainer.innerHTML = filterButtons.join("")
+    filtersContainer.innerHTML = filterButtonsHtml
   }
 
   // ===== ПОЛУЧЕНИЕ ИКОНКИ СПЕЦИАЛИЗАЦИИ =====
@@ -587,11 +632,11 @@ class DoctorsPageManager {
 
   // ===== ПОЛУЧЕНИЕ НАЗВАНИЯ СПЕЦИАЛИЗАЦИИ =====
   getSpecializationName(spec) {
-    if (spec.includes("терапевт")) return "Терапевты"
-    if (spec.includes("ортодонт")) return "Ортодонты"
-    if (spec.includes("эндодонт")) return "Эндодонтисты"
-    if (spec.includes("хирург")) return "Хирурги"
-    if (spec.includes("ортопед")) return "Ортопеды"
+    if (spec.includes("терапевт")) return this.translations[this.currentLanguage].specialization_therapists
+    if (spec.includes("ортодонт")) return this.translations[this.currentLanguage].specialization_orthodontists
+    if (spec.includes("эндодонт")) return this.translations[this.currentLanguage].specialization_endodontists
+    if (spec.includes("хирург")) return this.translations[this.currentLanguage].specialization_surgeons
+    if (spec.includes("ортопед")) return this.translations[this.currentLanguage].specialization_orthopedists
     return spec.charAt(0).toUpperCase() + spec.slice(1)
   }
 
@@ -624,25 +669,25 @@ class DoctorsPageManager {
   changeImageSize(newSize) {
     this.imageSize = newSize
     console.log(`Изменен размер изображений на: ${newSize}`)
-    
+
     // Перезагружаем данные с новым размером
-    this.doctorsData.forEach(doctor => {
+    this.doctorsData.forEach((doctor) => {
       // Конвертируем фото врача
       if (doctor.originalPhotoUrl) {
         doctor.photoUrl = GoogleDriveConverter.convertToThumbnail(doctor.originalPhotoUrl, newSize)
       }
-      
+
       // Конвертируем сертификаты
       if (doctor.originalCertificates) {
         doctor.certificates = GoogleDriveConverter.convertUrlsArray(doctor.originalCertificates, newSize)
       }
-      
+
       // Конвертируем фото работ
       if (doctor.originalBeforeAfterPhotos) {
         doctor.beforeAfterPhotos = GoogleDriveConverter.convertUrlsArray(doctor.originalBeforeAfterPhotos, newSize)
       }
     })
-    
+
     // Перерисовываем врачей
     this.renderDoctors()
   }
@@ -701,16 +746,16 @@ class DoctorsPageManager {
 
     switch (status) {
       case "loading":
-        statusElement.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Загрузка информации о врачах...'
+        statusElement.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${this.translations[this.currentLanguage].status_loading}`
         break
       case "success":
-        statusElement.innerHTML = '<i class="fa-solid fa-check-circle"></i> Информация о врачах обновлена'
+        statusElement.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${this.translations[this.currentLanguage].status_updated}`
         if (lastUpdateElement && this.lastUpdateTime) {
-          lastUpdateElement.textContent = `Обновлено: ${this.lastUpdateTime.toLocaleTimeString("ru-RU")}`
+          lastUpdateElement.textContent = `${this.translations[this.currentLanguage].last_update_label} ${this.lastUpdateTime.toLocaleTimeString(this.currentLanguage)}`
         }
         break
       case "error":
-        statusElement.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Ошибка загрузки информации о врачах'
+        statusElement.innerHTML = `<i class="fa-solid fa-exclamation-triangle"></i> ${this.translations[this.currentLanguage].status_error}`
         break
     }
   }
@@ -726,7 +771,9 @@ class DoctorsPageManager {
       }, 2000 * this.retryCount)
     } else {
       this.updateLoadingStatus("error")
-      this.showError("Не удалось загрузить информацию о врачах после " + this.maxRetries + " попыток")
+      this.showError(
+        `${this.translations[this.currentLanguage].error_loading_text} ${this.maxRetries} ${this.translations[this.currentLanguage].retry_button.toLowerCase().includes("попыток") ? "попыток" : "attempts"}`,
+      )
     }
   }
 
@@ -741,11 +788,11 @@ class DoctorsPageManager {
           <div class="error-icon">
             <i class="fa-solid fa-exclamation-triangle"></i>
           </div>
-          <h3>Ошибка загрузки</h3>
+          <h3>${this.translations[this.currentLanguage].error_loading_title}</h3>
           <p>${message}</p>
           <button onclick="window.location.reload()" class="retry-btn">
             <i class="fa-solid fa-refresh"></i>
-            Попробовать снова
+            ${this.translations[this.currentLanguage].retry_button}
           </button>
         </div>
       `
@@ -770,7 +817,7 @@ class DoctorsPageUtils {
   }
 
   // Утилита для ручной конвертации ссылок (если нужно)
-  static convertGoogleDriveLink(url, size = 'w1000') {
+  static convertGoogleDriveLink(url, size = "w1000") {
     return GoogleDriveConverter.convertToThumbnail(url, size)
   }
 
@@ -788,7 +835,12 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM загружен, начинаем инициализацию страницы врачей...")
 
     // Создаем глобальный экземпляр менеджера врачей
-    window.doctorsManager = new DoctorsPageManager()
+    // Ensure translations and currentLanguage are available before creating manager
+    if (window.translations_doctors && window.currentLanguage_doctors) {
+      window.doctorsManager = new DoctorsPageManager()
+    } else {
+      console.error("Translations or current language not available for DoctorsPageManager.")
+    }
 
     // Делаем GoogleDriveConverter доступным глобально
     window.GoogleDriveConverter = GoogleDriveConverter
@@ -801,3 +853,353 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== ЭКСПОРТ ДЛЯ ГЛОБАЛЬНОГО ИСПОЛЬЗОВАНИЯ =====
 window.DoctorsPageUtils = DoctorsPageUtils
+
+// ===== ПЕРЕВОДЫ ДЛЯ СТРАНИЦЫ ВРАЧЕЙ =====
+const translations_doctors = {
+  ru: {
+    // Общие элементы
+    doctors_page_title: "Врачи - Nelly dental clinic",
+    address: "Улы Дала, 35, Город Астана",
+    schedule: "Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00",
+
+    // Навигация
+    nav_home: "ГЛАВНАЯ",
+    nav_prices: "ЦЕНЫ",
+    nav_cases: "КЕЙСЫ",
+    nav_doctors: "ВРАЧИ",
+    nav_contacts: "КОНТАКТЫ",
+    nav_reviews: "ОТЗЫВЫ",
+    nav_media: "МЕДИА",
+
+    // Герой секция
+    hero_title_part1: "НАШИ",
+    hero_title_part2: "ВРАЧИ",
+    hero_title_accent: "профессионалы своего дела",
+    hero_subtitle:
+      "Команда опытных специалистов с многолетним стажем, которые используют современные технологии и индивидуальный подход к каждому пациенту.",
+    stat_specialists: "Специалистов",
+    stat_years_experience: "Лет опыта",
+    stat_satisfied_patients: "Довольных пациентов",
+    scroll_to_doctors_btn: "Познакомиться с врачами",
+    team_showcase_title: "Наша команда",
+    team_showcase_subtitle: "Профессионалы с многолетним опытом",
+    feature_experienced_doctors_title: "Опытные врачи",
+    feature_experienced_doctors_desc: "Стаж от 3 до 14 лет",
+    feature_continuous_learning_title: "Постоянное обучение",
+    feature_continuous_learning_desc: "Повышение квалификации",
+    feature_recommended_title: "Рекомендуют",
+    feature_recommended_desc: "98% пациентов",
+
+    // Статус загрузки данных
+    status_loading: "Загрузка информации о врачах...",
+    status_updated: "Информация о врачах обновлена",
+    status_error: "Ошибка загрузки информации о врачах",
+    last_update_label: "Обновлено:",
+
+    // Фильтры
+    filter_header_title: "Наши специалисты",
+    filter_header_subtitle: "Выберите специализацию для поиска нужного врача",
+    filter_all_doctors: "Все врачи",
+    filter_count_label: "Врачей", // This is for the count inside the button, not used directly as data-translate
+    specialization_therapists: "Терапевты",
+    specialization_orthodontists: "Ортодонты",
+    specialization_endodontists: "Эндодонтисты",
+    specialization_surgeons: "Хирурги",
+    specialization_orthopedists: "Ортопеды",
+    specialization_default: "Стоматолог", // For default specialty tag
+
+    // Сетка врачей
+    loading_doctors_text: "Загружаем информацию о врачах...",
+    no_doctors_title: "Врачи не найдены",
+    no_doctors_text: "В данный момент информация о врачах недоступна",
+    error_loading_title: "Ошибка загрузки",
+    error_loading_text: "Не удалось загрузить информацию о врачах после",
+    retry_button: "Попробовать снова",
+
+    // Карточки врачей
+    card_view_details: "Подробнее",
+    card_book_appointment: "Записаться",
+    card_featured_doctor: "Главный врач",
+    card_experience_label: "стажа",
+    card_default_description: "Опытный специалист с индивидуальным подходом к каждому пациенту.",
+    card_stat_experience: "стажа",
+    card_stat_satisfied_patients: "Довольные пациенты",
+
+    // Модальное окно врача
+    modal_book_appointment_btn: "Записаться на прием",
+    modal_about_doctor: "О враче",
+    modal_certificates_title: "Сертификаты и дипломы",
+    modal_works_title: "Работы врача",
+    modal_experience_label: "Стаж:",
+    modal_certificate_label: "Сертификат",
+    modal_work_label: "Работа врача",
+    modal_empty_section: "Нет данных",
+    modal_whatsapp_message_prefix: "Здравствуйте! Хочу записаться на прием к врачу",
+    modal_whatsapp_message_suffix: "Подскажите, пожалуйста, удобное время.",
+
+    // Футер
+    footer_description: "Стоматология 5 звезд",
+    footer_navigation: "Навигация",
+    footer_social: "Мы в соцсетях",
+    copyright: "© 2025 Nelly dental clinic. Все права защищены.",
+  },
+
+  kz: {
+    // Общие элементы
+    doctors_page_title: "Дәрігерлер - Nelly dental clinic",
+    address: "Ұлы Дала, 35, Астана қаласы",
+    schedule: "Дс-Жм 10:00-19:00  Сб, Жс 10:00-16:00",
+
+    // Навигация
+    nav_home: "БАСТЫ БЕТ",
+    nav_prices: "БАҒАЛАР",
+    nav_cases: "ЖҰМЫСТАР",
+    nav_doctors: "ДӘРІГЕРЛЕР",
+    nav_contacts: "БАЙЛАНЫС",
+    nav_reviews: "ПІКІРЛЕР",
+    nav_media: "МЕДИА",
+
+    // Герой секция
+    hero_title_part1: "БІЗДІҢ",
+    hero_title_part2: "ДӘРІГЕРЛЕР",
+    hero_title_accent: "өз ісінің кәсіпқойлары",
+    hero_subtitle:
+      "Көпжылдық тәжірибесі бар білікті мамандар командасы, олар заманауи технологияларды және әр пациентке жеке көзқарасты қолданады.",
+    stat_specialists: "Мамандар",
+    stat_years_experience: "Жылдық тәжірибе",
+    stat_satisfied_patients: "Қанағаттанған пациенттер",
+    scroll_to_doctors_btn: "Дәрігерлермен танысу",
+    team_showcase_title: "Біздің команда",
+    team_showcase_subtitle: "Көпжылдық тәжірибесі бар кәсіпқойлар",
+    feature_experienced_doctors_title: "Тәжірибелі дәрігерлер",
+    feature_experienced_doctors_desc: "3-тен 14 жылға дейінгі тәжірибе",
+    feature_continuous_learning_title: "Үздіксіз оқыту",
+    feature_continuous_learning_desc: "Біліктілікті арттыру",
+    feature_recommended_title: "Ұсынады",
+    feature_recommended_desc: "98% пациенттер",
+
+    // Статус загрузки данных
+    status_loading: "Дәрігерлер туралы ақпарат жүктелуде...",
+    status_updated: "Дәрігерлер туралы ақпарат жаңартылды",
+    status_error: "Дәрігерлер туралы ақпаратты жүктеу қатесі",
+    last_update_label: "Жаңартылды:",
+
+    // Фильтры
+    filter_header_title: "Біздің мамандар",
+    filter_header_subtitle: "Қажетті дәрігерді табу үшін мамандықты таңдаңыз",
+    filter_all_doctors: "Барлық дәрігерлер",
+    filter_count_label: "Дәрігерлер",
+    specialization_therapists: "Терапевттер",
+    specialization_orthodontists: "Ортодонттар",
+    specialization_endodontists: "Эндодонтисттер",
+    specialization_surgeons: "Хирургтар",
+    specialization_orthopedists: "Ортопедтер",
+    specialization_default: "Стоматолог",
+
+    // Сетка врачей
+    loading_doctors_text: "Дәрігерлер туралы ақпарат жүктелуде...",
+    no_doctors_title: "Дәрігерлер табылмады",
+    no_doctors_text: "Қазіргі уақытта дәрігерлер туралы ақпарат қолжетімді емес",
+    error_loading_title: "Жүктеу қатесі",
+    error_loading_text: "Дәрігерлер туралы ақпаратты жүктеу мүмкін болмады",
+    retry_button: "Қайталау",
+
+    // Карточки врачей
+    card_view_details: "Толығырақ",
+    card_book_appointment: "Жазылу",
+    card_featured_doctor: "Бас дәрігер",
+    card_experience_label: "тәжірибе",
+    card_default_description: "Әр пациентке жеке көзқараспен тәжірибелі маман.",
+    card_stat_experience: "тәжірибе",
+    card_stat_satisfied_patients: "Қанағаттанған пациенттер",
+
+    // Модальное окно врача
+    modal_book_appointment_btn: "Қабылдауға жазылу",
+    modal_about_doctor: "Дәрігер туралы",
+    modal_certificates_title: "Сертификаттар мен дипломдар",
+    modal_works_title: "Дәрігер жұмыстары",
+    modal_experience_label: "Тәжірибе:",
+    modal_certificate_label: "Сертификат",
+    modal_work_label: "Дәрігер жұмысы",
+    modal_empty_section: "Деректер жоқ",
+    modal_whatsapp_message_prefix: "Сәлеметсіз бе! Дәрігер",
+    modal_whatsapp_message_suffix: "қабылдауына жазылғым келеді. Ыңғайлы уақытты айтыңызшы.",
+
+    // Футер
+    footer_description: "5 жұлдызды стоматология",
+    footer_navigation: "Навигация",
+    footer_social: "Біз әлеуметтік желілерде",
+    copyright: "© 2025 Nelly dental clinic. Барлық құқықтар қорғалған.",
+  },
+
+  en: {
+    // Общие элементы
+    doctors_page_title: "Doctors - Nelly dental clinic",
+    address: "Uly Dala, 35, Astana City",
+    schedule: "Mon-Fri 10:00-19:00  Sat, Sun 10:00-16:00",
+
+    // Навигация
+    nav_home: "HOME",
+    nav_prices: "PRICES",
+    nav_cases: "CASES",
+    nav_doctors: "DOCTORS",
+    nav_contacts: "CONTACTS",
+    nav_reviews: "REVIEWS",
+    nav_media: "MEDIA",
+
+    // Hero Section
+    hero_title_part1: "OUR",
+    hero_title_part2: "DOCTORS",
+    hero_title_accent: "true professionals",
+    hero_subtitle:
+      "A team of experienced specialists with many years of experience, who use modern technologies and an individual approach to each patient.",
+    stat_specialists: "Specialists",
+    stat_years_experience: "Years of Experience",
+    stat_satisfied_patients: "Satisfied Patients",
+    scroll_to_doctors_btn: "Meet the Doctors",
+    team_showcase_title: "Our Team",
+    team_showcase_subtitle: "Professionals with many years of experience",
+    feature_experienced_doctors_title: "Experienced Doctors",
+    feature_experienced_doctors_desc: "3 to 14 years of experience",
+    feature_continuous_learning_title: "Continuous Learning",
+    feature_continuous_learning_desc: "Advanced training",
+    feature_recommended_title: "Recommended",
+    feature_recommended_desc: "98% of patients",
+
+    // Data Loading Status
+    status_loading: "Loading doctors information...",
+    status_updated: "Doctors information updated",
+    status_error: "Error loading doctors information",
+    last_update_label: "Updated:",
+
+    // Filters
+    filter_header_title: "Our Specialists",
+    filter_header_subtitle: "Select a specialization to find the right doctor",
+    filter_all_doctors: "All Doctors",
+    filter_count_label: "Doctors",
+    specialization_therapists: "Therapists",
+    specialization_orthodontists: "Orthodontists",
+    specialization_endodontists: "Endodontists",
+    specialization_surgeons: "Surgeons",
+    specialization_orthopedists: "Orthopedists",
+    specialization_default: "Dentist",
+
+    // Doctors Grid
+    loading_doctors_text: "Loading doctors information...",
+    no_doctors_title: "No Doctors Found",
+    no_doctors_text: "Currently, information about doctors is unavailable",
+    error_loading_title: "Loading Error",
+    error_loading_text: "Failed to load doctors information after",
+    retry_button: "Try Again",
+
+    // Doctor Cards
+    card_view_details: "View Details",
+    card_book_appointment: "Book Appointment",
+    card_featured_doctor: "Chief Doctor",
+    card_experience_label: "experience",
+    card_default_description: "An experienced specialist with an individual approach to each patient.",
+    card_stat_experience: "years of experience",
+    card_stat_satisfied_patients: "Satisfied patients",
+
+    // Doctor Modal
+    modal_book_appointment_btn: "Book an Appointment",
+    modal_about_doctor: "About the Doctor",
+    modal_certificates_title: "Certificates and Diplomas",
+    modal_works_title: "Doctor's Works",
+    modal_experience_label: "Experience:",
+    modal_certificate_label: "Certificate",
+    modal_work_label: "Doctor's Work",
+    modal_empty_section: "No data",
+    modal_whatsapp_message_prefix: "Hello! I would like to book an appointment with Dr.",
+    modal_whatsapp_message_suffix: "Could you please suggest a convenient time?",
+
+    // Footer
+    footer_description: "5-star dentistry",
+    footer_navigation: "Navigation",
+    footer_social: "Find us on social media",
+    copyright: "© 2025 Nelly dental clinic. All rights reserved.",
+  },
+}
+
+// ===== ТЕКУЩИЙ ЯЗЫК =====
+let currentLanguage_doctors = localStorage.getItem("language_doctors") || "ru"
+
+// ===== СИСТЕМА ПЕРЕВОДОВ =====
+function translateDoctorsPage() {
+  const elements = document.querySelectorAll("[data-translate]")
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-translate")
+    if (translations_doctors[currentLanguage_doctors] && translations_doctors[currentLanguage_doctors][key]) {
+      // For elements with HTML content, use innerHTML
+      if (key.includes("hero_subtitle") || key.includes("card_default_description")) {
+        element.innerHTML = translations_doctors[currentLanguage_doctors][key]
+      } else {
+        element.textContent = translations_doctors[currentLanguage_doctors][key]
+      }
+    }
+  })
+
+  // Update page title
+  document.title =
+    translations_doctors[currentLanguage_doctors].doctors_page_title || translations_doctors.ru.doctors_page_title
+
+  // Update lang attribute
+  document.documentElement.lang = currentLanguage_doctors
+
+  // Trigger re-render of doctors if DoctorsPageManager is available
+  if (window.doctorsManager) {
+    window.doctorsManager.reloadDoctorsDataForLanguage(currentLanguage_doctors)
+  }
+}
+
+function switchLanguage_doctors(lang) {
+  currentLanguage_doctors = lang
+  localStorage.setItem("language_doctors", lang)
+
+  // Update active language buttons
+  document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+
+  translateDoctorsPage()
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ ЯЗЫКОВЫХ ПЕРЕКЛЮЧАТЕЛЕЙ =====
+function initLanguageSwitchers_doctors() {
+  // Desktop language buttons
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage_doctors(lang)
+    })
+  })
+
+  // Mobile language buttons
+  document.querySelectorAll(".mobile-lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      switchLanguage_doctors(lang)
+    })
+  })
+
+  // Set active language on load
+  document.querySelectorAll(`[data-lang="${currentLanguage_doctors}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+}
+
+// Make currentLanguage_doctors and translations_doctors globally accessible
+window.currentLanguage_doctors = currentLanguage_doctors
+window.translations_doctors = translations_doctors
+
+// ===== ИНИЦИАЛИЗАЦИЯ =====
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize translations
+  translateDoctorsPage()
+
+  // Initialize language switchers
+  initLanguageSwitchers_doctors()
+})
