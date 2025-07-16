@@ -241,7 +241,7 @@ const translations = {
     address_title: "ULY DALA 35",
     address_details: "Z05T9H7, Astana city, Nura district",
     address_street: "Uly Dala Avenue, 35, NP: 9",
-    whatsapp_btn: "WRITE TO WHATSAPP",
+    whatsapp_btn: "TEXT TO WHATSAPP",
     working_hours_title: "WORKING HOURS",
     working_hours_weekdays: "Monday - Friday: 10:00 to 19:00",
     working_hours_weekend: "Saturday - Sunday: 10:00 to 16:00",

@@ -5,9 +5,9 @@ const translations_price = {
     page_title: "Цены - Nelly dental clinic",
 
     // Языки
-    lang_russian: "Русский",
-    lang_kazakh: "Қазақша",
-    lang_english: "English",
+    lang_russian: "RU",
+    lang_kazakh: "KZ",
+    lang_english: "EN",
 
     // Общие элементы
     address: "Улы Дала, 35, Город Астана",
@@ -43,8 +43,7 @@ const translations_price = {
 
     // Навигация по услугам
     choose_service_title: "Выберите интересующую услугу",
-    prices_updated_desc: "Все цены актуальны и обновляются в режиме реального времени из Google Sheets",
-    loading_prices: "Загрузка цен...",
+    prices_updated_desc: "Все цены актуальны",
     consultation_tab: "Консультация",
     hygiene_tab: "Гигиена и эстетика",
     therapy_tab: "Терапия",
@@ -357,9 +356,9 @@ const translations_price = {
     page_title: "Бағалар - Nelly dental clinic",
 
     // Языки
-    lang_russian: "Орысша",
-    lang_kazakh: "Қазақша",
-    lang_english: "Ағылшынша",
+    lang_russian: "RU",
+    lang_kazakh: "KZ",
+    lang_english: "EN",
 
     // Общие элементы
     address: "Ұлы Дала, 35, Астана қаласы",
@@ -709,9 +708,9 @@ const translations_price = {
     page_title: "Prices - Nelly dental clinic",
 
     // Языки
-    lang_russian: "Russian",
-    lang_kazakh: "Kazakh",
-    lang_english: "English",
+    lang_russian: "RU",
+    lang_kazakh: "KZ",
+    lang_english: "EN",
 
     // Общие элементы
     address: "Uly Dala, 35, Astana City",

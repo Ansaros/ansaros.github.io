@@ -104,24 +104,24 @@ body {
 
 .mobile-language-switcher {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 20px;
+  flex-direction: row;
+  justify-content: center;
+  gap: 6px;
 }
 
 .mobile-lang-btn {
-  padding: 12px 20px;
   border: none;
   background: rgba(255, 255, 255, 0.1);
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
-  border-radius: 10px;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: left;
+  text-align: center;
+  width: 50px;
+  height: 50px;
 }
 
 .mobile-lang-btn:hover {
