@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Цены - Nelly dental clinic</title>
+    <title data-translate="page_title">Цены - Nelly dental clinic</title>
     <link rel="icon" type="image/png" href="../img/logo.jpg">
 
     <!-- SEO Meta Tags -->
@@ -25,18 +25,20 @@
     
     <!-- Стили -->
     <link rel="stylesheet" href="../css/styles.css">
-</head><body>
+    <link rel="stylesheet" href="../css/prices.css">
+</head>
+<body>
     <!-- ─────── Top Bar ─────── -->
     <div class="top-bar">
         <div class="container top-bar-container">
             <div class="top-bar-info">
                 <div class="info-item">
                     <i class="fa-solid fa-location-dot icon"></i>
-                    <span class="top">Улы Дала, 35, Город Астана</span>
+                    <span class="top" data-translate="address">Улы Дала, 35, Город Астана</span>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-clock icon"></i>
-                    <span class="top">Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</span>
+                    <span class="top" data-translate="schedule">Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</span>
                 </div>
                 <div class="info-item phone">
                     <i class="fa-solid fa-phone icon"></i>
@@ -44,11 +46,19 @@
                 </div>
             </div>
 
-            <div class="social-icons">
-                <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+            <div class="top-bar-right">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="kz">KZ</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
 
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/nelly_dental/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/77054026181" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://t.me/nellydentalclinic" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -64,13 +74,13 @@
             <!-- Основная навигация (десктоп) -->
             <nav class="main-nav">
                 <ul>
-                     <li><a href="/">ГЛАВНАЯ</a></li>
-                    <li><a href="/price/" class="active">ЦЕНЫ</a></li>
-                    <li><a href="/cases/">КЕЙСЫ</a></li>
-                    <li><a href="/doctors/">ВРАЧИ</a></li>
-                    <li><a href="/contacts/">КОНТАКТЫ</a></li>
-                    <li><a href="/reviews/">ОТЗЫВЫ</a></li>
-                    <li><a href="/media/">МЕДИА</a></li>
+                    <li><a href="/" data-translate="nav_home">ГЛАВНАЯ</a></li>
+                    <li><a href="/price/" class="active" data-translate="nav_prices">ЦЕНЫ</a></li>
+                    <li><a href="/cases/" data-translate="nav_cases">КЕЙСЫ</a></li>
+                    <li><a href="/doctors/" data-translate="nav_doctors">ВРАЧИ</a></li>
+                    <li><a href="/contacts/" data-translate="nav_contacts">КОНТАКТЫ</a></li>
+                    <li><a href="/reviews/" data-translate="nav_reviews">ОТЗЫВЫ</a></li>
+                    <li><a href="/media/" data-translate="nav_media">МЕДИА</a></li>
                 </ul>
             </nav>
 
@@ -92,18 +102,25 @@
             <i class="fa-solid fa-times"></i>
         </button>
         <div class="mobile-nav-content">
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <button class="mobile-lang-btn" data-lang="ru" data-translate="lang_russian">Русский</button>
+                <button class="mobile-lang-btn" data-lang="kz" data-translate="lang_kazakh">Қазақша</button>
+                <button class="mobile-lang-btn" data-lang="en" data-translate="lang_english">English</button>
+            </div>
+
             <div class="mobile-logo">
                 <span>Nelly</span>
                 <small>dental clinic</small>
             </div>
             <ul>
-                <li><a href="/"><i class="fa-solid fa-house"></i>Главная</a></li>
-                <li><a href="/price/"><i class="fa-solid fa-tenge-sign"></i>Цены</a></li>
-                <li><a href="/cases/"><i class="fa-solid fa-images"></i>Кейсы</a></li>
-                <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i>Врачи</a></li>
-                <li><a href="/contacts/"><i class="fa-solid fa-phone"></i>Контакты</a></li>
-                <li><a href="/reviews/"><i class="fa-solid fa-star"></i>Отзывы</a></li>
-                <li><a href="/media/"><i class="fa-solid fa-play"></i>Медиа</a></li>
+                <li><a href="/"><i class="fa-solid fa-house"></i><span data-translate="nav_home">Главная</span></a></li>
+                <li><a href="/price/"><i class="fa-solid fa-tenge-sign"></i><span data-translate="nav_prices">Цены</span></a></li>
+                <li><a href="/cases/"><i class="fa-solid fa-images"></i><span data-translate="nav_cases">Кейсы</span></a></li>
+                <li><a href="/doctors/"><i class="fa-solid fa-user-doctor"></i><span data-translate="nav_doctors">Врачи</span></a></li>
+                <li><a href="/contacts/"><i class="fa-solid fa-phone"></i><span data-translate="nav_contacts">Контакты</span></a></li>
+                <li><a href="/reviews/"><i class="fa-solid fa-star"></i><span data-translate="nav_reviews">Отзывы</span></a></li>
+                <li><a href="/media/"><i class="fa-solid fa-play"></i><span data-translate="nav_media">Медиа</span></a></li>
             </ul>
             <div class="mobile-contact">
                 <a href="tel:+77054026181" class="mobile-phone">
@@ -148,14 +165,14 @@
             <div class="hero-content-prices">
                 <div class="hero-text-prices">
                     <div class="breadcrumb-prices">
-                        <a href="/">Главная</a>
+                        <a href="/" data-translate="nav_home">Главная</a>
                         <span class="separator">✦</span>
-                        <span>Цены</span>
+                        <span data-translate="nav_prices">Цены</span>
                     </div>
                     
                     <h1 class="hero-title-prices">
-                        <span class="title-word-prices" data-text="ПРАЙС">ПРАЙС</span>
-                        <span class="title-word-prices" data-text="ЛИСТ">ЛИСТ</span>
+                        <span class="title-word-prices" data-text="ПРАЙС" data-translate="price_list_title">ПРАЙС</span>
+                        <span class="title-word-prices" data-text="ЛИСТ" data-translate="price_list_subtitle">ЛИСТ</span>
                     </h1>
                     <div class="hero-features-prices">
                         <div class="feature-prices">
@@ -163,8 +180,8 @@
                                 <i class="fa-solid fa-money-bill"></i>
                             </div>
                             <div class="feature-content-prices">
-                                <h4>Фиксированные цены</h4>
-                                <p>Стоимость не изменится в процессе лечения</p>
+                                <h4 data-translate="fixed_prices_title">Фиксированные цены</h4>
+                                <p data-translate="fixed_prices_desc">Стоимость не изменится в процессе лечения</p>
                             </div>
                         </div>
                         
@@ -173,8 +190,8 @@
                                 <i class="fa-solid fa-handshake"></i>
                             </div>
                             <div class="feature-content-prices">
-                                <h4>Честное ценообразование</h4>
-                                <p>Никаких скрытых доплат и переплат</p>
+                                <h4 data-translate="honest_pricing_title">Честное ценообразование</h4>
+                                <p data-translate="honest_pricing_desc">Никаких скрытых доплат и переплат</p>
                             </div>
                         </div>
                         
@@ -183,8 +200,8 @@
                                 <i class="fa-solid fa-award"></i>
                             </div>
                             <div class="feature-content-prices">
-                                <h4>Качество гарантируем</h4>
-                                <p>2 года гарантии на все виды работ</p>
+                                <h4 data-translate="quality_guarantee_title">Качество гарантируем</h4>
+                                <p data-translate="quality_guarantee_desc">2 года гарантии на все виды работ</p>
                             </div>
                         </div>
                     </div>
@@ -192,12 +209,12 @@
                     <div class="hero-cta-prices">
                         <button class="scroll-to-prices-btn" onclick="PricesPageUtils.scrollToPrices()">
                             <i class="fa-solid fa-list"></i>
-                            <span>Посмотреть цены</span>
+                            <span data-translate="view_prices_btn">Посмотреть цены</span>
                             <div class="btn-ripple-prices"></div>
                         </button>
                         <a href="https://wa.me/77054026181?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию.%20Подскажите%2C%20пожалуйста%2C%20удобное%20время." class="consultation-btn-prices">
                             <i class="fa-solid fa-calendar-plus"></i>
-                            <span>Записаться на консультацию</span>
+                            <span data-translate="book_consultation_btn">Записаться на консультацию</span>
                         </a>
                     </div>
                 </div>
@@ -207,22 +224,22 @@
                         <div class="price-card-hero">
                             <div class="price-card-header">
                                 <i class="fa-solid fa-tooth"></i>
-                                <h3>Консультация</h3>
+                                <h3 data-translate="consultation_title">Консультация</h3>
                             </div>
                             <div class="price-card-price">
                                 <span class="price-value" data-service-key="Первичная консультация">5 000₸</span>
                             </div>
                             <div class="price-card-features">
-                                <div class="feature-item">✓ Полный осмотр</div>
-                                <div class="feature-item">✓ План лечения</div>
-                                <div class="feature-item">✓ Фиксированные цены</div>
+                                <div class="feature-item" data-translate="full_examination">✓ Полный осмотр</div>
+                                <div class="feature-item" data-translate="treatment_plan">✓ План лечения</div>
+                                <div class="feature-item" data-translate="fixed_prices">✓ Фиксированные цены</div>
                             </div>
                         </div>
                         
                         <div class="guarantee-badge">
                             <div>
                                 <strong>2 года</strong>
-                                <span>гарантии</span>
+                                <span data-translate="guarantee_text">гарантии</span>
                             </div>
                         </div>
                     </div>
@@ -235,12 +252,12 @@
     <section class="services-nav-section">
         <div class="container">
             <div class="services-nav-header">
-                <h2>Выберите интересующую услугу</h2>
-                <p>Все цены актуальны и обновляются в режиме реального времени из Google Sheets</p>
+                <h2 data-translate="choose_service_title">Выберите интересующую услугу</h2>
+                <p data-translate="prices_updated_desc">Все цены актуальны и обновляются в режиме реального времени из Google Sheets</p>
                 <div class="data-status">
                     <span id="dataStatus" class="status-loading">
                         <i class="fa-solid fa-spinner fa-spin"></i>
-                        Загрузка цен...
+                        <span data-translate="loading_prices">Загрузка цен...</span>
                     </span>
                     <span id="lastUpdate" class="last-update"></span>
                 </div>
@@ -249,31 +266,31 @@
             <div class="services-nav-tabs">
                 <button class="service-tab active" data-service="consultation">
                     <i class="fa-solid fa-user-doctor"></i>
-                    <span>Консультация</span>
+                    <span data-translate="consultation_tab">Консультация</span>
                 </button>
                 <button class="service-tab" data-service="hygiene">
                     <i class="fa-solid fa-star-of-life"></i>
-                    <span>Гигиена и эстетика</span>
+                    <span data-translate="hygiene_tab">Гигиена и эстетика</span>
                 </button>
                 <button class="service-tab" data-service="therapy">
                     <i class="fa-solid fa-tooth"></i>
-                    <span>Терапия</span>
+                    <span data-translate="therapy_tab">Терапия</span>
                 </button>
                 <button class="service-tab" data-service="endodontics">
                     <i class="fa-solid fa-microscope"></i>
-                    <span>Эндодонтия</span>
+                    <span data-translate="endodontics_tab">Эндодонтия</span>
                 </button>
                 <button class="service-tab" data-service="prosthetics">
                     <i class="fa-solid fa-crown"></i>
-                    <span>Протезирование</span>
+                    <span data-translate="prosthetics_tab">Протезирование</span>
                 </button>
                 <button class="service-tab" data-service="implantation">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
-                    <span>Имплантация</span>
+                    <span data-translate="implantation_tab">Имплантация</span>
                 </button>
                 <button class="service-tab" data-service="orthodontics">
                     <i class="fa-solid fa-grip-lines"></i>
-                    <span>Ортодонтия</span>
+                    <span data-translate="orthodontics_tab">Ортодонтия</span>
                 </button>
             </div>
         </div>
@@ -286,8 +303,8 @@
             <!-- Консультация -->
             <div class="service-content active" id="consultation">
                 <div class="service-header">
-                    <h2>Консультация</h2>
-                    <p>Профессиональная диагностика и составление плана лечения</p>
+                    <h2 data-translate="consultation_title">Консультация</h2>
+                    <p data-translate="consultation_desc">Профессиональная диагностика и составление плана лечения</p>
                 </div>
                 
                 <div class="services-list">
@@ -295,14 +312,12 @@
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                
                                 <img src="../img/online-cons.jpeg" class="img-icon">
-                               
                                 <div class="service-content-main">
-                                    <h3>Онлайн консультация</h3>
+                                    <h3 data-translate="online_consultation">Онлайн консультация</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="консультация без оплаты">от 3 000₸</span>
-                                         </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="expand-icon">
@@ -314,31 +329,31 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>30-60 минут</span>
+                                    <span data-translate="duration_30_60">30-60 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Что входит:</h4>
+                                    <h4 data-translate="whats_included">Что входит:</h4>
                                     <ul>
-                                        <li>Созвон по телефону</li>
-                                        <li>Определение по 3D снимку каждого зуба</li>
-                                        <li>Составление плана лечения с фиксированной ценой</li>
+                                        <li data-translate="phone_call">Созвон по телефону</li>
+                                        <li data-translate="3d_analysis">Определение по 3D снимку каждого зуба</li>
+                                        <li data-translate="treatment_plan_fixed">Составление плана лечения с фиксированной ценой</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-advantages">
-                                    <h4>Преимущества:</h4>
+                                    <h4 data-translate="advantages">Преимущества:</h4>
                                     <ul>
-                                        <li>Экономит время</li>
-                                        <li>Нет необходимости приходить на очную консультацию</li>
-                                        <li>Получите план лечения не выходя из дома</li>
+                                        <li data-translate="saves_time">Экономит время</li>
+                                        <li data-translate="no_visit_needed">Нет необходимости приходить на очную консультацию</li>
+                                        <li data-translate="plan_at_home">Получите план лечения не выходя из дома</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Онлайн консультация">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -351,7 +366,7 @@
                             <div class="service-info">
                                 <img src="../img/check-up.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Полный чек-ап консультация</h3>
+                                    <h3 data-translate="full_checkup">Полный чек-ап консультация</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Первичная консультация">5 000₸</span>
                                     </div>
@@ -366,23 +381,23 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>60-90 минут</span>
+                                    <span data-translate="duration_60_90">60-90 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Что входит:</h4>
+                                    <h4 data-translate="whats_included">Что входит:</h4>
                                     <ul>
-                                        <li>Чтение 3D или прицельных снимков</li>
-                                        <li>Осмотр полости рта под увеличением</li>
-                                        <li>Фотопротокол и анализ фото на компьютере</li>
-                                        <li>Составление плана лечения с фиксированной стоимостью</li>
-                                        <li>При необходимости привлечение дополнительных специалистов</li>
+                                        <li data-translate="xray_reading">Чтение 3D или прицельных снимков</li>
+                                        <li data-translate="magnified_exam">Осмотр полости рта под увеличением</li>
+                                        <li data-translate="photo_protocol">Фотопротокол и анализ фото на компьютере</li>
+                                        <li data-translate="treatment_plan_cost">Составление плана лечения с фиксированной стоимостью</li>
+                                        <li data-translate="additional_specialists">При необходимости привлечение дополнительных специалистов</li>
                                     </ul>
                                 </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Полный чек-ап консультация">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -394,8 +409,8 @@
             <!-- Гигиена и эстетика -->
             <div class="service-content" id="hygiene">
                 <div class="service-header">
-                    <h2>Гигиена и эстетика</h2>
-                    <p>Профессиональная чистка и отбеливание зубов</p>
+                    <h2 data-translate="hygiene_title">Гигиена и эстетика</h2>
+                    <p data-translate="hygiene_desc">Профессиональная чистка и отбеливание зубов</p>
                 </div>
                 
                 <div class="services-list">
@@ -405,9 +420,9 @@
                             <div class="service-info">
                                 <img src="../img/prof-hygiene.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Проф. гигиена (полная, частичная или ортодонтическая)</h3>
+                                    <h3 data-translate="prof_hygiene">Проф. гигиена (полная, частичная или ортодонтическая)</h3>
                                     <div class="service-price">
-                                        <span class="price-value" data-service-key="Проф. гигиена (полная, частичная или ортодонтическая)">20 000 - 30 000₸</span>                                        
+                                        <span class="price-value" data-service-key="Проф. гигиена (полная, частичная или ортодонтическая)">20 000 - 30 000₸</span>
                                     </div>
                                 </div>
                             </div>
@@ -420,24 +435,24 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>30-90 минут</span>
+                                    <span data-translate="duration_30_90">30-90 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Что входит:</h4>
+                                    <h4 data-translate="whats_included">Что входит:</h4>
                                     <ul>
-                                        <li>Снятие твердых зубных отложений</li>
-                                        <li>Чистка от темного и плотного налета аппаратом Airflow</li>
-                                        <li>Полирование эмали</li>
-                                        <li>Обучение гигиене полости рта и подбор средств гигиены</li>
+                                        <li data-translate="tartar_removal">Снятие твердых зубных отложений</li>
+                                        <li data-translate="airflow_cleaning">Чистка от темного и плотного налета аппаратом Airflow</li>
+                                        <li data-translate="enamel_polishing">Полирование эмали</li>
+                                        <li data-translate="hygiene_training">Обучение гигиене полости рта и подбор средств гигиены</li>
                                     </ul>
-                                    <h5>(Определяется все по показаниям индивидуально)</h5>
+                                    <h5 data-translate="individual_indication">(Определяется все по показаниям индивидуально)</h5>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Курс гигиены и ухода за зубами">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -450,7 +465,7 @@
                             <div class="service-info">
                                 <img src="../img/chistka.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Проф. гигиена ортодонтическая</h3>
+                                    <h3 data-translate="ortho_hygiene">Проф. гигиена ортодонтическая</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Проф.гигиена ортодонтическая">25 000₸</span>
                                     </div>
@@ -465,22 +480,22 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>90 минут</span>
+                                    <span data-translate="duration_90">90 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Что входит:</h4>
+                                    <h4 data-translate="whats_included">Что входит:</h4>
                                     <ul>
-                                        <li>Специальная чистка при брекетах</li>
-                                        <li>Удаление налета в труднодоступных местах</li>
-                                        <li>Профилактика кариеса</li>
+                                        <li data-translate="braces_cleaning">Специальная чистка при брекетах</li>
+                                        <li data-translate="hard_to_reach_cleaning">Удаление налета в труднодоступных местах</li>
+                                        <li data-translate="caries_prevention">Профилактика кариеса</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Профгигиена ортодонтическая">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -493,7 +508,7 @@
                             <div class="service-info">
                                 <img src="../img/beyond.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Кабинетное отбеливание системой Beyond</h3>
+                                    <h3 data-translate="beyond_whitening">Кабинетное отбеливание системой Beyond</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="отбеливание системой Beyond">80 000₸</span>
                                     </div>
@@ -508,23 +523,23 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>90 минут</span>
+                                    <span data-translate="duration_90">90 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Химическое отбеливание на американской системе Beyond</li>
-                                        <li>Отбеливание на 2-5 тонов</li>
-                                        <li>Результат от 6 месяцев до 2 лет</li>
-                                        <li>Обязательно нужна  консультация</li>
+                                        <li data-translate="beyond_chemical">Химическое отбеливание на американской системе Beyond</li>
+                                        <li data-translate="whitening_2_5_tones">Отбеливание на 2-5 тонов</li>
+                                        <li data-translate="result_6m_2y">Результат от 6 месяцев до 2 лет</li>
+                                        <li data-translate="consultation_required">Обязательно нужна консультация</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Отбеливание системой Beyond">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -537,7 +552,7 @@
                             <div class="service-info">
                                 <img src="../img/home-wh.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Домашнее отбеливание</h3>
+                                    <h3 data-translate="home_whitening">Домашнее отбеливание</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Домашнее отбеливание гель">67 000₸</span>
                                     </div>
@@ -551,33 +566,34 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>В стоимость входит:</h4>
+                                    <h4 data-translate="price_includes">В стоимость входит:</h4>
                                     <ul>
-                                        <li>2 каппы</li>
-                                        <li>1 тюбик отбеливающего геля</li>
+                                        <li data-translate="two_trays">2 каппы</li>
+                                        <li data-translate="one_gel_tube">1 тюбик отбеливающего геля</li>
                                     </ul>
                                 </div>
                                 <div class="service-note" style="text-align: left;">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Является дополнительным отбеливанием к системе Beyond (для улучшения результата)<br>Пациент проводит процедуру дома<br>Используется гель не выше 20% перекись карбамида</span>
+                                    <span data-translate="home_whitening_note">Является дополнительным отбеливанием к системе Beyond (для улучшения результата)<br>Пациент проводит процедуру дома<br>Используется гель не выше 20% перекись карбамида</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Домашнее отбеливание">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                     <!-- Работа с дисколоритами -->
+
+                    <!-- Работа с дисколоритами -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/discol.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Работа с дисколоритами (белыми и коричневыми пятнами в области улыбки)</h3>
+                                    <h3 data-translate="discoloration_work">Работа с дисколоритами (белыми и коричневыми пятнами в области улыбки)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="">20 000₸</span>
                                     </div>
@@ -590,42 +606,39 @@
                         
                         <div class="service-details">
                             <div class="details-content">
-                                Белые и тёмные пятна на зубах в зоне улыбки - это дисколориты, которые могут появляться после флюороза, травм, ношения брекетов или кариеса в начальной стадии. Даже при ровных и здоровых зубах они могут портить внешний вид улыбки и вызывать неуверенность.<br>В нашей клинике мы эффективно устраняем такие пятна с помощью современных и щадящих методик.<br>Процедура проводится без боли и бормашины, и уже после 1–2 посещений вы сможете увидеть заметный эстетический эффект. <br><br>
+                                <span data-translate="discoloration_desc">Белые и тёмные пятна на зубах в зоне улыбки - это дисколориты, которые могут появляться после флюороза, травм, ношения брекетов или кариеса в начальной стадии. Даже при ровных и здоровых зубах они могут портить внешний вид улыбки и вызывать неуверенность.<br>В нашей клинике мы эффективно устраняем такие пятна с помощью современных и щадящих методик.<br>Процедура проводится без боли и бормашины, и уже после 1–2 посещений вы сможете увидеть заметный эстетический эффект.</span><br><br>
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>60 минут</span>
+                                    <span data-translate="duration_60">60 минут</span>
                                 </div>
                                 <div class="service-note" style="text-align: left;">
-                                    <span>Количество посещений зависит от количества зубов и состояния потемневших участков (дисколоритов).</span>
+                                    <span data-translate="visits_depend">Количество посещений зависит от количества зубов и состояния потемневших участков (дисколоритов).</span>
                                 </div>
                                 <div class="service-note" style="text-align: left;">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Точный план лечения составляется только после консультации врача.</span>
+                                    <span data-translate="plan_after_consultation">Точный план лечения составляется только после консультации врача.</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    
-
-                    <!-- Осветление White Smile -->
+                    <!-- Эстетическое осветление -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/est-wh.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Эстетическое осветление</h3>
+                                    <h3 data-translate="aesthetic_lightening">Эстетическое осветление</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Осветление white smile">25 000₸</span>
                                     </div>
-                                    
                                 </div>
                             </div>
                             <div class="expand-icon">
@@ -637,44 +650,43 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>60-90 минут</span>
+                                    <span data-translate="duration_60_90">60-90 минут</span>
                                 </div>
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Щадящее осветление гелем 4% карбамида White Smile (Франция) на лампе холодного света</li>
-        
-                                        <li>Улыбка становится ярче и светлее на 1-2 тона</li>
-                                        <li>Результат от 6 мес до 1 года </li>
-                                        <li>Обязательно нужна консультация </li>
-
+                                        <li data-translate="gentle_lightening">Щадящее осветление гелем 4% карбамида White Smile (Франция) на лампе холодного света</li>
+                                        <li data-translate="smile_brighter_1_2">Улыбка становится ярче и светлее на 1-2 тона</li>
+                                        <li data-translate="result_6m_1y">Результат от 6 мес до 1 года</li>
+                                        <li data-translate="consultation_required">Обязательно нужна консультация</li>
                                     </ul>
                                 </div>
 
                                 <div class="service-note">
-                                    <span>Подходит тем кто боится радикальных решений,но при этом хотят улучшить свою улыбку.<br>При проведении с профессиональной гигиеной есть спец предложения (уточняйте у администратора)</span>
+                                    <span data-translate="suitable_for_cautious">Подходит тем кто боится радикальных решений,но при этом хотят улучшить свою улыбку.<br>При проведении с профессиональной гигиеной есть спец предложения (уточняйте у администратора)</span>
                                 </div>
-                                 <div class="service-note">
+                                <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Обязательно нужна консультация.</span>
+                                    <span data-translate="consultation_required">Обязательно нужна консультация.</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Осветление White Smile">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Внутрикоронковое отбеливание -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/kor-wh.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Внутрикоронковое отбеливание</h3>
+                                    <h3 data-translate="intracoronal_whitening">Внутрикоронковое отбеливание</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="внутрикоронковое отбеливание">29 000₸</span>
                                     </div>
@@ -687,40 +699,41 @@
                         
                         <div class="service-details">
                             <div class="details-content">
-                                 <div class="service-time">
+                                <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>60 минут</span>
+                                    <span data-translate="duration_60">60 минут</span>
                                 </div>
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Процедура предназначена для отбеливания потемневших зубов без нерва (после эндодонтического лечения).</li>
+                                        <li data-translate="intracoronal_desc">Процедура предназначена для отбеливания потемневших зубов без нерва (после эндодонтического лечения).</li>
                                     </ul>
                                 </div>
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Обязательно нужна консультация.</span>
+                                    <span data-translate="consultation_required">Обязательно нужна консультация.</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Внутрикоронковое отбеливание">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Обучение гигиене -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/hygiene-l.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Обучение гигиене полости рта с подбором индивидуальных средств гигиены</h3>
+                                    <h3 data-translate="hygiene_education">Обучение гигиене полости рта с подбором индивидуальных средств гигиены</h3>
                                     <div class="service-price">
-                                        <span class="price-value" data-service-key="Курс гигиены и ухода за зубами"> от 8 000₸</span>
-                                     </div>
+                                        <span class="price-value" data-service-key="Курс гигиены и ухода за зубами">от 8 000₸</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="expand-icon">
@@ -730,28 +743,28 @@
                         
                         <div class="service-details">
                             <div class="details-content">
-                                 <div class="service-time">
+                                <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>60 минут</span>
+                                    <span data-translate="duration_60">60 минут</span>
                                 </div>
-                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                <div class="service-includes">
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Врач объяснит, как правильно чистить зубы и использовать дополнительные средства (зубная нить, ирригатор, ёршики и др.)</li>
-                                        <li>Научитесь технике эффективной чистки с учётом особенностей прикуса и состояния дёсен</li>
-                                        <li>подберём индивидуальные средства гигиены, подходящие именно вам (щётка, паста, ополаскиватель, доп. средства)</li>
-                                        <li>Ответит на ваши вопросы и даст рекомендации, которые реально работают</li>
+                                        <li data-translate="doctor_explains">Врач объяснит, как правильно чистить зубы и использовать дополнительные средства (зубная нить, ирригатор, ёршики и др.)</li>
+                                        <li data-translate="learn_technique">Научитесь технике эффективной чистки с учётом особенностей прикуса и состояния дёсен</li>
+                                        <li data-translate="select_products">подберём индивидуальные средства гигиены, подходящие именно вам (щётка, паста, ополаскиватель, доп. средства)</li>
+                                        <li data-translate="answer_questions">Ответит на ваши вопросы и даст рекомендации, которые реально работают</li>
                                     </ul>
                                 </div>
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Средства идут за отдельную стоимость (зависит от бренда).</span>
+                                    <span data-translate="products_separate_cost">Средства идут за отдельную стоимость (зависит от бренда).</span>
                                 </div>
                                 
                                 <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Внутрикоронковое отбеливание">
+                                    <button class="book-service-btn" data-service="Обучение гигиене">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -763,8 +776,8 @@
             <!-- Терапия -->
             <div class="service-content" id="therapy">
                 <div class="service-header">
-                    <h2>Терапия</h2>
-                    <p>Лечение кариеса и восстановление зубов</p>
+                    <h2 data-translate="therapy_title">Терапия</h2>
+                    <p data-translate="therapy_desc">Лечение кариеса и восстановление зубов</p>
                 </div>
                 
                 <div class="services-list">
@@ -772,12 +785,11 @@
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                       <img src="../img/karies1.png" class="img-icon">
+                                <img src="../img/karies1.png" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Лечение поверхностного кариеса</h3>
+                                    <h3 data-translate="surface_caries">Лечение поверхностного кариеса</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="реставрация поверхностный кариес">28 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -790,28 +802,25 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>60-90 минут</span>
+                                    <span data-translate="duration_60_90">60-90 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Лечение кариеса в пределах эмали</li>
-                                        <li>Поверхностная кариозная полость</li>
-                                        <li>Гарантия 2 года</li>
+                                        <li data-translate="enamel_caries">Лечение кариеса в пределах эмали</li>
+                                        <li data-translate="surface_cavity">Поверхностная кариозная полость</li>
+                                        <li data-translate="warranty_2_years">Гарантия 2 года</li>
                                     </ul>
                                 </div>
-                                     <div class="service-note">
+                                <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span> Продолжительность процедуры зависит от количества обрабатываемых зубов.
-В среднем работа занимает от 1,5 до 2 часов.
-При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения.
-Уточняйте подробности у администратора клиники.</span>
+                                    <span data-translate="procedure_duration_note">Продолжительность процедуры зависит от количества обрабатываемых зубов. В среднем работа занимает от 1,5 до 2 часов. При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения. Уточняйте подробности у администратора клиники.</span>
                                 </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="реставрация поверхностный кариес">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -822,16 +831,11 @@
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <!-- <div class="price-icon-karies karies-m">
-                                    <i class="fa-solid fa-tooth"></i>
-                                </div> -->
                                 <img src="../img/karies2.png" class="img-icon">
-
                                 <div class="service-content-main">
-                                    <h3>Лечение среднего кариеса</h3>
+                                    <h3 data-translate="medium_caries">Лечение среднего кариеса</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="реставрация средний кариес">31 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -844,28 +848,25 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>от 90-120 минут</span>
+                                    <span data-translate="duration_90_120">от 90-120 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Поражение дентина</li>
-                                        <li>Средняя кариозная полость</li>
-                                        <li>Гарантия 2 года</li>
+                                        <li data-translate="dentin_damage">Поражение дентина</li>
+                                        <li data-translate="medium_cavity">Средняя кариозная полость</li>
+                                        <li data-translate="warranty_2_years">Гарантия 2 года</li>
                                     </ul>
                                 </div>
-                                     <div class="service-note">
+                                <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span> Продолжительность процедуры зависит от количества обрабатываемых зубов.
-В среднем работа занимает от 1,5 до 2 часов.
-При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения.
-Уточняйте подробности у администратора клиники.</span>
+                                    <span data-translate="procedure_duration_note">Продолжительность процедуры зависит от количества обрабатываемых зубов. В среднем работа занимает от 1,5 до 2 часов. При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения. Уточняйте подробности у администратора клиники.</span>
                                 </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="реставрация средний кариес">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -876,15 +877,11 @@
                     <div class="service-item featured">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <!-- <div class="price-icon-karies karies-l">
-                                    <i class="fa-solid fa-tooth"></i>
-                                </div> -->
                                 <img src="../img/karies3.png" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Лечение глубокого кариеса</h3>
+                                    <h3 data-translate="deep_caries">Лечение глубокого кариеса</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="лечение глубокого кариеса">39 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -897,28 +894,25 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>от 90-120 минут</span>
+                                    <span data-translate="duration_90_120">от 90-120 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Близко к пульпе</li>
-                                        <li>Глубокая кариозная полость</li>
-                                        <li>Гарантия 2 года</li>
+                                        <li data-translate="close_to_pulp">Близко к пульпе</li>
+                                        <li data-translate="deep_cavity">Глубокая кариозная полость</li>
+                                        <li data-translate="warranty_2_years">Гарантия 2 года</li>
                                     </ul>
                                 </div>
-                                     <div class="service-note">
+                                <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span> Продолжительность процедуры зависит от количества обрабатываемых зубов.
-В среднем работа занимает от 1,5 до 2 часов.
-При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения.
-Уточняйте подробности у администратора клиники.</span>
+                                    <span data-translate="procedure_duration_note">Продолжительность процедуры зависит от количества обрабатываемых зубов. В среднем работа занимает от 1,5 до 2 часов. При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения. Уточняйте подробности у администратора клиники.</span>
                                 </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="лечение глубокого кариеса">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -931,7 +925,7 @@
                             <div class="service-info">
                                 <img src="../img/rest.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Реставрация фронтального зуба</h3>
+                                    <h3 data-translate="frontal_restoration">Реставрация фронтального зуба</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="реставрация фронт.зубов">45 000₸</span>
                                     </div>
@@ -946,43 +940,39 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>от 90-120 минут</span>
+                                    <span data-translate="duration_90_120">от 90-120 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Эстетическая реставрация передних зубов</li>
-                                        <li>Восстановление формы и цвета</li>
-                                        <li>Гарантия 2 года</li>
+                                        <li data-translate="aesthetic_restoration">Эстетическая реставрация передних зубов</li>
+                                        <li data-translate="shape_color_restoration">Восстановление формы и цвета</li>
+                                        <li data-translate="warranty_2_years">Гарантия 2 года</li>
                                     </ul>
                                 </div>
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span> Продолжительность процедуры зависит от количества обрабатываемых зубов.
-В среднем работа занимает от 1,5 до 2 часов.
-При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения.
-Уточняйте подробности у администратора клиники.</span>
+                                    <span data-translate="procedure_duration_note">Продолжительность процедуры зависит от количества обрабатываемых зубов. В среднем работа занимает от 1,5 до 2 часов. При подготовке более трёх зубов время увеличивается и может составлять свыше 2 часов.<br>При лечении двух и более зубов действуют специальные предложения. Уточняйте подробности у администратора клиники.</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Реставрация фронтального зуба">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <!-- Эндодонтия -->
             <div class="service-content" id="endodontics">
                 <div class="service-header">
-                    <h2>Эндодонтия</h2>
-                    <p>Лечение корневых каналов под микроскопом</p>
+                    <h2 data-translate="endodontics_title">Эндодонтия</h2>
+                    <p data-translate="endodontics_desc">Лечение корневых каналов под микроскопом</p>
                 </div>
                 
                 <div class="services-list">
@@ -992,17 +982,17 @@
                             <div class="service-info">
                                 <img src="../img/endo1.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Первичное эндо (пульпит и осложнения кариеса)</h3>
+                                    <h3 data-translate="primary_endo">Первичное эндо (пульпит и осложнения кариеса)</h3>
                                     <div class="service-price">
-                                        <span>1 канальный - </span>
+                                        <span data-translate="one_canal">1 канальный - </span>
                                         <span class="price-smaller" data-service-key="Первичное эндо 1 канальный">96 000₸</span>
                                     </div>
                                     <div class="service-price">
-                                        <span>2 канальный - </span>
+                                        <span data-translate="two_canal">2 канальный - </span>
                                         <span class="price-smaller" data-service-key="Первичное эндо 2 канальный">109 000₸</span>
                                     </div>
                                     <div class="service-price">
-                                        <span>3 канальный - </span>
+                                        <span data-translate="three_canal">3 канальный - </span>
                                         <span class="price-smaller" data-service-key="Первичное эндо 3 канальный">122 000₸</span>
                                     </div>
                                 </div>
@@ -1016,50 +1006,51 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>120 минут</span>
+                                    <span data-translate="duration_120">120 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>В стоимость входит:</h4>
+                                    <h4 data-translate="price_includes">В стоимость входит:</h4>
                                     <ul>
-                                        <li>Механическая и медикаментозная обработка корневых каналов</li>
-                                        <li>Рентген снимки на этапе и контроле лечения</li>
-                                        <li>Временное и постоянное пломбирование корневых каналов</li>
-                                        <li>Временная и постоянная реставрация</li>
-                                        <li>Для удобства пациентов оплата производится поэтапно в два приёма</li>
-                                        <li>Оплата производится по факту лечения (поэтапно)</li>
+                                        <li data-translate="mechanical_treatment">Механическая и медикаментозная обработка корневых каналов</li>
+                                        <li data-translate="xray_control">Рентген снимки на этапе и контроле лечения</li>
+                                        <li data-translate="temp_perm_filling">Временное и постоянное пломбирование корневых каналов</li>
+                                        <li data-translate="temp_perm_restoration">Временная и постоянная реставрация</li>
+                                        <li data-translate="staged_payment">Для удобства пациентов оплата производится поэтапно в два приёма</li>
+                                        <li data-translate="payment_by_fact">Оплата производится по факту лечения (поэтапно)</li>
                                     </ul>
                                 </div>
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Проводится в 2 посещения.</span>
+                                    <span data-translate="two_visits">Проводится в 2 посещения.</span>
                                 </div>
                                 <div class="service-actions">
-                                    <button class="book-service-btn" data-service="">
+                                    <button class="book-service-btn" data-service="Первичное эндо">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Повторное эндо -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/endo2.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Повторное эндо (лечение периодонтита и его осложнений)</h3>
+                                    <h3 data-translate="repeat_endo">Повторное эндо (лечение периодонтита и его осложнений)</h3>
                                     <div class="service-price">
-                                        <span>1 канальный - </span>
+                                        <span data-translate="one_canal">1 канальный - </span>
                                         <span class="price-smaller" data-service-key="Повторное эндо 1 канальный">110 000₸</span>
                                     </div>
                                     <div class="service-price">
-                                        <span>2 канальный - </span>
+                                        <span data-translate="two_canal">2 канальный - </span>
                                         <span class="price-smaller" data-service-key="Повторное эндо 2 канальный">121 000₸</span>
                                     </div>
                                     <div class="service-price">
-                                        <span>3 канальный - </span>
+                                        <span data-translate="three_canal_more">3 канальный - </span>
                                         <span class="price-smaller" data-service-key="Повторное эндо 3 канальный и более">от 140 000₸</span>
                                     </div>
                                 </div>
@@ -1073,52 +1064,50 @@
                             <div class="details-content">
                                 <div class="service-time">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>120 минут</span>
+                                    <span data-translate="duration_120">120 минут</span>
                                 </div>
                                 
                                 <div class="service-includes">
-                                    <h4>В стоимость входит:</h4>
+                                    <h4 data-translate="price_includes">В стоимость входит:</h4>
                                     <ul>
-                                        <li>Распломбирование корневых каналов</li>
-                                        <li>Механическая и медикаментозная обработка корневых каналов</li>
-                                        <li>Рентген снимки на этапе контроле лечения </li>
-                                        <li>Временное и постоянное пломбирование каналов</li>
-                                        <li>Временная и постоянная реставрация</li>
+                                        <li data-translate="canal_unfilling">Распломбирование корневых каналов</li>
+                                        <li data-translate="mechanical_treatment">Механическая и медикаментозная обработка корневых каналов</li>
+                                        <li data-translate="xray_control">Рентген снимки на этапе контроле лечения</li>
+                                        <li data-translate="temp_perm_canal_filling">Временное и постоянное пломбирование каналов</li>
+                                        <li data-translate="temp_perm_restoration">Временная и постоянная реставрация</li>
                                     </ul>
                                 </div>
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Проводится в 2 посещения.</span>
+                                    <span data-translate="two_visits">Проводится в 2 посещения.</span>
                                 </div>
                                 <div class="service-actions">
-                                    <button class="book-service-btn" data-service="">
+                                    <button class="book-service-btn" data-service="Повторное эндо">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                    
             </div>
 
             <!-- Протезирование -->
             <div class="service-content" id="prosthetics">
                 <div class="service-header">
-                    <h2>Протезирование</h2>
-                    <p>Восстановление зубов коронками и винирами</p>
+                    <h2 data-translate="prosthetics_title">Протезирование</h2>
+                    <p data-translate="prosthetics_desc">Восстановление зубов коронками и винирами</p>
                 </div>
                 
                 <div class="services-list">
-                    
                     <!-- Коронки на импланте -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/kor-impl.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Коронки на импланте</h3>
+                                    <h3 data-translate="implant_crowns">Коронки на импланте</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Коронки на импланте">от 150 000₸</span>
                                     </div>
@@ -1131,51 +1120,49 @@
                         
                         <div class="service-details">
                             <div class="details-content">
-                                  <div class="service-includes">
+                                <div class="service-includes">
                                     <div class="service-price">
-                                        <span>Цирконевая коронка на импланте Ankylos - </span>
+                                        <span data-translate="zirconia_ankylos">Цирконевая коронка на импланте Ankylos - </span>
                                         <span class="price-smaller" data-service-key="цирконевая коронка на импланте Ankylos">245 000₸</span>
                                     </div>
 
                                     <div class="service-price">
-                                        <span>Цирконевая коронка на импланте Neo dent - </span>
+                                        <span data-translate="zirconia_neodent">Цирконевая коронка на импланте Neo dent - </span>
                                         <span class="price-smaller" data-service-key="цирконевая коронка на импланте Neo dent">155 000₸</span>
-                                        
                                     </div>
 
                                     <div class="service-price">
-                                        <span>Цирконевая коронка на импланте Root - </span>
+                                        <span data-translate="zirconia_root">Цирконевая коронка на импланте Root - </span>
                                         <span class="price-smaller" data-service-key="цирконевая коронка на импланте Root">150 000₸</span>
                                     </div>
 
                                     <div class="service-price">
-                                        <span>Цирконевая коронка на импланте Straumann - </span>
+                                        <span data-translate="zirconia_straumann">Цирконевая коронка на импланте Straumann - </span>
                                         <span class="price-smaller" data-service-key="Цирконевая коронка на импланте straumann">290 000₸</span>
                                     </div>
 
                                     <div class="service-price">
-                                        <span>Циркониевая коронка на импланте BioHorizons - </span>
+                                        <span data-translate="zirconia_biohorizons">Циркониевая коронка на импланте BioHorizons - </span>
                                         <span class="price-smaller" data-service-key="Циркониевая коронка на импланте BioHorizons">от 175 000₸</span>
                                     </div>
 
                                     <div class="service-price">
-                                         <span>Циркониевая коронка на импланте Mega Gen - </span>
+                                        <span data-translate="zirconia_megagen">Циркониевая коронка на импланте Mega Gen - </span>
                                         <span class="price-smaller" data-service-key="циркониевая коронка на импланте Mega Gen">180 000₸</span>
                                     </div>
                                 </div>
-                                     <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Коронка на импланте — финальный этап восстановления зуба<br>После установки импланта следующим шагом становится фиксация коронки она завершает процесс имплантации и полностью восстанавливает зуб.<br>Коронка изготавливается индивидуально:<br><br>
-                    
+                                <div class="service-includes">
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="implant_crown_desc">Коронка на импланте — финальный этап восстановления зуба<br>После установки импланта следующим шагом становится фиксация коронки она завершает процесс имплантации и полностью восстанавливает зуб.<br>Коронка изготавливается индивидуально:</span><br><br>
                                 </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Коронки на импланте">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
-                        </div><br>
+                        </div>
                     </div>
                     
                     <!-- Снятие слепка с 1 челюсти -->
@@ -1184,10 +1171,9 @@
                             <div class="service-info">
                                 <img src="../img/slepok.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Снятие слепка с 1 челюсти</h3>
+                                    <h3 data-translate="impression_taking">Снятие слепка с 1 челюсти</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Снятие слепка с 1 челюсти">10 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1198,16 +1184,16 @@
                         
                         <div class="service-details">
                             <div class="details-content">
-                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                <div class="service-includes">
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Процедура, при которой стоматолог с помощью специального материала снимает точный слепок зубов одной челюсти. Используется для изготовления кап, брекетов, коронок и других конструкций.</li>
+                                        <li data-translate="impression_desc">Процедура, при которой стоматолог с помощью специального материала снимает точный слепок зубов одной челюсти. Используется для изготовления кап, брекетов, коронок и других конструкций.</li>
                                     </ul>
                                 </div>
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Снятие слепков одной челюсти (ортодонтия)">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1220,10 +1206,9 @@
                             <div class="service-info">
                                 <img src="../img/cirk-kor.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Циркониевая коронка на свои зубы</h3>
+                                    <h3 data-translate="zirconia_crown_own">Циркониевая коронка на свои зубы</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="коронка циркониевая">115 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1235,20 +1220,20 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Если зуб сильно разрушен, потемнел после лечения или потерял эстетику — циркониевая коронка помогает восстановить его форму, цвет и функцию.<br>Она надёжно закрывает зуб, защищает его от дальнейшего разрушения и возвращает естественный вид.<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="zirconia_crown_desc">Если зуб сильно разрушен, потемнел после лечения или потерял эстетику — циркониевая коронка помогает восстановить его форму, цвет и функцию.<br>Она надёжно закрывает зуб, защищает его от дальнейшего разрушения и возвращает естественный вид.</span><br><br>
                                     <ul>
-                                        <li>Максимально естественный цвет</li>
-                                        <li>Без металла — гипоаллергенно и безопасно</li>
-                                        <li>Подходит для передних и жевательных зубов</li>
-                                        <li>Устойчива к нагрузкам и износу</li>
+                                        <li data-translate="natural_color">Максимально естественный цвет</li>
+                                        <li data-translate="no_metal">Без металла — гипоаллергенно и безопасно</li>
+                                        <li data-translate="front_chewing">Подходит для передних и жевательных зубов</li>
+                                        <li data-translate="durable">Устойчива к нагрузкам и износу</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Циркониевая коронка">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1261,10 +1246,9 @@
                             <div class="service-info">
                                 <img src="../img/emax-ker.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Керамическая коронка EMAX на свои зубы</h3>
+                                    <h3 data-translate="emax_crown_own">Керамическая коронка EMAX на свои зубы</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="коронка керамическая ЕМАХ">115 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1276,21 +1260,21 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Если зуб потемнел, скололся или потерял форму — керамическая коронка E.max идеально восстанавливает эстетику и прочность зуба.<br>Изготовленная из литийдисиликатной керамики, она отличается прозрачностью и блеском, максимально имитируя натуральную эмаль.<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="emax_crown_desc">Если зуб потемнел, скололся или потерял форму — керамическая коронка E.max идеально восстанавливает эстетику и прочность зуба.<br>Изготовленная из литийдисиликатной керамики, она отличается прозрачностью и блеском, максимально имитируя натуральную эмаль.</span><br><br>
                                     <ul>
-                                        <li>Безупречный внешний вид — «как свой зуб»</li>
-                                        <li>Без металла — полностью биосовместима</li>
-                                        <li>Подходит для передних зубов и зоны улыбки</li>
-                                        <li>Высокая прочность и долговечность</li>
+                                        <li data-translate="perfect_appearance">Безупречный внешний вид — «как свой зуб»</li>
+                                        <li data-translate="no_metal">Без металла — полностью биосовместима</li>
+                                        <li data-translate="front_teeth">Подходит для передних зубов и зоны улыбки</li>
+                                        <li data-translate="high_strength">Высокая прочность и долговечность</li>
                                     </ul>
-                                   Идеальный выбор, если вы цените не только функциональность, но и совершенную эстетику.
+                                    <span data-translate="ideal_choice">Идеальный выбор, если вы цените не только функциональность, но и совершенную эстетику.</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Керамическая коронка EMAX">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1303,10 +1287,9 @@
                             <div class="service-info">
                                 <img src="../img/veneers.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Винир керамический EMAX</h3>
+                                    <h3 data-translate="emax_veneer">Винир керамический EMAX</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="винир керамика ЕМАХ">125 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1318,27 +1301,25 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Если вы мечтаете о голливудской улыбке — керамический винир Emax поможет воплотить это в реальность. Emax — это премиум-керамика с естественным блеском и цветом, которая идеально сливается с вашими зубами.<br>Тонкая, прочная накладка на переднюю поверхность зуба позволяет скрыть любые эстетические несовершенства: сколы, потемнение эмали.<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="emax_veneer_desc">Если вы мечтаете о голливудской улыбке — керамический винир Emax поможет воплотить это в реальность. Emax — это премиум-керамика с естественным блеском и цветом, которая идеально сливается с вашими зубами.<br>Тонкая, прочная накладка на переднюю поверхность зуба позволяет скрыть любые эстетические несовершенства: сколы, потемнение эмали.</span><br><br>
                                     <ul>
-                                        <li>Максимально естественный результат</li>
-                                        <li>Долговечность и прочность</li>
-                                        <li>Биосовместимость и отсутствие металла</li>
-                                        <li>Минимальное вмешательство в ткань зуба</li>
+                                        <li data-translate="natural_result">Максимально естественный результат</li>
+                                        <li data-translate="durability">Долговечность и прочность</li>
+                                        <li data-translate="biocompatibility">Биосовместимость и отсутствие металла</li>
+                                        <li data-translate="minimal_intervention">Минимальное вмешательство в ткань зуба</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Винир керамический EMAX">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                  
 
                     <!-- Керамическая вкладка EMAX -->
                     <div class="service-item">
@@ -1346,10 +1327,9 @@
                             <div class="service-info">
                                 <img src="../img/vkladka-ker.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Керамическая вкладка EMAX на свои зубы</h3>
+                                    <h3 data-translate="emax_inlay">Керамическая вкладка EMAX на свои зубы</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="вкладка керамическая ЕМАХ">90 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1361,70 +1341,35 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Керамическая вкладка Emax - это современное решение для восстановления зуба, когда пломба уже неэффективна.<br>Она точно повторяет форму зуба, восстанавливает жевательную функцию и выглядит максимально естественно.<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="emax_inlay_desc">Керамическая вкладка Emax - это современное решение для восстановления зуба, когда пломба уже неэффективна.<br>Она точно повторяет форму зуба, восстанавливает жевательную функцию и выглядит максимально естественно.</span><br><br>
                                     <ul>
-                                        <li>Высокая прочность и долговечность</li>
-                                        <li>Идеальное прилегание и комфорт</li>
-                                        <li>Не темнеет и не стирается</li>
-                                        <li>Безопасна для организма</li>
+                                        <li data-translate="high_strength">Высокая прочность и долговечность</li>
+                                        <li data-translate="perfect_fit">Идеальное прилегание и комфорт</li>
+                                        <li data-translate="no_darkening">Не темнеет и не стирается</li>
+                                        <li data-translate="safe_body">Безопасна для организма</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Керамическая вкладка EMAX">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Временная коронка прямой метод -->
                     <div class="service-item featured">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/vrem-kor-pryamoy.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Временная коронка прямой метод</h3>
+                                    <h3 data-translate="temp_crown_direct">Временная коронка прямой метод</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="временная коронка прямой метод">10 000₸</span>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    <ul>
-                                        <li>Решение для защиты обточенного зуба перед установкой постоянной конструкции.</li>
-                                    </ul>
-                                </div>
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="временная коронка прямой метод">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- Временная коронка cad cam на свои зубы -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src="../img/kor-camcad.jpeg" class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Временная коронка cad cam на свои зубы</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="временная пластмассовая коронка cad/cam">30 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1436,29 +1381,63 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Решение для защиты обточенного зуба перед установкой постоянной конструкции.</li>
+                                        <li data-translate="temp_crown_desc">Решение для защиты обточенного зуба перед установкой постоянной конструкции.</li>
                                     </ul>
                                 </div>
                                 <div class="service-actions">
-                                    <button class="book-service-btn" data-service="временная пластмассовая коронка cad/cam">
+                                    <button class="book-service-btn" data-service="временная коронка прямой метод">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Временная коронка cad cam на свои зубы -->
+                    <div class="service-item">
+                        <div class="service-main" onclick="toggleServiceDetails(this)">
+                            <div class="service-info">
+                                <img src="../img/kor-camcad.jpeg" class="img-icon">
+                                <div class="service-content-main">
+                                    <h3 data-translate="temp_crown_cadcam">Временная коронка cad cam на свои зубы</h3>
+                                    <div class="service-price">
+                                        <span class="price-value" data-service-key="временная пластмассовая коронка cad/cam">30 000₸</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="expand-icon">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="service-details">
+                            <div class="details-content">
+                                <div class="service-includes">
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <ul>
+                                        <li data-translate="temp_crown_desc">Решение для защиты обточенного зуба перед установкой постоянной конструкции.</li>
+                                    </ul>
+                                </div>
+                                <div class="service-actions">
+                                    <button class="book-service-btn" data-service="временная пластмассовая коронка cad/cam">
+                                        <i class="fa-solid fa-calendar-plus"></i>
+                                        <span data-translate="book_btn">Записаться</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Имплантация и хирургия -->
             <div class="service-content" id="implantation">
                 <div class="service-header">
-                    <h2>Имплантация и хирургия</h2>
-                    <p>Восстановление зубов с помощью имплантатов</p>
+                    <h2 data-translate="implantation_title">Имплантация и хирургия</h2>
+                    <p data-translate="implantation_desc">Восстановление зубов с помощью имплантатов</p>
                 </div>
                 
                 <div class="services-list">
@@ -1468,10 +1447,9 @@
                             <div class="service-info">
                                 <img src="../img/straumann-implants.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Имплантат Straumann</h3>
+                                    <h3 data-translate="straumann_implant">Имплантат Straumann</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Имплантат shtraumn">395 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1483,19 +1461,19 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Швейцарские имплантаты премиум класса</li>
-                                        <li>Высокая приживаемость 99%</li>
-                                        <li>Пожизненная гарантия</li>
-                                        <li>Быстрая остеоинтеграция</li>
+                                        <li data-translate="swiss_premium">Швейцарские имплантаты премиум класса</li>
+                                        <li data-translate="high_integration_99">Высокая приживаемость 99%</li>
+                                        <li data-translate="lifetime_warranty">Пожизненная гарантия</li>
+                                        <li data-translate="fast_integration">Быстрая остеоинтеграция</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Имплантат Straumann">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1508,10 +1486,9 @@
                             <div class="service-info">
                                 <img src="../img/neodent-implants.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Имплантат Neo Dent</h3>
+                                    <h3 data-translate="neodent_implant">Имплантат Neo Dent</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="имплантат системы Neo Dent">170 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1523,18 +1500,18 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Современные имплантаты от европейского бренда (Группа Straumann)</li>
-                                        <li>Быстро приживаются — обычно за 1–2 месяца</li>
-                                        <li>Надёжные и безопасные</li>
+                                        <li data-translate="modern_european">Современные имплантаты от европейского бренда (Группа Straumann)</li>
+                                        <li data-translate="fast_integration_1_2">Быстро приживаются — обычно за 1–2 месяца</li>
+                                        <li data-translate="reliable_safe">Надёжные и безопасные</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Иимплантат системы Neo Dent">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1547,10 +1524,9 @@
                             <div class="service-info">
                                 <img src="../img/ankylos-implants.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Имплантат Ankylos (Германия)</h3>
+                                    <h3 data-translate="ankylos_implant">Имплантат Ankylos (Германия)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Ankylos импланты (германия)">320 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1562,19 +1538,19 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Немецкие имплантаты высокого качества</li>
-                                        <li>Уникальная система соединения</li>
-                                        <li>Отличная эстетика</li>
-                                        <li>Долговечность</li>
+                                        <li data-translate="german_quality">Немецкие имплантаты высокого качества</li>
+                                        <li data-translate="unique_connection">Уникальная система соединения</li>
+                                        <li data-translate="excellent_aesthetics">Отличная эстетика</li>
+                                        <li data-translate="durability">Долговечность</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Имплантат Ankylos">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1587,10 +1563,9 @@
                             <div class="service-info">
                                 <img src="../img/biohorizons-implants.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Имплантат BioHorizons</h3>
+                                    <h3 data-translate="biohorizons_implant">Имплантат BioHorizons</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="имплантат Biohorizont">260 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1602,19 +1577,19 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Американские имплантаты</li>
-                                        <li>Надежная фиксация</li>
-                                        <li>Хорошая приживаемость</li>
-                                        <li>Оптимальное соотношение цена-качество</li>
+                                        <li data-translate="american_implants">Американские имплантаты</li>
+                                        <li data-translate="reliable_fixation">Надежная фиксация</li>
+                                        <li data-translate="good_integration">Хорошая приживаемость</li>
+                                        <li data-translate="optimal_price_quality">Оптимальное соотношение цена-качество</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Имплантат BioHorizons">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1627,10 +1602,9 @@
                             <div class="service-info">
                                 <img src="../img/sinus.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Синус-лифтинг</h3>
+                                    <h3 data-translate="sinus_lift">Синус-лифтинг</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="синус лифтинг">300 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1642,19 +1616,19 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Увеличение объема костной ткани</li>
-                                        <li>Подготовка к имплантации</li>
-                                        <li>Современные материалы</li>
-                                        <li>Минимальная травматичность</li>
+                                        <li data-translate="bone_volume_increase">Увеличение объема костной ткани</li>
+                                        <li data-translate="implant_preparation">Подготовка к имплантации</li>
+                                        <li data-translate="modern_materials">Современные материалы</li>
+                                        <li data-translate="minimal_trauma">Минимальная травматичность</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Синус-лифтинг">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1667,10 +1641,9 @@
                             <div class="service-info">
                                 <img src="../img/removal.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Удаление зуба простое</h3>
+                                    <h3 data-translate="simple_extraction">Удаление зуба простое</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="удаление зуба простое (без анестезии)">23 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1682,24 +1655,24 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Атравматичное удаление</li>
-                                        <li>Современные инструменты</li>
-                                        <li>Минимальный дискомфорт</li>
-                                        <li>Быстрое заживление</li>
+                                        <li data-translate="atraumatic_extraction">Атравматичное удаление</li>
+                                        <li data-translate="modern_instruments">Современные инструменты</li>
+                                        <li data-translate="minimal_discomfort">Минимальный дискомфорт</li>
+                                        <li data-translate="fast_healing">Быстрое заживление</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Анестезия оплачивается отдельно</span>
+                                    <span data-translate="anesthesia_separate">Анестезия оплачивается отдельно</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Удаление зуба простое">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1712,10 +1685,9 @@
                             <div class="service-info">
                                 <img src="../img/mudr.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Удаление зуба мудрости</h3>
+                                    <h3 data-translate="wisdom_extraction">Удаление зуба мудрости</h3>
                                     <div class="service-price">
-                                        <span class="price-value" data-service-key="удаление третьих моляров(зуб мудрости )">34 500</span>
-                                        
+                                        <span class="price-value" data-service-key="удаление третьих моляров(зуб мудрости )">34 500₸</span>
                                     </div>
                                 </div>
                             </div>
@@ -1727,24 +1699,24 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Удаление третьих моляров</li>
-                                        <li>Сложное хирургическое вмешательство</li>
-                                        <li>Современные методики</li>
-                                        <li>Послеоперационное наблюдение</li>
+                                        <li data-translate="third_molars">Удаление третьих моляров</li>
+                                        <li data-translate="complex_surgery">Сложное хирургическое вмешательство</li>
+                                        <li data-translate="modern_techniques">Современные методики</li>
+                                        <li data-translate="postop_monitoring">Послеоперационное наблюдение</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Анестезия оплачивается отдельно</span>
+                                    <span data-translate="anesthesia_separate">Анестезия оплачивается отдельно</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Удаление зуба мудрости">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
@@ -1756,22 +1728,20 @@
             <!-- Ортодонтия -->
             <div class="service-content" id="orthodontics">
                 <div class="service-header">
-                    <h2>Ортодонтия</h2>
-                    <p>Исправление прикуса и выравнивание зубов</p>
+                    <h2 data-translate="orthodontics_title">Ортодонтия</h2>
+                    <p data-translate="orthodontics_desc">Исправление прикуса и выравнивание зубов</p>
                 </div>
                 
                 <div class="services-list">
-
-                     <!-- Консультация ортодонта -->
+                    <!-- Консультация ортодонта -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/ortho-cons.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Консультация стоматолога-ортодонта</h3>
+                                    <h3 data-translate="ortho_consultation">Консультация стоматолога-ортодонта</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Консультация стоматолога- ортодонта">5 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1783,36 +1753,34 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Оценка прикуса и положения зубов</li>
-                                        <li>Составление индивидуального плана лечения</li>
-                                        <li>Ответы на все ваши вопросы</li>
-                                        <li>Первичный осмотр и рекомендации от специалиста</li>
+                                        <li data-translate="bite_assessment">Оценка прикуса и положения зубов</li>
+                                        <li data-translate="individual_plan">Составление индивидуального плана лечения</li>
+                                        <li data-translate="answer_questions">Ответы на все ваши вопросы</li>
+                                        <li data-translate="initial_exam">Первичный осмотр и рекомендации от специалиста</li>
                                     </ul>
-
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Консультация стоматолога- ортодонта">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Диагностика (фотопротокол, изготовление гипсовых моделей, анализ 3д и расчет ТРГ) -->
+                    <!-- Диагностика -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/diagnost.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Диагностика (фотопротокол, изготовление гипсовых моделей, анализ 3д и расчет ТРГ)</h3>
+                                    <h3 data-translate="ortho_diagnostics">Диагностика (фотопротокол, изготовление гипсовых моделей, анализ 3д и расчет ТРГ)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Диагностика (фотопротокол, изготовление гипсовых моделей, анализ 3д и расчет ТРГ)">5 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1824,33 +1792,32 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Фотопротокол (внутриротовые и внешние фотографии)</li>
-                                        <li>Изготовление гипсовых моделей челюстей</li>
-                                        <li>3D-анализ прикуса и положения зубов</li>
-                                        <li>Расчёт ТРГ (телерентгенограммы) для оценки пропорций лица</li>
+                                        <li data-translate="photo_protocol">Фотопротокол (внутриротовые и внешние фотографии)</li>
+                                        <li data-translate="plaster_models">Изготовление гипсовых моделей челюстей</li>
+                                        <li data-translate="3d_analysis">3D-анализ прикуса и положения зубов</li>
+                                        <li data-translate="trg_calculation">Расчёт ТРГ (телерентгенограммы) для оценки пропорций лица</li>
                                     </ul>
-
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Диагностика (фотопротокол, изготовление гипсовых моделей, анализ 3д и расчет ТРГ)">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Повторная диагностика пациента с установленной брекет системой  -->
+                    <!-- Повторная диагностика -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <img src=".." class="img-icon">
+                                <img src="../img/repeat-diag.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Повторная диагностика пациента с установленной брекет системой</h3>
+                                    <h3 data-translate="repeat_diagnostics">Повторная диагностика пациента с установленной брекет системой</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Повторная диагностика пациента с установленной брекет системой">105 000₸</span>
                                     </div>
@@ -1864,36 +1831,34 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>.</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
+                                        <li data-translate="progress_assessment">Оценка прогресса лечения</li>
+                                        <li data-translate="plan_adjustment">Корректировка плана лечения</li>
+                                        <li data-translate="control_photos">Контрольные фотографии</li>
+                                        <li data-translate="treatment_monitoring">Мониторинг хода лечения</li>
                                     </ul>
-
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Повторная диагностика пациента с установленной брекет системой">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Металлические брекеты -->
+                    <!-- Металлические брекеты Biomim -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/biomim.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Самолигирующие брекеты Biomim (на одну челюсть)</h3>
+                                    <h3 data-translate="biomim_braces">Самолигирующие брекеты Biomim (на одну челюсть)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Самолигирующие брекеты Biomim (на одну челюсть)">198 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1905,37 +1870,36 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Самолигирующие брекеты BIOMIM (Корея) — это надёжные и эстетичные самолигирующие брекеты корейского производства, разработанные по современным технологиям для комфортного и эффективного выравнивания зубов.<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="biomim_desc">Самолигирующие брекеты BIOMIM (Корея) — это надёжные и эстетичные самолигирующие брекеты корейского производства, разработанные по современным технологиям для комфортного и эффективного выравнивания зубов.</span><br><br>
                                     <ul>
-                                        <li>Без лигатур — дуга фиксируется специальным замочком</li>
-                                        <li>Меньше трения — мягкое и щадящее перемещение зубов</li>
-                                        <li>Компактные и малозаметные</li>
-                                        <li>Ускоренное лечение и реже визиты к врачу</li>
-                                        <li>Доступная цена при высоком качестве</li>
+                                        <li data-translate="no_ligatures">Без лигатур — дуга фиксируется специальным замочком</li>
+                                        <li data-translate="less_friction">Меньше трения — мягкое и щадящее перемещение зубов</li>
+                                        <li data-translate="compact_unnoticeable">Компактные и малозаметные</li>
+                                        <li data-translate="accelerated_treatment">Ускоренное лечение и реже визиты к врачу</li>
+                                        <li data-translate="affordable_quality">Доступная цена при высоком качестве</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Металлические брекеты Biomom">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                     <!-- Частичная брекет-система 2 на 4 (на одну челюсть) -->
+                    <!-- Частичная брекет-система -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <img src="." class="img-icon">
+                                <img src="../img/partial-braces.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Частичная брекет-система 2 на 4 (на одну челюсть)</h3>
+                                    <h3 data-translate="partial_braces">Частичная брекет-система 2 на 4 (на одну челюсть)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Частичная брекет-система 2 на 4 (на одну челюсть)">65 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1947,38 +1911,35 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    ..<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="partial_braces_desc">Частичная брекет-система для коррекции отдельных зубов в зоне улыбки.</span><br><br>
                                     <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
+                                        <li data-translate="front_teeth_correction">Коррекция передних зубов</li>
+                                        <li data-translate="shorter_treatment">Более короткий срок лечения</li>
+                                        <li data-translate="aesthetic_improvement">Улучшение эстетики улыбки</li>
+                                        <li data-translate="cost_effective">Экономичное решение</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Частичная брекет-система 2 на 4 (на одну челюсть)">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
-                    <!-- Установка металлических самолигирующих брекетов АО эмпаур 2США (на одну челюсть) -->
+                    <!-- Самолигирующие брекеты АО эмпаур 2 -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/samolig.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Самолигирующие брекеты АО эмпаур 2 США (без резинок)</h3>
+                                    <h3 data-translate="ao_empower_braces">Самолигирующие брекеты АО эмпаур 2 США (без резинок)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Установка металлических самолигирующих брекетов АО эмпаур 2 США ( на одну челюсть)">350 000₸</span>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -1990,40 +1951,39 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    AO Empower 2 — это современные самолигирующие брекеты американского бренда American Orthodontics, сочетающие в себе высокую технологичность, комфорт и точность лечения.<br><br>
-
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="ao_empower_desc">AO Empower 2 — это современные самолигирующие брекеты американского бренда American Orthodontics, сочетающие в себе высокую технологичность, комфорт и точность лечения.</span><br><br>
                                     <ul>
-                                        <li>Без лигатур — дуга фиксируется встроенным замком, без резинок</li>
-                                        <li>Меньше трения — комфортнее в ношении, мягче на зубы</li>
-                                        <li>Быстрая и эффективная коррекция прикуса</li>
-                                        <li>Компактный дизайн почти незаметны</li>
-                                        <li>Подходят как для взрослых, так и подростков</li>
+                                        <li data-translate="no_ligatures">Без лигатур — дуга фиксируется встроенным замком, без резинок</li>
+                                        <li data-translate="less_friction">Меньше трения — комфортнее в ношении, мягче на зубы</li>
+                                        <li data-translate="fast_correction">Быстрая и эффективная коррекция прикуса</li>
+                                        <li data-translate="compact_design">Компактный дизайн почти незаметны</li>
+                                        <li data-translate="adults_teens">Подходят как для взрослых, так и подростков</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Цена указана за одну челюсть</span>
+                                    <span data-translate="price_per_jaw">Цена указана за одну челюсть</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Установка металлических самолигирующих брекетов АО эмпаур 2США (на одну челюсть)">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Установка металлических лигатурных брекетов АО Mini master США на одну челюсть-->
+                    <!-- Лигатурные брекеты АО Mini master -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
                                 <img src="../img/ligaturn.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Установка металлических лигатурных брекетов АО Mini master США (с резинками)</h3>
+                                    <h3 data-translate="ao_minimaster_braces">Установка металлических лигатурных брекетов АО Mini master США (с резинками)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Установка металлических лигатурных брекетов АО Mini master США на одну челюсть">250 000₸</span>
                                     </div>
@@ -2037,41 +1997,40 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Лигатурные брекеты AO Mini Master (США) это премиальные лигатурные брекеты американского производства, разработанные для максимально эффективного и комфортного выравнивания зубов.<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
+                                    <span data-translate="ao_minimaster_desc">Лигатурные брекеты AO Mini Master (США) это премиальные лигатурные брекеты американского производства, разработанные для максимально эффективного и комфортного выравнивания зубов.</span><br><br>
                                     <ul>
-                                        <li>Компактный размер, менее заметны на зубах</li>
-                                        <li>Гладкие края - минимальное трение и комфорт в носке</li>
-                                        <li>Высокая точность фиксации и контроля</li>
-                                        <li>Эстетичный внешний вид</li>
-                                        <li>Надёжность и долговечность</li>
+                                        <li data-translate="compact_size">Компактный размер, менее заметны на зубах</li>
+                                        <li data-translate="smooth_edges">Гладкие края - минимальное трение и комфорт в носке</li>
+                                        <li data-translate="high_precision">Высокая точность фиксации и контроля</li>
+                                        <li data-translate="aesthetic_appearance">Эстетичный внешний вид</li>
+                                        <li data-translate="reliability_durability">Надёжность и долговечность</li>
                                     </ul>
-                                    Дуга фиксируется с помощью эластичных лигатур, которые можно менять на приёмах доступны как прозрачные, так и цветные варианты.
-                                    <br>
+                                    <span data-translate="ligature_fixation">Дуга фиксируется с помощью эластичных лигатур, которые можно менять на приёмах доступны как прозрачные, так и цветные варианты.</span><br>
                                 </div>
                                 
                                 <div class="service-note">
                                     <i class="fa-solid fa-info-circle"></i>
-                                    <span>Цена указана за одну челюсть</span>
+                                    <span data-translate="price_per_jaw">Цена указана за одну челюсть</span>
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Установка металлических лигатурных брекетов АО Mini master США на одну челюсть">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Установка ретейнера (на одну челюсть)  -->
+                    <!-- Установка ретейнера -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <img src=".." class="img-icon">
+                                <img src="../img/retainer.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Установка ретейнера (на одну челюсть)</h3>
+                                    <h3 data-translate="retainer_installation">Установка ретейнера (на одну челюсть)</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Установка ретейнера (на одну челюсть)">20 000₸</span>
                                     </div>
@@ -2085,33 +2044,32 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>.</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
+                                        <li data-translate="result_fixation">Фиксация результата лечения</li>
+                                        <li data-translate="prevent_relapse">Предотвращение рецидива</li>
+                                        <li data-translate="invisible_wire">Невидимая проволока на внутренней стороне зубов</li>
+                                        <li data-translate="long_term_stability">Долгосрочная стабильность результата</li>
                                     </ul>
-
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Установка ретейнера (на одну челюсть)">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Подклейка ретейнера одного зуба  -->
+                    <!-- Подклейка ретейнера -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <img src=".." class="img-icon">
+                                <img src="../img/retainer-repair.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Подклейка ретейнера одного зуба</h3>
+                                    <h3 data-translate="retainer_repair">Подклейка ретейнера одного зуба</h3>
                                     <div class="service-price">
                                         <span class="price-value" data-service-key="Подклейка ретейнера одного зуба">2 500₸</span>
                                     </div>
@@ -2125,36 +2083,34 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>.</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
+                                        <li data-translate="retainer_reattachment">Повторная фиксация отклеившегося ретейнера</li>
+                                        <li data-translate="quick_procedure">Быстрая процедура</li>
+                                        <li data-translate="restore_stability">Восстановление стабильности результата</li>
+                                        <li data-translate="prevent_tooth_movement">Предотвращение смещения зубов</li>
                                     </ul>
-
                                 </div>
                                 
                                 <div class="service-actions">
                                     <button class="book-service-btn" data-service="Подклейка ретейнера одного зуба">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                     <!-- Новый брекет -->
+                    <!-- Новый брекет -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <img src="." class="img-icon">
+                                <img src="../img/new-bracket.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Новый брекет</h3>
+                                    <h3 data-translate="new_bracket">Новый брекет (замена одного брекета)</h3>
                                     <div class="service-price">
-                                        <span class="price-value" data-service-key="Новый брекет">9 000₸</span>
-                                        
+                                        <span class="price-value" data-service-key="Новый брекет (замена одного брекета)">5 000₸</span>
                                     </div>
                                 </div>
                             </div>
@@ -2166,36 +2122,34 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    ..<br><br>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
+                                        <li data-translate="bracket_replacement">Замена поврежденного или отклеившегося брекета</li>
+                                        <li data-translate="treatment_continuity">Обеспечение непрерывности лечения</li>
+                                        <li data-translate="quick_installation">Быстрая установка</li>
+                                        <li data-translate="system_integrity">Восстановление целостности системы</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Новый брекет">
+                                    <button class="book-service-btn" data-service="Новый брекет (замена одного брекета)">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Снятие брекетов одной челюсти с полировкой  -->
-                    <div class="service-item">
+                    <!-- Активация брекет-системы -->
+                    <div class="service-item featured">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <img src=".." class="img-icon">
+                                <img src="../img/activation.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Снятие брекетов одной челюсти с полировкой</h3>
+                                    <h3 data-translate="braces_activation">Активация брекет-системы</h3>
                                     <div class="service-price">
-                                        <span class="price-value" data-service-key="Снятие брекетов одной челюсти с полировкой">20 000₸</span>
+                                        <span class="price-value" data-service-key="Активация брекет-системы">15 000₸</span>
                                     </div>
                                 </div>
                             </div>
@@ -2207,37 +2161,39 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>.</h4>
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
+                                        <li data-translate="regular_adjustment">Регулярная коррекция брекет-системы</li>
+                                        <li data-translate="wire_replacement">Замена дуг</li>
+                                        <li data-translate="ligature_change">Смена лигатур</li>
+                                        <li data-translate="progress_monitoring">Контроль прогресса лечения</li>
                                     </ul>
-
+                                </div>
+                                
+                                <div class="service-note">
+                                    <i class="fa-solid fa-info-circle"></i>
+                                    <span data-translate="monthly_visit">Проводится ежемесячно в течение всего периода лечения</span>
                                 </div>
                                 
                                 <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Снятие брекетов одной челюсти с полировкой">
+                                    <button class="book-service-btn" data-service="Активация брекет-системы">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    
-                    <!-- Элайнеры Invisalign США -->
+                    <!-- Снятие брекет-системы -->
                     <div class="service-item">
                         <div class="service-main" onclick="toggleServiceDetails(this)">
                             <div class="service-info">
-                                <img src="../img/invisalign.jpeg" class="img-icon">
+                                <img src="../img/braces-removal.jpeg" class="img-icon">
                                 <div class="service-content-main">
-                                    <h3>Элайнеры Invisalign США</h3>
+                                    <h3 data-translate="braces_removal">Снятие брекет-системы (одна челюсть)</h3>
                                     <div class="service-price">
-                                        <span class="price-value" data-service-key="Элайнеры Invisalign США">2 500 000₸</span>
-                                        
+                                        <span class="price-value" data-service-key="Снятие брекет-системы (одна челюсть)">25 000₸</span>
                                     </div>
                                 </div>
                             </div>
@@ -2249,354 +2205,27 @@
                         <div class="service-details">
                             <div class="details-content">
                                 <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    Элайнеры — это прозрачные эластичные каппы, которые надеваются на весь зубной ряд и мягко выравнивают зубы. Внешне они напоминают капы для отбеливания, но выполняют ортодонтическую функцию.<br>Пациент может снимать и надевать их самостоятельно, что делает лечение максимально комфортным.<br>В отличие от брекетов, элайнеры можно снимать во время приёма пищи и чистки зубов.
+                                    <h4 data-translate="description">Описание:</h4>
                                     <ul>
-                                        <li>Незаметны на зубах</li>
-                                        <li>Без боли и дискомфорта</li>
-                                        <li>Удобны в повседневной жизни</li>
-                                    </ul>
-                                    <h4>В стоимость входит:</h4>
-                                    <ul>
-                                        <li>Диагностика</li>
-                                        <li>Фото-протокол</li>
-                                        <li>ClinCheck - цифровое моделирование всего процесса лечения, где вы заранее увидите, как будет меняться ваша улыбка и каким станет прикус после завершения.</li>
+                                        <li data-translate="careful_removal">Аккуратное снятие брекетов</li>
+                                        <li data-translate="enamel_cleaning">Очистка эмали от остатков клея</li>
+                                        <li data-translate="enamel_polishing">Полировка эмали</li>
+                                        <li data-translate="final_photos">Финальные фотографии результата</li>
                                     </ul>
                                 </div>
                                 
                                 <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Элайнеры Invisalign США">
+                                    <button class="book-service-btn" data-service="Снятие брекет-системы (одна челюсть)">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
+                                        <span data-translate="book_btn">Записаться</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Ретенционная капа -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src="../img/kappa-ret.jpeg" class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Каппа ретенционная (одна челюсть) </h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Каппа ретенционная  одна челюсть ">25 000₸</span>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>Описание:</h4>
-                                    <ul>
-                                        <li>Закрепление результата лечения</li>
-                                        <li>Индивидуальное изготовление</li>
-                                        <li>Комфорт в ношении</li>
-                                        <li>Долговечность</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Ретенционная капа">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Аппарат Твин- Блок  -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src=".." class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Аппарат Твин-Блок</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Аппарат Твин- Блок">250 000₸</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>.</h4>
-                                    <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                    </ul>
-
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Аппарат Твин- Блок">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Аппарат Френкля ( вместе со слепком) прикус  -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src=".." class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Аппарат Френкля</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Аппарат Френкля ( вместе со слепком) прикус">250 000₸</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>.</h4>
-                                    <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                    </ul>
-
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Аппарат Френкля ( вместе со слепком) прикус">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Пластинка ортодонтическая Аппарат Персена для дистальной окклюзии  -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src=".." class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Пластинка ортодонтическая Аппарат Персена для дистальной окклюзии</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Пластинка ортодонтическая Аппарат Персена для дистальной окклюзии">250 000₸</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>.</h4>
-                                    <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                    </ul>
-
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Пластинка ортодонтическая Аппарат Персена для дистальной окклюзии">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Пластинка ортодонтическая Аппарат Дерисхсвайлера с винтом Хайрекс с фиксацией на капах по Мак-Намара  -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src=".." class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Пластинка ортодонтическая Аппарат Дерисхсвайлера с винтом Хайрекс с фиксацией на капах по Мак-Намара</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Пластинка ортодонтическая Аппарат Дерисхсвайлера с винтом Хайрекс с фиксацией на капах по Мак-Намара">250 000₸</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>.</h4>
-                                    <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                    </ul>
-
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Пластинка ортодонтическая Аппарат Дерисхсвайлера с винтом Хайрекс с фиксацией на капах по Мак-Намара">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Пластинка ортодонтическая Аппарат Хаас по Марко Росса  -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src=".." class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Пластинка ортодонтическая Аппарат Хаас по Марко Росса</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Пластинка ортодонтическая Аппарат Хаас по Марко Росса">250 000₸</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>.</h4>
-                                    <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                    </ul>
-
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Пластинка ортодонтическая Аппарат Хаас по Марко Росса">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Починка аппарата  -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src=".." class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Починка аппарата</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Починка аппарата">от 10 000₸</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>.</h4>
-                                    <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                    </ul>
-
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Починка аппарата">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Аппарат MARPE для расширения верхней челюсти  -->
-                    <div class="service-item">
-                        <div class="service-main" onclick="toggleServiceDetails(this)">
-                            <div class="service-info">
-                                <img src=".." class="img-icon">
-                                <div class="service-content-main">
-                                    <h3>Аппарат MARPE для расширения верхней челюсти</h3>
-                                    <div class="service-price">
-                                        <span class="price-value" data-service-key="Аппарат MARPE для расширения верхней челюсти">400 000 - 500 000₸</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="service-details">
-                            <div class="details-content">
-                                <div class="service-includes">
-                                    <h4>.</h4>
-                                    <ul>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                        <li>.</li>
-                                    </ul>
-
-                                </div>
-                                
-                                <div class="service-actions">
-                                    <button class="book-service-btn" data-service="Аппарат MARPE для расширения верхней челюсти">
-                                        <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Записаться</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -2605,17 +2234,17 @@
         <div class="container">
             <div class="cta-content-prices">
                 <div class="cta-text-prices">
-                    <h2>Готовы начать лечение?</h2>
-                    <p>Запишитесь на консультацию и получите индивидуальный план лечения с фиксированными ценами</p>
+                    <h2 data-translate="ready_to_start">Готовы начать лечение?</h2>
+                    <p data-translate="book_consultation_desc">Запишитесь на консультацию и получите индивидуальный план лечения с фиксированными ценами</p>
                     
                     <div class="cta-features-prices">
                         <div class="cta-feature">
                             <i class="fa-solid fa-calendar-check"></i>
-                            <span>Удобная запись онлайн</span>
+                            <span data-translate="online_booking">Удобная запись онлайн</span>
                         </div>
                         <div class="cta-feature">
                             <i class="fa-solid fa-clock"></i>
-                            <span>Работаем без выходных</span>
+                            <span data-translate="work_schedule">Работаем без выходных</span>
                         </div>
                     </div>
                 </div>
@@ -2627,11 +2256,11 @@
                     </a>
                     <a href="https://wa.me/77054026181" class="cta-whatsapp-btn">
                         <i class="fa-brands fa-whatsapp"></i>
-                        <span>Написать в WhatsApp</span>
+                        <span data-translate="write_whatsapp">Написать в WhatsApp</span>
                     </a>
                     <a href="../contacts/" class="cta-contact-btn">
                         <i class="fa-solid fa-map-marker-alt"></i>
-                        <span>Наш адрес</span>
+                        <span data-translate="our_address">Наш адрес</span>
                     </a>
                 </div>
             </div>
@@ -2644,30 +2273,29 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <a href="index.html">Nelly dental clinic</a>
+                        <a href="/">Nelly dental clinic</a>
                     </div>
-                    <p>Стоматология 5 звезд</p>
-                    <p>Улы Дала, 35, Город Астана</p>
-                    <p>Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</p>
+                    <p data-translate="footer_description">Стоматология 5 звезд</p>
+                    <p data-translate="address">Улы Дала, 35, Город Астана</p>
+                    <p data-translate="schedule">Пн-Пт 10:00-19:00  Сб, Вс 10:00-16:00</p>
                     <p>+7 705 402 61 81</p>
                 </div>
 
                 <div class="footer-nav">
-                    <h3>Навигация</h3>
+                    <h3 data-translate="footer_navigation">Навигация</h3>
                     <ul>
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/price/">Цены</a></li>
-                        <li><a href="/cases/">Кейсы</a></li>
-                        <li><a href="/doctors/">Врачи</a></li>
-                        <li><a href="/contacts/">Контакты</a></li>
-                        <li><a href="/reviews/">Отзывы</a></li>
-                        <li><a href="/media/">Медия</a></li>
-
+                        <li><a href="/" data-translate="nav_home">Главная</a></li>
+                        <li><a href="/price/" data-translate="nav_prices">Цены</a></li>
+                        <li><a href="/cases/" data-translate="nav_cases">Кейсы</a></li>
+                        <li><a href="/doctors/" data-translate="nav_doctors">Врачи</a></li>
+                        <li><a href="/contacts/" data-translate="nav_contacts">Контакты</a></li>
+                        <li><a href="/reviews/" data-translate="nav_reviews">Отзывы</a></li>
+                        <li><a href="/media/" data-translate="nav_media">Медиа</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-social">
-                    <h3>Мы в соцсетях</h3>
+                    <h3 data-translate="footer_social">Мы в соцсетях</h3>
                     <div class="social-links">
                         <a href="https://wa.me/77054026181" class="social-link">WhatsApp</a>
                         <a href="https://www.instagram.com/nelly_dental/" class="social-link">Instagram</a>
@@ -2677,7 +2305,7 @@
             </div>
 
             <div class="copyright">
-                <p>© 2025 Nelly dental clinic. Все права защищены.</p>
+                <p data-translate="copyright">© 2025 Nelly dental clinic. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -2685,6 +2313,6 @@
     <!-- JavaScript -->
     <script src="../js/script.js"></script>
     <script src="../js/ceny.js"></script>
-
+    <script src="../js/prices.js"></script>
 </body>
 </html>

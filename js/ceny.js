@@ -524,3 +524,164 @@ function toggleServiceDetails(element) {
 
 // Добавляем функцию в глобальную область видимости
 window.toggleServiceDetails = toggleServiceDetails
+
+// JavaScript for Prices Page Functionality
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Service tab switching
+  const serviceTabs = document.querySelectorAll(".service-tab")
+  const serviceContents = document.querySelectorAll(".service-content")
+
+  serviceTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      // Remove active class from all tabs and contents
+      serviceTabs.forEach((t) => t.classList.remove("active"))
+      serviceContents.forEach((c) => c.classList.remove("active"))
+
+      // Add active class to clicked tab
+      tab.classList.add("active")
+
+      // Show corresponding content
+      const targetService = tab.getAttribute("data-service")
+      const targetContent = document.getElementById(targetService)
+      if (targetContent) {
+        targetContent.classList.add("active")
+      }
+    })
+  })
+
+  // Expand/collapse service details
+  window.toggleServiceDetails = (element) => {
+    const serviceItem = element.closest(".service-item")
+    if (serviceItem) {
+      serviceItem.classList.toggle("expanded")
+    }
+  }
+
+  // Scroll to prices button functionality
+  window.PricesPageUtils = {
+    scrollToPrices: () => {
+      const servicesNavSection = document.querySelector(".services-nav-section")
+      if (servicesNavSection) {
+        const headerOffset = document.querySelector(".header")?.offsetHeight || 0
+        const elementPosition = servicesNavSection.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - headerOffset - 20 // Add some padding
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        })
+      }
+    },
+  }
+
+  // Ripple effect for scroll button
+  const scrollToPricesBtn = document.querySelector(".scroll-to-prices-btn")
+  if (scrollToPricesBtn) {
+    scrollToPricesBtn.addEventListener("click", function (e) {
+      const x = e.clientX - e.target.getBoundingClientRect().left
+      const y = e.clientY - e.target.getBoundingClientRect().top
+
+      const ripple = document.createElement("span")
+      ripple.classList.add("btn-ripple-prices")
+      ripple.style.left = `${x}px`
+      ripple.style.top = `${y}px`
+      this.appendChild(ripple)
+
+      ripple.addEventListener("animationend", () => {
+        ripple.remove()
+      })
+    })
+  }
+
+  // Simulate price loading (replace with actual API call)
+  const dataStatus = document.getElementById("dataStatus")
+  const lastUpdate = document.getElementById("lastUpdate")
+  const currentLanguage_price = "ru-RU" // Declare the variable here
+
+  function updatePriceStatus() {
+    if (dataStatus) {
+      dataStatus.classList.remove("status-loading")
+      dataStatus.classList.add("status-success")
+      dataStatus.innerHTML =
+        '<i class="fa-solid fa-check-circle"></i> <span data-translate="prices_loaded">Цены загружены</span>'
+    }
+    if (lastUpdate) {
+      const now = new Date()
+      const options = { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" }
+      lastUpdate.textContent = `Обновлено: ${now.toLocaleDateString(currentLanguage_price, options)}`
+    }
+  }
+
+  // Call this function after your actual price data is loaded
+  setTimeout(updatePriceStatus, 2000) // Simulate 2-second loading time
+
+  // Update price values based on data-service-key (if you fetch prices dynamically)
+  // This part would be integrated with your Google Sheets API fetch
+  function updatePrices(pricesData) {
+    document.querySelectorAll(".price-value").forEach((priceElement) => {
+      const serviceKey = priceElement.getAttribute("data-service-key")
+      if (pricesData[serviceKey]) {
+        priceElement.textContent = pricesData[serviceKey]
+      }
+    })
+  }
+
+  // Example of how you might call updatePrices with dummy data
+  // In a real scenario, you'd fetch this from Google Sheets
+  const dummyPrices = {
+    "Первичная консультация": "5 000₸",
+    "консультация без оплаты": "от 3 000₸",
+    "Проф. гигиена (полная, частичная или ортодонтическая)": "20 000 - 30 000₸",
+    "Проф.гигиена ортодонтическая": "25 000₸",
+    "отбеливание системой Beyond": "80 000₸",
+    "Домашнее отбеливание гель": "67 000₸",
+    "Осветление white smile": "25 000₸",
+    "внутрикоронковое отбеливание": "29 000₸",
+    "Курс гигиены и ухода за зубами": "от 8 000₸",
+    "реставрация поверхностный кариес": "28 000₸",
+    "реставрация средний кариес": "31 000₸",
+    "лечение глубокого кариеса": "39 000₸",
+    "реставрация фронт.зубов": "45 000₸",
+    "Первичное эндо 1 канальный": "96 000₸",
+    "Первичное эндо 2 канальный": "109 000₸",
+    "Первичное эндо 3 канальный": "122 000₸",
+    "Повторное эндо 1 канальный": "110 000₸",
+    "Повторное эндо 2 канальный": "121 000₸",
+    "Повторное эндо 3 канальный и более": "от 140 000₸",
+    "Коронки на импланте": "от 150 000₸",
+    "цирконевая коронка на импланте Ankylos": "245 000₸",
+    "цирконевая коронка на импланте Neo dent": "155 000₸",
+    "цирконевая коронка на импланте Root": "150 000₸",
+    "Цирконевая коронка на импланте straumann": "290 000₸",
+    "Циркониевая коронка на импланте BioHorizons": "от 175 000₸",
+    "циркониевая коронка на импланте Mega Gen": "180 000₸",
+    "Снятие слепка с 1 челюсти": "10 000₸",
+    "коронка циркониевая": "115 000₸",
+    "коронка керамическая ЕМАХ": "115 000₸",
+    "винир керамика ЕМАХ": "125 000₸",
+    "вкладка керамическая ЕМАХ": "90 000₸",
+    "временная коронка прямой метод": "10 000₸",
+    "временная пластмассовая коронка cad/cam": "30 000₸",
+    "Имплантат shtraumn": "395 000₸",
+    "имплантат системы Neo Dent": "170 000₸",
+    "Ankylos импланты (германия)": "320 000₸",
+    "имплантат Biohorizont": "260 000₸",
+    "синус лифтинг": "300 000₸",
+    "удаление зуба простое (без анестезии)": "23 000₸",
+    "удаление третьих моляров(зуб мудрости )": "34 500₸",
+    "Консультация стоматолога- ортодонта": "5 000₸",
+    "Диагностика (фотопротокол, изготовление гипсовых моделей, анализ 3д и расчет ТРГ)": "5 000₸",
+    "Повторная диагностика пациента с установленной брекет системой": "105 000₸",
+    "Самолигирующие брекеты Biomim (на одну челюсть)": "198 000₸",
+    "Частичная брекет-система 2 на 4 (на одну челюсть)": "65 000₸",
+    "Установка металлических самолигирующих брекетов АО эмпаур 2 США ( на одну челюсть)": "350 000₸",
+    "Установка металлических лигатурных брекетов АО Mini master США на одну челюсть": "250 000₸",
+    "Установка ретейнера (на одну челюсть)": "20 000₸",
+    "Подклейка ретейнера одного зуба": "2 500₸",
+    "Новый брекет (замена одного брекета)": "5 000₸",
+    "Активация брекет-системы": "15 000₸",
+    "Снятие брекет-системы (одна челюсть)": "25 000₸",
+  }
+  updatePrices(dummyPrices)
+})
