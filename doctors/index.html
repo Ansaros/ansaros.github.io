@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <link rel="stylesheet" href="../css/doctors-styles.css">
-    <link rel="stylesheet" href="../css/doctors-language-switcher.css">
+    <link rel="stylesheet" href="../css/">
+
 </head>
 <body>
     <!-- ─────── Top Bar ─────── -->
@@ -169,16 +170,16 @@
                     </p>
                     
                     <div class="hero-stats-doctors">
-                        <div class="stat-doctors" data-count="6">
+                        <div class="stat-doctors">
                             <div class="stat-number-doctors" id="doctorsCount">0</div>
                             <div class="stat-label-doctors" data-translate="stat_specialists">Специалистов</div>
                         </div>
-                        <div class="stat-doctors" data-count="14">
-                            <div class="stat-number-doctors">14</div>
+                        <div class="stat-doctors">
+                            <div class="stat-number-doctors" id="experienceYears">0</div>
                             <div class="stat-label-doctors" data-translate="stat_years_experience">Лет опыта</div>
                         </div>
-                        <div class="stat-doctors" data-count="98">
-                            <div class="stat-number-doctors">98%</div>
+                        <div class="stat-doctors">
+                            <div class="stat-number-doctors" id="satisfiedPatients">98%</div>
                             <div class="stat-label-doctors" data-translate="stat_satisfied_patients">Довольных пациентов</div>
                         </div>
                     </div>
@@ -211,7 +212,7 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4 data-translate="feature_experienced_doctors_title">Опытные врачи</h4>
-                                    <p data-translate="feature_experienced_doctors_desc">Стаж от 3 до 14 лет</p>
+                                    <p id="experienceRange" data-translate="feature_experienced_doctors_desc">Стаж от 3 до 14 лет</p>
                                 </div>
                             </div>
                             

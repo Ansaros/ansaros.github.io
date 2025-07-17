@@ -1,22 +1,16 @@
 // ===== КОНФИГУРАЦИЯ GOOGLE SHEETS ДЛЯ ВРАЧЕЙ =====
 const DOCTORS_GOOGLE_SHEETS_CONFIG = {
   API_KEY: "AIzaSyAPNoe4hXwejLxnUr04bqEeWZRE7VqJYP4",
-  // SPREADSHEET_ID and RANGE will be determined dynamically based on language
   SPREADSHEET_ID: "1TuQfnrDrBySjOJWSeksdL8WbrCNfytIypw-u-eRaJzs",
   CACHE_DURATION: 5 * 60 * 1000, // 5 минут кеширования
 }
 
 // ===== УТИЛИТЫ ДЛЯ КОНВЕРТАЦИИ GOOGLE DRIVE ССЫЛОК =====
 class GoogleDriveConverter {
-  // Извлечение ID файла из ссылки Google Drive
   static extractFileId(url) {
     if (!url || typeof url !== "string") return null
 
-    const patterns = [
-      /\/file\/d\/([a-zA-Z0-9-_]+)/, // Основной паттерн
-      /id=([a-zA-Z0-9-_]+)/, // Альтернативный
-      /\/d\/([a-zA-Z0-9-_]+)/, // Короткий формат
-    ]
+    const patterns = [/\/file\/d\/([a-zA-Z0-9-_]+)/, /id=([a-zA-Z0-9-_]+)/, /\/d\/([a-zA-Z0-9-_]+)/]
 
     for (const pattern of patterns) {
       const match = url.match(pattern)
@@ -27,28 +21,24 @@ class GoogleDriveConverter {
     return null
   }
 
-  // Создание thumbnail URL
   static createThumbnailUrl(fileId, size = "w1000") {
     if (!fileId) return null
     return `https://drive.google.com/thumbnail?id=${fileId}&sz=${size}`
   }
 
-  // Создание direct URL
   static createDirectUrl(fileId) {
     if (!fileId) return null
     return `https://drive.google.com/uc?export=view&id=${fileId}`
   }
 
-  // Проверка, является ли URL ссылкой Google Drive
   static isGoogleDriveUrl(url) {
     if (!url || typeof url !== "string") return false
     return url.includes("drive.google.com") && (url.includes("/file/d/") || url.includes("id=") || url.includes("/d/"))
   }
 
-  // Конвертация ссылки Google Drive в thumbnail
   static convertToThumbnail(url, size = "w1000") {
     if (!this.isGoogleDriveUrl(url)) {
-      return url // Возвращаем оригинальную ссылку, если это не Google Drive
+      return url
     }
 
     const fileId = this.extractFileId(url)
@@ -62,10 +52,8 @@ class GoogleDriveConverter {
     return thumbnailUrl
   }
 
-  // Конвертация массива ссылок
   static convertUrlsArray(urls, size = "w1000") {
     if (!Array.isArray(urls)) return urls
-
     return urls.map((url) => this.convertToThumbnail(url, size))
   }
 }
@@ -80,9 +68,9 @@ class DoctorsPageManager {
     this.retryCount = 0
     this.maxRetries = 3
     this.currentFilter = "all"
-    this.imageSize = "w1500" // Размер изображений по умолчанию
-    this.translations = window.translations_doctors || {} // Access global translations
-    this.currentLanguage = window.currentLanguage_doctors || "ru" // Access global current language
+    this.imageSize = "w1500"
+    this.translations = window.translations_doctors || {}
+    this.currentLanguage = window.currentLanguage_doctors || "ru"
 
     this.init()
   }
@@ -91,12 +79,10 @@ class DoctorsPageManager {
     try {
       console.log("Инициализация страницы врачей...")
 
-      // Инициализация компонентов
-      this.initMobileMenu() // This is already in the original script, keep it.
+      this.initMobileMenu()
       this.initFilters()
       this.initModal()
 
-      // Initial load of doctors data based on current language
       await this.loadDoctorsData()
 
       console.log("Инициализация страницы врачей завершена успешно")
@@ -106,15 +92,14 @@ class DoctorsPageManager {
     }
   }
 
-  // Method to reload doctors data when language changes
   async reloadDoctorsDataForLanguage(newLang) {
     this.currentLanguage = newLang
-    this.translations = window.translations_doctors // Ensure translations are up-to-date
+    this.translations = window.translations_doctors
     console.log(`Перезагрузка данных врачей для языка: ${newLang}`)
     await this.loadDoctorsData()
-    this.renderDoctors() // Re-render after data load
-    this.updateFilters() // Re-render filters with translated names
-    this.updateStats() // Update stats with new data
+    this.renderDoctors()
+    this.updateFilters()
+    this.updateStats()
   }
 
   // ===== ЗАГРУЗКА ДАННЫХ ИЗ GOOGLE SHEETS =====
@@ -161,7 +146,6 @@ class DoctorsPageManager {
     }
   }
 
-  // Determine the Google Sheet name based on the current language
   getDoctorsSheetName(lang) {
     switch (lang) {
       case "kz":
@@ -181,11 +165,9 @@ class DoctorsPageManager {
 
     console.log("Обработка данных врачей, всего строк:", values.length)
 
-    // Пропускаем заголовок (первая строка)
     for (let i = 1; i < values.length; i++) {
       const row = values[i]
 
-      // Проверяем, есть ли хотя бы одно заполненное поле
       if (row && row.some((cell) => cell && cell.toString().trim())) {
         const doctor = this.createDoctorObject(row, i + 1)
         if (doctor && doctor.name) {
@@ -206,36 +188,52 @@ class DoctorsPageManager {
   createDoctorObject(row, rowNumber) {
     const name = this.cleanText(row[0])
 
-    // Если нет имени, игнорируем эту строку
     if (!name) {
       return null
     }
 
-    // Получаем и конвертируем URL фото
     const originalPhotoUrl = this.cleanText(row[3]) || "img/placeholder.svg"
     const convertedPhotoUrl = GoogleDriveConverter.convertToThumbnail(originalPhotoUrl, this.imageSize)
 
-    // Получаем и конвертируем URLs сертификатов и фото работ
     const originalCertificates = this.extractUrls(row.slice(5, 12))
     const originalBeforeAfterPhotos = this.extractUrls(row.slice(12, 16))
 
     const convertedCertificates = GoogleDriveConverter.convertUrlsArray(originalCertificates, this.imageSize)
     const convertedBeforeAfterPhotos = GoogleDriveConverter.convertUrlsArray(originalBeforeAfterPhotos, this.imageSize)
 
+    // Парсим опыт работы для получения числового значения
+    const experienceText = this.cleanText(row[1]) || ""
+    const experienceYears = this.parseExperienceYears(experienceText)
+
     return {
       id: `doctor_${rowNumber}`,
       name: name,
-      experience: this.cleanText(row[1]) || "",
+      experience: experienceText,
+      experienceYears: experienceYears, // Добавляем числовое значение опыта
       specialization: this.cleanText(row[2]) || this.translations[this.currentLanguage].specialization_default,
       photoUrl: convertedPhotoUrl,
-      originalPhotoUrl: originalPhotoUrl, // Сохраняем оригинальную ссылку
+      originalPhotoUrl: originalPhotoUrl,
       description: this.cleanText(row[4]) || "",
       certificates: convertedCertificates,
-      originalCertificates: originalCertificates, // Сохраняем оригинальные ссылки
+      originalCertificates: originalCertificates,
       beforeAfterPhotos: convertedBeforeAfterPhotos,
-      originalBeforeAfterPhotos: originalBeforeAfterPhotos, // Сохраняем оригинальные ссылки
+      originalBeforeAfterPhotos: originalBeforeAfterPhotos,
       slug: this.generateSlug(name),
     }
+  }
+
+  // ===== ПАРСИНГ ОПЫТА РАБОТЫ =====
+  parseExperienceYears(experienceText) {
+    if (!experienceText) return 0
+
+    // Ищем числа в тексте опыта
+    const matches = experienceText.match(/\d+/g)
+    if (matches && matches.length > 0) {
+      // Берем первое найденное число как количество лет опыта
+      return Number.parseInt(matches[0])
+    }
+
+    return 0
   }
 
   // ===== ОЧИСТКА ТЕКСТА =====
@@ -285,7 +283,6 @@ class DoctorsPageManager {
 
     doctorsList.innerHTML = filteredDoctors.map((doctor) => this.createDoctorCard(doctor)).join("")
 
-    // Инициализируем обработчики событий для карточек
     this.initDoctorCards()
   }
 
@@ -378,11 +375,11 @@ class DoctorsPageManager {
     if (!specialization) return this.translations[this.currentLanguage].specialization_default
 
     const spec = specialization.toLowerCase()
-    if (spec.includes("терапевт")) return this.translations[this.currentLanguage].specialization_therapists.slice(0, -1) // Remove 's' for singular
+    if (spec.includes("терапевт")) return this.translations[this.currentLanguage].specialization_therapists.slice(0, -1)
     if (spec.includes("ортодонт"))
       return this.translations[this.currentLanguage].specialization_orthodontists.slice(0, -1)
     if (spec.includes("эндодонт"))
-      return this.translations[this.currentLanguage].specialization_endodontists.slice(0, -2) // Remove 'ts'
+      return this.translations[this.currentLanguage].specialization_endodontists.slice(0, -2)
     if (spec.includes("хирург")) return this.translations[this.currentLanguage].specialization_surgeons.slice(0, -1)
     if (spec.includes("ортопед"))
       return this.translations[this.currentLanguage].specialization_orthopedists.slice(0, -1)
@@ -414,7 +411,6 @@ class DoctorsPageManager {
 
   // ===== ИНИЦИАЛИЗАЦИЯ ОБРАБОТЧИКОВ КАРТОЧЕК =====
   initDoctorCards() {
-    // Кнопки "Записаться"
     document.querySelectorAll(".book-doctor-btn, .primary-btn-doctors").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation()
@@ -425,7 +421,6 @@ class DoctorsPageManager {
       })
     })
 
-    // Кнопки "Подробнее"
     document.querySelectorAll(".view-doctor-btn, .view-details-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation()
@@ -442,7 +437,6 @@ class DoctorsPageManager {
     const doctor = this.doctorsData.find((d) => d.id === doctorId)
     if (!doctor) return
 
-    // Заполняем модальное окно данными врача
     document.getElementById("modalDoctorPhoto").src = doctor.photoUrl
     document.getElementById("modalDoctorPhoto").alt = doctor.name
     document.getElementById("modalDoctorName").textContent = doctor.name
@@ -453,17 +447,12 @@ class DoctorsPageManager {
     document.getElementById("modalDoctorDescription").textContent =
       doctor.description || this.translations[this.currentLanguage].card_default_description
 
-    // Устанавливаем обработчик для кнопки записи в модальном окне
     const modalBookBtn = document.getElementById("modalBookBtn")
     modalBookBtn.onclick = () => this.handleBookingClick(doctor.name)
 
-    // Заполняем сертификаты
     this.renderCertificates(doctor.certificates)
-
-    // Заполняем фото работ
     this.renderBeforeAfterPhotos(doctor.beforeAfterPhotos)
 
-    // Показываем модальное окно
     document.getElementById("doctorModalOverlay").classList.add("active")
     document.body.style.overflow = "hidden"
   }
@@ -527,7 +516,6 @@ class DoctorsPageManager {
 
   // ===== ИНИЦИАЛИЗАЦИЯ МОДАЛЬНОГО ОКНА =====
   initModal() {
-    // Закрытие модального окна врача
     document.getElementById("modalClose").addEventListener("click", () => {
       this.closeDoctorModal()
     })
@@ -538,7 +526,6 @@ class DoctorsPageManager {
       }
     })
 
-    // Закрытие просмотрщика изображений
     document.getElementById("imageViewerClose").addEventListener("click", () => {
       this.closeImageViewer()
     })
@@ -549,7 +536,6 @@ class DoctorsPageManager {
       }
     })
 
-    // Закрытие по Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (document.getElementById("imageViewerOverlay").classList.contains("active")) {
@@ -647,7 +633,6 @@ class DoctorsPageManager {
         const btn = e.target.closest(".doctors-filter-btn")
         const filter = btn.getAttribute("data-filter")
 
-        // Обновляем активный фильтр
         document.querySelectorAll(".doctors-filter-btn").forEach((b) => b.classList.remove("active"))
         btn.classList.add("active")
 
@@ -659,10 +644,126 @@ class DoctorsPageManager {
 
   // ===== ОБНОВЛЕНИЕ СТАТИСТИКИ =====
   updateStats() {
-    const countElement = document.getElementById("doctorsCount")
-    if (countElement) {
-      countElement.textContent = `${this.doctorsData.length}+`
+    this.animateStatsCounter()
+    this.updateExperienceRange()
+  }
+
+  // ===== АНИМАЦИЯ СЧЕТЧИКОВ СТАТИСТИКИ =====
+  animateStatsCounter() {
+    const doctorsCount = this.doctorsData.length
+    const maxExperience = this.getMaxExperience()
+
+    // Анимация количества врачей
+    this.animateCounter("doctorsCount", doctorsCount, "+")
+
+    // Анимация максимального опыта
+    this.animateCounter("experienceYears", maxExperience, "")
+
+    // Процент довольных пациентов остается статичным (98%)
+    const satisfiedElement = document.getElementById("satisfiedPatients")
+    if (satisfiedElement) {
+      satisfiedElement.textContent = "98%"
     }
+  }
+
+  // ===== АНИМАЦИЯ ОТДЕЛЬНОГО СЧЕТЧИКА =====
+  animateCounter(elementId, targetValue, suffix = "") {
+    const element = document.getElementById(elementId)
+    if (!element || targetValue === 0) return
+
+    const startValue = 0
+    const duration = 2000 // 2 секунды
+    const startTime = performance.now()
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+
+      // Используем easing функцию для плавной анимации
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+      const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOutQuart)
+
+      element.textContent = currentValue + suffix
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      } else {
+        element.textContent = targetValue + suffix
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }
+
+  // ===== ПОЛУЧЕНИЕ МАКСИМАЛЬНОГО ОПЫТА =====
+  getMaxExperience() {
+    if (this.doctorsData.length === 0) return 0
+
+    const experiences = this.doctorsData.map((doctor) => doctor.experienceYears || 0).filter((years) => years > 0)
+
+    return experiences.length > 0 ? Math.max(...experiences) : 0
+  }
+
+  // ===== ПОЛУЧЕНИЕ ДИАПАЗОНА ОПЫТА =====
+  getExperienceRange() {
+    if (this.doctorsData.length === 0) return { min: 0, max: 0 }
+
+    const experiences = this.doctorsData.map((doctor) => doctor.experienceYears || 0).filter((years) => years > 0)
+
+    if (experiences.length === 0) return { min: 0, max: 0 }
+
+    return {
+      min: Math.min(...experiences),
+      max: Math.max(...experiences),
+    }
+  }
+
+  // ===== ОБНОВЛЕНИЕ ДИАПАЗОНА ОПЫТА В FEATURES =====
+  updateExperienceRange() {
+    const experienceRangeElement = document.getElementById("experienceRange")
+    if (!experienceRangeElement) return
+
+    const range = this.getExperienceRange()
+
+    if (range.min === 0 && range.max === 0) {
+      return // Оставляем текст по умолчанию
+    }
+
+    // Обновляем текст в зависимости от языка
+    const currentLang = this.currentLanguage
+    let rangeText = ""
+
+    if (range.min === range.max) {
+      // Если у всех врачей одинаковый опыт
+      switch (currentLang) {
+        case "en":
+          rangeText = `${range.max} years of experience`
+          break
+        case "kz":
+          rangeText = `${range.max} жылдық тәжірибе`
+          break
+        case "ru":
+        default:
+          rangeText = `${range.max} лет опыта`
+          break
+      }
+    } else {
+      // Если опыт разный
+      switch (currentLang) {
+        case "en":
+          rangeText = `${range.min} to ${range.max} years of experience`
+          break
+        case "kz":
+          rangeText = `${range.min}-тен ${range.max} жылға дейінгі тәжірибе`
+          break
+        case "ru":
+        default:
+          rangeText = `Стаж от ${range.min} до ${range.max} лет`
+          break
+      }
+    }
+
+    experienceRangeElement.textContent = rangeText
   }
 
   // ===== ИЗМЕНЕНИЕ РАЗМЕРА ИЗОБРАЖЕНИЙ =====
@@ -670,25 +771,20 @@ class DoctorsPageManager {
     this.imageSize = newSize
     console.log(`Изменен размер изображений на: ${newSize}`)
 
-    // Перезагружаем данные с новым размером
     this.doctorsData.forEach((doctor) => {
-      // Конвертируем фото врача
       if (doctor.originalPhotoUrl) {
         doctor.photoUrl = GoogleDriveConverter.convertToThumbnail(doctor.originalPhotoUrl, newSize)
       }
 
-      // Конвертируем сертификаты
       if (doctor.originalCertificates) {
         doctor.certificates = GoogleDriveConverter.convertUrlsArray(doctor.originalCertificates, newSize)
       }
 
-      // Конвертируем фото работ
       if (doctor.originalBeforeAfterPhotos) {
         doctor.beforeAfterPhotos = GoogleDriveConverter.convertUrlsArray(doctor.originalBeforeAfterPhotos, newSize)
       }
     })
 
-    // Перерисовываем врачей
     this.renderDoctors()
   }
 
@@ -816,12 +912,10 @@ class DoctorsPageUtils {
     }
   }
 
-  // Утилита для ручной конвертации ссылок (если нужно)
   static convertGoogleDriveLink(url, size = "w1000") {
     return GoogleDriveConverter.convertToThumbnail(url, size)
   }
 
-  // Утилита для изменения размера изображений
   static changeImageSize(size) {
     if (window.doctorsManager) {
       window.doctorsManager.changeImageSize(size)
