@@ -142,8 +142,8 @@ const translations = {
     // Cases page specific translations
     cases_breadcrumb: "Емдеу жағдайлары",
     cases_title_1: "БІЗДІҢ",
-    cases_title_2: "ПАЦИЕНТТЕРДІҢ",
-    cases_title_3: "ТАБЫС ТАРИХТАРЫ",
+    cases_title_2: "ПАЦИЕНТТЕРІМІЗДІҢ",
+    cases_title_3: "ЖЕТІСІК ТАРИХТАРЫ",
     cases_subtitle: "Әрбір күлкі – бұл бірегей өзгеріс тарихы. Мамандарымыздың жұмысының нақты нәтижелерін қараңыз.",
     cases_stat_1: "Сәтті жағдайлар",
     cases_stat_2: "Қанағаттанған пациенттер",
