@@ -39,6 +39,7 @@ const translations_price = {
     full_examination: "✓ Полный осмотр",
     treatment_plan: "✓ План лечения",
     fixed_prices: "✓ Фиксированные цены",
+    consultation_price: "2 года",
     guarantee_text: "гарантии",
 
     // Навигация по услугам
@@ -390,6 +391,7 @@ const translations_price = {
     full_examination: "✓ Толық тексеру",
     treatment_plan: "✓ Емдеу жоспары",
     fixed_prices: "✓ Бекітілген бағалар",
+    consultation_price: "2 жыл",
     guarantee_text: "кепілдік",
 
     // Навигация по услугам
@@ -742,6 +744,7 @@ const translations_price = {
     full_examination: "✓ Full examination",
     treatment_plan: "✓ Treatment plan",
     fixed_prices: "✓ Fixed prices",
+    consultation_price: "2 years",
     guarantee_text: "warranty",
 
     // Навигация по услугам

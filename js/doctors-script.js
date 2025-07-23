@@ -327,12 +327,7 @@ class DoctorsPageManager {
           
           <p class="doctor-position-beautiful">${doctor.specialization}</p>
           
-          <div class="doctor-specialties">
-            <span class="specialty-tag primary">${this.getMainSpecialty(doctor.specialization)}</span>
-            ${this.getAdditionalSpecialties(doctor.specialization)
-              .map((spec) => `<span class="specialty-tag">${spec}</span>`)
-              .join("")}
-          </div>
+ 
           
           <p class="doctor-description-beautiful">
             ${doctor.description || this.translations[this.currentLanguage].card_default_description}

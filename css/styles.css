@@ -473,10 +473,6 @@ body {
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
 }
 
-.service-item.featured {
-  border: 2px solid #a374aa;
-}
-
 .service-badge {
   position: absolute;
   top: 20px;
@@ -3705,25 +3701,6 @@ body.loaded {
 .service-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-
-.service-item.featured {
-  border-color: #a374aa;
-  position: relative;
-}
-
-.service-item.featured::before {
-  content: "Популярно";
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #a374aa;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  z-index: 2;
 }
 
 /* Основная часть карточки */
