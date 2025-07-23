@@ -315,7 +315,6 @@ class DoctorsPageManager {
               </button>
             </div>
           </div>
-          ${doctor.experience ? `<div class="experience-badge">${doctor.experience} ${this.translations[this.currentLanguage].card_experience_label}</div>` : ""}
           ${isMainDoctor ? `<div class="doctor-badge">${this.translations[this.currentLanguage].card_featured_doctor}</div>` : ""}
         </div>
         
@@ -327,7 +326,7 @@ class DoctorsPageManager {
           
           <p class="doctor-position-beautiful">${doctor.specialization}</p>
           
- 
+
           
           <p class="doctor-description-beautiful">
             ${doctor.description || this.translations[this.currentLanguage].card_default_description}

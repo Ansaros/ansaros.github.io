@@ -201,7 +201,7 @@ const translations_main = {
       Special thanks to Dr. Merey Amirullovna and Nelly Rinatovna for their
       care and skills!»`,
     testimonial_2: `«I want to express huge gratitude to the entire clinic team and
-      personally to Dr. Akmaral Aidarbekovn for attentive attitude and quality
+      personally to Dr. Akmaral Aidarbekovna for attentive attitude and quality
       work! I recommend the clinic to everyone who values quality and care».`,
     testimonial_3: `«Wonderful clinic with professional and caring staff!
       It's very pleasant when the clinic has not only quality service,

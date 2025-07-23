@@ -41,6 +41,7 @@ const translations = {
     showcase_case_2_title: "Лечение контактного кариеса",
     showcase_case_3_title: "Брекет-система: металлические лигатурные",
     tag_emax: "E-max",
+    tag_treatment:"Лечение",
     tag_crowns_general: "Коронки",
     tag_braces: "Брекеты",
     tag_orthodontics: "Ортодонтия",
@@ -52,6 +53,7 @@ const translations = {
     tag_endodontics: "Эндодонтия",
     tag_rehabilitation: "Реабилитация",
     tag_zirconia_crowns: "Цирконевые коронки",
+    tag_crowns:"Коронки",
     tag_braces_closure: "Закрытие тремы брекетами",
     tag_whitening: "Отбеливание",
     tag_xray: "Рентген",
@@ -94,7 +96,84 @@ const translations = {
     case_12_title: "Лечение пульпита у подростка с несформированным корнем",
     case_12_description:
       "Сложный клинический случай, который требует высокой точности и опыта.<br />У подростков корень ещё не до конца сформирован, и стандартное лечение здесь неподходяще. Важно сохранить жизнеспособность окружающих тканей и не нарушить естественное развитие зуба.<br />✅ Работа проводилась под микроскопом это позволяет видеть мельчайшие анатомические детали, точно очистить и запломбировать каналы, не повредив незрелые структуры.",
-    stories_title: "Истории наших пациентов",
+    case_13_title: "Комплексное восстановление сильно разрушенных зубов",
+    case_13_description:
+  "На данном случае была проведена поэтапная работа:<br />" +
+  "• Диагностика и санация полости рта<br />" +
+  "• Лечение глубокого кариеса и пульпита<br />" +
+  "• Пломбировка корневых каналов<br />" +
+  "• Полное восстановление анатомической формы зубов современными композитами<br />" +
+  "• Восстановление эстетики и жевательной функции<br />" +
+  "• Индивидуальные рекомендации по уходу и профилактике<br /><br />" +
+  "Даже в сложных клинических ситуациях мы сохраняем и восстанавливаем зубы, возвращая пациенту уверенность и здоровую улыбку.",
+case_14_title: "Восстановление фронтальных зубов при наличии кариозных пятен и дефектов эмали",
+case_14_description:
+  "Проблема:<br />" +
+  "Пациент обратился с жалобой на эстетический дефект — кариозные пятна и потемнение между передними зубами, а также неровность кромок.<br /><br />" +
+  "Проведено лечение:<br />" +
+  "• Профессиональная гигиена перед лечением<br />" +
+  "• Изоляция рабочей зоны коффердамом для максимальной точности<br />" +
+  "• Удаление кариозных тканей и дефектов<br />" +
+  "• Прямая композитная реставрация двух центральных резцов с восстановлением анатомии и цвета<br />" +
+  "• Финишная полировка реставрации<br /><br />" +
+  "📍 В результате пациент получил естественную, симметричную и здоровую улыбку всего за одно посещение.",
+case_15_title: "Эстетическая реставрация фронтальных зубов",
+case_15_description:
+  "На фото — этапы прямой композитной реставрации с изоляцией коффердамом:<br /><br />" +
+  "1. Диагностика и подготовка<br />" +
+  "Удалены старые реставрации и кариозные ткани. Подготовлены края зубов для точной адаптации материала. Обеспечена сухость и чистота рабочего поля с помощью коффердама.<br /><br />" +
+  "2. Формирование контактов и анатомии<br />" +
+  "Смоделирована естественная форма резцов и восстановлены межзубные контакты. Использовалась пошаговая послойная техника нанесения композита.<br /><br />" +
+  "3. Финальная полировка<br />" +
+  "Гладкая поверхность, естественный блеск и цвет, полностью соответствующий натуральным зубам.<br /><br />" +
+  "📍 Результат — гармоничная и функциональная улыбка без препарирования под коронки. Эффективно, эстетично и щадяще для зубов.",
+case_16_title: "Восстановление зубов пломбами + коронка на имплант",
+case_16_description:
+  "На фото результат комплексной работы:<br /><br />" +
+  "🦷 Два крайних зуба (сверху и внизу) были разрушены кариесом. Мы провели их восстановление с помощью высокоэстетичных пломб, полностью воссоздав анатомическую форму и жевательные бугорки.<br /><br />" +
+  "🦷 Центральный зуб — установлен имплант с коронкой.<br />" +
+  "Коронка точно подобрана под цвет и форму соседних зубов, что позволяет достичь максимальной естественности и прочности.<br /><br />" +
+  "Что было сделано:<br />" +
+  "• Лечение глубокого кариеса и восстановление пломбой<br />" +
+  "• Установка импланта с последующим протезированием<br />" +
+  "• Восстановление прикуса и жевательной функции<br />" +
+  "• Работа выполнена под увеличением — для идеальной точности<br /><br />" +
+  "Результат — функциональная и эстетическая реставрация, полностью вернувшая пациенту уверенность и комфорт.",
+case_17_title: "Протезирование на двух имплантах",
+case_17_description:
+  "Эстетика и функциональность за один кадр<br /><br />" +
+  "На фото результат завершённого этапа имплантации и установки коронок на два жевательных зуба.<br /><br />" +
+  "📍 Слева до:<br />" +
+  "Видны два установленных импланта с формирователями десны. Подготовительный этап завершён, ткани полностью зажили.<br /><br />" +
+  "📍 Справа после:<br />" +
+  "Установлены индивидуальные анатомические коронки. Цвет, форма и прикус точно восстановлены. Импланты теперь полностью функционируют как натуральные зубы.<br /><br />" +
+  "✅ Восстановлена жевательная функция<br />" +
+  "✅ Высокая эстетика — коронки не отличить от естественных зубов<br />" +
+  "✅ Надёжность и долговечность конструкции<br />" +
+  "✅ Работа выполнена с точной посадкой и выверенной окклюзией",
+case_18_title: "Ортодонтическое лечение",
+case_18_description:
+  "На фото представлен результат ортодонтического лечения:<br /><br />" +
+  "📍 До — выраженное скученное положение передних зубов, смещение и перекрытие, нарушение эстетики и прикуса.<br /><br />" +
+  "📍 После — зубы выровнены в дугу, восстановлена симметрия и правильное положение. Установлена несъёмная ретенционная дуга, которая удерживает достигнутый результат и предотвращает повторное смещение зубов.<br /><br />" +
+  "✅ Ровные зубы без брекетов на итоговом фото<br />" +
+  "✅ Надёжная фиксация результата<br />" +
+  "✅ Эстетика и здоровье десны восстановлены<br /><br />" +
+  "Пациент получил ровную и гармоничную улыбку. Закрепление результата обеспечено ретейнером.",
+case_19_title: "Ортодонтическое лечение",
+case_19_description:
+  "На фото показано, как изменился профиль улыбки пациента в результате ортодонтического лечения:<br /><br />" +
+  "📍 До — смещённый прикус, скученность зубов в боковом отделе, неравномерная нагрузка на зубы, эстетические и функциональные нарушения.<br /><br />" +
+  "📍 После — зубы выровнены, прикус откорректирован, восстановлены гармония улыбки и жевательная функция.<br /><br />" +
+  "✅ Прикус выровнен<br />" +
+  "✅ Зубы встали в правильную анатомическую дугу<br />" +
+  "✅ Улыбка стала гармоничнее и эстетичнее<br />" +
+  "✅ Работа выполнена с учётом функции и стабильности<br /><br />" +
+  "Пациент получил не только красивую, но и здоровую улыбку с надёжным результатом.",
+
+
+
+      stories_title: "Истории наших пациентов",
     stories_subtitle: "Читайте реальные отзывы людей, которые изменили свою жизнь благодаря красивой улыбке",
     story_1_treatment: "Лечение кариеса",
     story_1_text:
@@ -153,6 +232,7 @@ const translations = {
     showcase_case_2_title: "Тістердің жанасу кариесін емдеу",
     showcase_case_3_title: "Брекет-жүйесі: металл лигатуралы",
     tag_emax: "E-max",
+    tag_treatment:"Емдеу",
     tag_crowns_general: "Коронкалар",
     tag_braces: "Брекеттер",
     tag_orthodontics: "Ортодонтия",
@@ -163,6 +243,7 @@ const translations = {
     tag_aesthetics: "Эстетика",
     tag_endodontics: "Эндодонтия",
     tag_rehabilitation: "Оңалту",
+    tag_crowns:"Коронкалар",
     tag_zirconia_crowns: "Циркон коронкалар",
     tag_braces_closure: "Брекеттермен треманы жабу",
     tag_whitening: "Ағарту",
@@ -206,6 +287,79 @@ const translations = {
     case_12_title: "Түбірі қалыптаспаған жасөспірімде пульпитті емдеу",
     case_12_description:
       "Жоғары дәлдік пен тәжірибені қажет ететін күрделі клиникалық жағдай.<br />Жасөспірімдерде тіс түбірі әлі толық қалыптаспаған және бұл жерде стандартты емдеу дұрыс емес. Қоршаған тіндердің өміршеңдігін сақтау және тістің табиғи дамуын бұзбау маңызды.<br />✅ ✅ Жұмыс микроскоппен жүргізілді бұл ең кішкентай анатомиялық бөлшектерді көруге, жетілмеген құрылымдарға зақым келтірместен арналарды дәл тазартуға және толтыруға мүмкіндік береді.",
+    case_13_title: "Күшті зақымданған тістерді кешенді қалпына келтіру",
+case_13_description:
+  "Бұл жағдайда кезең-кезеңмен жұмыс жүргізілді:<br />" +
+  "• Ауыз қуысын диагностикалау және санитарлық тазалау<br />" +
+  "• Терең кариес пен пульпитті емдеу<br />" +
+  "• Түбір өзектерін пломбылау<br />" +
+  "• Тістердің анатомиялық пішінін заманауи композиттермен толық қалпына келтіру<br />" +
+  "• Эстетика мен шайнау функциясын қалпына келтіру<br />" +
+  "• Жеке күтім мен алдын алу бойынша ұсынымдар<br /><br />" +
+  "Тіпті күрделі клиникалық жағдайларда да біз тістерді сақтап, қалпына келтіреміз – пациентке сенімділік пен дені сау күлкі сыйлаймыз.",
+case_14_title: "Кариозды дақтар мен эмаль ақаулары бар алдыңғы тістерді қалпына келтіру",
+case_14_description:
+  "Мәселе:<br />" +
+  "Пациент алдыңғы тістеріндегі кариозды дақтар, араларындағы қараю және жиектерінің тегіс еместігі сияқты эстетикалық кемшіліктерге шағымданды.<br /><br />" +
+  "Жүргізілген емдеу:<br />" +
+  "• Емдеуге дейін кәсіби гигиена<br />" +
+  "• Дәлдікті арттыру үшін жұмыс аймағын коффердаммен оқшаулау<br />" +
+  "• Кариозды тіндер мен ақауларды жою<br />" +
+  "• Екі орталық күрек тісті тікелей композиттік реставрациялау, анатомиясы мен түсін қалпына келтіру<br />" +
+  "• Реставрацияны соңғы жылтырату<br /><br />" +
+  "📍 Нәтижесінде пациент бар болғаны бір қабылдауда табиғи, симметриялы және сау күлкіге ие болды.",
+case_15_title: "Алдыңғы тістердің эстетикалық реставрациясы",
+case_15_description:
+  "Фотосуретте коффердаммен оқшауланған тікелей композиттік реставрация кезеңдері көрсетілген:<br /><br />" +
+  "1. Диагностика және дайындау<br />" +
+  "Ескі пломбалар мен кариозды тіндер алынды. Материалды дәл бейімдеуге арналған тіс жиектері дайындалды. Жұмыс алаңының құрғақтығы мен тазалығы коффердаммен қамтамасыз етілді.<br /><br />" +
+  "2. Контактілер мен анатомияны қалыптастыру<br />" +
+  "Күрек тістердің табиғи пішіні мен тістер арасындағы контакт қайта жасалды. Композитті қолданудың кезеңдік әдісі қолданылды.<br />",
+case_16_title: "Тістерді пломба және импланттағы тәжбен қалпына келтіру",
+case_16_description:
+  "Фотода кешенді емдеу нәтижесі көрсетілген:<br /><br />" +
+  "🦷 Екі шеткі тіс (жоғарғы және төменгі) кариеспен зақымдалған. Олар жоғары эстетикалық пломбалармен қалпына келтірілді, тістердің анатомиялық пішіні мен шайнау төмпешіктері толық жаңғыртылды.<br /><br />" +
+  "🦷 Орталық тіс — имплант орнатылып, үстіне тәж салынды.<br />" +
+  "Тәж түсі мен пішіні бойынша көрші тістерге дәл сәйкестендірілді, бұл табиғилық пен беріктікті қамтамасыз етеді.<br /><br />" +
+  "Жасалған жұмыс:<br />" +
+  "• Терең кариесті емдеу және пломба қою<br />" +
+  "• Имплант орнату және кейінгі протездеу<br />" +
+  "• Тістесу мен шайнау функциясын қалпына келтіру<br />" +
+  "• Жұмыс үлкейткіш астында орындалды — мінсіз дәлдік үшін<br /><br />" +
+  "Нәтиже — функционалды және эстетикалық реставрация, пациентке сенімділік пен жайлылықты толық қайтарды.",
+case_17_title: "Екі имплантқа протездеу",
+case_17_description:
+  "Бір кадрда — эстетика мен функционалдылық<br /><br />" +
+  "Фотода екі шайнау тісіне имплант орнату және тәж салу кезеңінің нәтижесі көрсетілген.<br /><br />" +
+  "📍 Сол жақта — дейін:<br />" +
+  "Екі имплант және қызыл иек қалыптастырғыштары көрінеді. Дайындық кезеңі аяқталды, тіндер толықтай жазылды.<br /><br />" +
+  "📍 Оң жақта — кейін:<br />" +
+  "Жеке анатомиялық тәждер орнатылды. Түс, пішін және тістесу дәл қалпына келтірілді. Енді импланттар табиғи тістер сияқты толық қызмет етеді.<br /><br />" +
+  "✅ Шайнау функциясы қалпына келтірілді<br />" +
+  "✅ Жоғары эстетика — тәждер табиғи тістерден ажыратылмайды<br />" +
+  "✅ Сенімділік және ұзақ қызмет ету<br />" +
+  "✅ Жұмыс дәл орнатумен және нақтыланған окклюзиямен орындалды",
+case_18_title: "Ортодонтиялық ем",
+case_18_description:
+  "Фотосуретте ортодонтиялық емнің нәтижесі көрсетілген:<br /><br />" +
+  "📍 Бұрын — алдыңғы тістердің тығыз орналасуы, ығысуы және жабылуы, эстетика мен тістесудің бұзылуы.<br /><br />" +
+  "📍 Кейін — тістер доға бойымен түзетілді, симметрия мен дұрыс орналасу қалпына келтірілді. Қайта ығысуға жол бермеу және нәтижені сақтау үшін алынбайтын ретенциялық доға орнатылды.<br /><br />" +
+  "✅ Соңғы фотода — брекетсіз түзу тістер<br />" +
+  "✅ Нәтиже сенімді түрде бекітілді<br />" +
+  "✅ Деснелердің эстетикасы мен денсаулығы қалпына келтірілді<br /><br />" +
+  "Пациент түзу әрі үйлесімді күлкіге ие болды. Нәтиже ретейнермен бекітілді.",
+case_19_title: "Ортодонтиялық ем",
+case_19_description:
+  "Фотосуретте ортодонтиялық ем нәтижесінде пациенттің күлкі профилінің қалай өзгергені көрсетілген:<br /><br />" +
+  "📍 Бұрын — тістесу бұзылған, артқы бөлікте тістер тығыз орналасқан, жүктеме біркелкі бөлінбеген, эстетикалық және функционалдық мәселелер болған.<br /><br />" +
+  "📍 Кейін — тістер түзетілді, тістесу қалпына келтірілді, күлкі мен шайнау функциясы үйлесімді болды.<br /><br />" +
+  "✅ Тістесу түзетілді<br />" +
+  "✅ Тістер анатомиялық доға бойынша орналасты<br />" +
+  "✅ Күлкі эстетикалық және үйлесімді болды<br />" +
+  "✅ Жұмыс функция мен тұрақтылықты ескере отырып орындалды<br /><br />" +
+  "Пациент әдемі ғана емес, сонымен қатар дені сау және ұзақ мерзімді нәтиже беретін күлкіге ие болды.",
+
+
     stories_title: "Біздің пациенттердің тарихы",
     stories_subtitle: "Әдемі күлкінің арқасында өмірін өзгерткен адамдардың нақты пікірлерін оқыңыз",
     story_1_treatment: "Кариесті емдеу",
@@ -265,6 +419,7 @@ const translations = {
     showcase_case_2_title: "Contact caries treatment",
     showcase_case_3_title: "Braces system: metal ligating",
     tag_emax: "E-max",
+    tag_treatment:"Treatment",
     tag_crowns_general: "Crowns",
     tag_braces: "Braces",
     tag_orthodontics: "Orthodontics",
@@ -275,6 +430,7 @@ const translations = {
     tag_aesthetics: "Aesthetics",
     tag_endodontics: "Endodontics",
     tag_rehabilitation: "Rehabilitation",
+    tag_crowns:"Crowns",
     tag_zirconia_crowns: "Zirconia Crowns",
     tag_braces_closure: "Diastema closure with braces",
     tag_whitening: "Whitening",
@@ -318,7 +474,83 @@ const translations = {
     case_12_title: "Pulpitis treatment in an adolescent with an unformed root",
     case_12_description:
       "A complex clinical case that requires high precision and experience.<br />In adolescents, the root is not yet fully formed, and standard treatment is not suitable here. It is important to preserve the viability of surrounding tissues and not disrupt the natural development of the tooth.<br />✅ The work was performed under a microscope, which allows seeing the smallest anatomical details, precisely cleaning and filling the canals, without damaging immature structures.",
-    stories_title: "Stories of our patients",
+    case_13_title: "Comprehensive restoration of severely damaged teeth",
+case_13_description:
+  "This case involved a step-by-step approach:<br />" +
+  "• Diagnosis and oral cavity sanitation<br />" +
+  "• Treatment of deep caries and pulpitis<br />" +
+  "• Root canal filling<br />" +
+  "• Complete restoration of tooth anatomy using modern composites<br />" +
+  "• Restoration of aesthetics and chewing function<br />" +
+  "• Personalized care and prevention recommendations<br /><br />" +
+  "Even in complex clinical situations, we preserve and restore teeth—returning confidence and a healthy smile to our patients.",
+case_14_title: "Restoration of Front Teeth with Carious Spots and Enamel Defects",
+case_14_description:
+  "Problem:<br />" +
+  "The patient complained about aesthetic imperfections — carious spots, discoloration between the front teeth, and uneven incisal edges.<br /><br />" +
+  "Treatment provided:<br />" +
+  "• Professional cleaning before the procedure<br />" +
+  "• Isolation of the working area with a rubber dam for maximum precision<br />" +
+  "• Removal of carious tissues and enamel defects<br />" +
+  "• Direct composite restoration of two central incisors with anatomical and color reconstruction<br />" +
+  "• Final polishing of the restoration<br /><br />" +
+  "📍 As a result, the patient received a natural, symmetrical, and healthy smile in just one visit.",
+case_15_title: "Aesthetic Restoration of Front Teeth",
+case_15_description:
+  "The photo shows the stages of direct composite restoration with rubber dam isolation:<br /><br />" +
+  "1. Diagnosis and preparation<br />" +
+  "Old restorations and carious tissues were removed. Tooth edges were prepared for precise material adaptation. Dryness and cleanliness of the working field were ensured with a rubber dam.<br /><br />" +
+  "2. Contact and anatomy formation<br />" +
+  "The natural shape of the incisors was recreated and interproximal contacts restored. A step-by-step layering technique was used for composite application.<br /><br />" +
+  "3. Final polishing<br />" +
+  "Smooth surface, natural shine and color perfectly matching the original teeth.<br /><br />" +
+  "📍 Result — a harmonious and functional smile without crown preparation. Efficient, aesthetic, and tooth-preserving.",
+case_16_title: "Tooth Restoration with Fillings + Crown on Implant",
+case_16_description:
+  "The photo shows the result of a comprehensive treatment:<br /><br />" +
+  "🦷 Two molars (upper and lower) were damaged by caries. They were restored with highly aesthetic fillings that fully recreated the anatomical shape and chewing cusps.<br /><br />" +
+  "🦷 The central tooth — an implant with a crown was placed.<br />" +
+  "The crown was precisely matched in color and shape to neighboring teeth, ensuring maximum natural look and strength.<br /><br />" +
+  "What was done:<br />" +
+  "• Treatment of deep caries and restoration with fillings<br />" +
+  "• Implant placement followed by prosthetics<br />" +
+  "• Bite and chewing function restoration<br />" +
+  "• Work performed under magnification for perfect precision<br /><br />" +
+  "Result — a functional and aesthetic restoration that fully restored the patient's confidence and comfort.",
+case_17_title: "Prosthetics on Two Implants",
+case_17_description:
+  "Aesthetics and function in a single frame<br /><br />" +
+  "The photo shows the final stage of implant placement and crown installation on two molars.<br /><br />" +
+  "📍 Left — Before:<br />" +
+  "Two implants with healing abutments are visible. The preparatory stage is complete and the tissues have fully healed.<br /><br />" +
+  "📍 Right — After:<br />" +
+  "Custom anatomical crowns have been placed. Color, shape, and bite were precisely restored. The implants now function just like natural teeth.<br /><br />" +
+  "✅ Restored chewing function<br />" +
+  "✅ High aesthetics — crowns are indistinguishable from natural teeth<br />" +
+  "✅ Strong and durable construction<br />" +
+  "✅ Performed with precise fit and carefully adjusted occlusion",
+case_18_title: "Orthodontic Treatment",
+case_18_description:
+  "The photo shows the result of orthodontic treatment:<br /><br />" +
+  "📍 Before — severe crowding of front teeth, misalignment and overlapping, affecting both aesthetics and bite.<br /><br />" +
+  "📍 After — teeth were aligned into an arch, symmetry and correct positioning were restored. A fixed retention wire was placed to maintain the result and prevent relapse.<br /><br />" +
+  "✅ Straight teeth without braces in the final photo<br />" +
+  "✅ Reliable result fixation<br />" +
+  "✅ Restored gum aesthetics and health<br /><br />" +
+  "The patient achieved a straight and harmonious smile, secured with a retainer.",
+case_19_title: "Orthodontic Treatment",
+case_19_description:
+  "The photo shows how the patient’s smile profile changed as a result of orthodontic treatment:<br /><br />" +
+  "📍 Before — misaligned bite, crowding of teeth in the posterior region, uneven load distribution, functional and aesthetic issues.<br /><br />" +
+  "📍 After — teeth aligned, bite corrected, harmony of the smile and chewing function restored.<br /><br />" +
+  "✅ Bite aligned<br />" +
+  "✅ Teeth positioned in the correct anatomical arch<br />" +
+  "✅ Smile became more harmonious and aesthetic<br />" +
+  "✅ Treatment was done with focus on function and long-term stability<br /><br />" +
+  "The patient received not only a beautiful but also a healthy smile with a lasting result.",
+
+
+      stories_title: "Stories of our patients",
     stories_subtitle: "Read real reviews from people who changed their lives with a beautiful smile",
     story_1_treatment: "Caries treatment",
     story_1_text:
