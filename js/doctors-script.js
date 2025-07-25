@@ -10,14 +10,25 @@ class GoogleDriveConverter {
   static extractFileId(url) {
     if (!url || typeof url !== "string") return null
 
-    const patterns = [/\/file\/d\/([a-zA-Z0-9-_]+)/, /id=([a-zA-Z0-9-_]+)/, /\/d\/([a-zA-Z0-9-_]+)/]
+    // РАСШИРЕННЫЕ паттерны для разных форматов Google Drive ссылок
+    const patterns = [
+      /\/file\/d\/([a-zA-Z0-9-_]+)/,
+      /id=([a-zA-Z0-9-_]+)/,
+      /\/d\/([a-zA-Z0-9-_]+)/,
+      /drive\.google\.com\/open\?id=([a-zA-Z0-9-_]+)/,
+      /drive\.google\.com\/file\/d\/([a-zA-Z0-9-_]+)\/view/,
+      /drive\.google\.com\/uc\?id=([a-zA-Z0-9-_]+)/,
+    ]
 
     for (const pattern of patterns) {
       const match = url.match(pattern)
       if (match) {
+        console.log(`Извлечен ID ${match[1]} из URL: ${url}`)
         return match[1]
       }
     }
+    
+    console.warn("Не удалось извлечь ID из URL:", url)
     return null
   }
 
@@ -33,7 +44,7 @@ class GoogleDriveConverter {
 
   static isGoogleDriveUrl(url) {
     if (!url || typeof url !== "string") return false
-    return url.includes("drive.google.com") && (url.includes("/file/d/") || url.includes("id=") || url.includes("/d/"))
+    return url.includes("drive.google.com")
   }
 
   static convertToThumbnail(url, size = "w1000") {
@@ -111,10 +122,11 @@ class DoctorsPageManager {
 
     try {
       const sheetName = this.getDoctorsSheetName(this.currentLanguage)
-      const range = `${sheetName}!A:N`
+      const range = `${sheetName}!A:P` // ИСПРАВЛЕНО: диапазон A-P
       const url = `https://sheets.googleapis.com/v4/spreadsheets/${DOCTORS_GOOGLE_SHEETS_CONFIG.SPREADSHEET_ID}/values/${range}?key=${DOCTORS_GOOGLE_SHEETS_CONFIG.API_KEY}`
 
       console.log("Загрузка данных врачей из URL:", url)
+      console.log("Диапазон данных:", range)
 
       const response = await fetch(url)
 
@@ -125,9 +137,17 @@ class DoctorsPageManager {
       }
 
       const data = await response.json()
-      console.log("Получены данные врачей:", data)
+      console.log("Получены сырые данные из Google Sheets:", data)
 
       if (data.values && data.values.length > 0) {
+        console.log(`Всего строк получено: ${data.values.length}`)
+        console.log("Заголовки (первая строка):", data.values[0])
+        
+        // Проверяем структуру данных
+        if (data.values.length > 1) {
+          console.log("Пример данных врача (вторая строка):", data.values[1])
+        }
+        
         this.processDoctorsData(data.values)
         this.lastUpdateTime = new Date()
         this.retryCount = 0
@@ -186,40 +206,45 @@ class DoctorsPageManager {
 
   // ===== СОЗДАНИЕ ОБЪЕКТА ВРАЧА =====
   createDoctorObject(row, rowNumber) {
-    const name = this.cleanText(row[0])
+    const name = this.cleanText(row[0]) // A - ФИО
+    if (!name) return null
 
-    if (!name) {
-      return null
-    }
-
-    const originalPhotoUrl = this.cleanText(row[3]) || "img/placeholder.svg"
+    // ИСПРАВЛЕНО: Правильные индексы согласно структуре A-P
+    const originalPhotoUrl = this.cleanText(row[3]) || "img/placeholder.svg" // D - Ссылка на фото
     const convertedPhotoUrl = GoogleDriveConverter.convertToThumbnail(originalPhotoUrl, this.imageSize)
 
+    // F-L - Сертификаты (индексы 5-11)
     const originalCertificates = this.extractUrls(row.slice(5, 12))
+    
+    // M-P - Фото до и после (индексы 12-15)
     const originalBeforeAfterPhotos = this.extractUrls(row.slice(12, 16))
 
     const convertedCertificates = GoogleDriveConverter.convertUrlsArray(originalCertificates, this.imageSize)
     const convertedBeforeAfterPhotos = GoogleDriveConverter.convertUrlsArray(originalBeforeAfterPhotos, this.imageSize)
 
-    // Парсим опыт работы для получения числового значения
-    const experienceText = this.cleanText(row[1]) || ""
+    const experienceText = this.cleanText(row[1]) || "" // B - Стаж
     const experienceYears = this.parseExperienceYears(experienceText)
 
-    return {
+    const doctor = {
       id: `doctor_${rowNumber}`,
-      name: name,
-      experience: experienceText,
-      experienceYears: experienceYears, // Добавляем числовое значение опыта
-      specialization: this.cleanText(row[2]) || this.translations[this.currentLanguage].specialization_default,
-      photoUrl: convertedPhotoUrl,
+      name: name, // A
+      experience: experienceText, // B
+      experienceYears: experienceYears,
+      specialization: this.cleanText(row[2]) || this.translations[this.currentLanguage].specialization_default, // C
+      photoUrl: convertedPhotoUrl, // D
       originalPhotoUrl: originalPhotoUrl,
-      description: this.cleanText(row[4]) || "",
-      certificates: convertedCertificates,
+      description: this.cleanText(row[4]) || "", // E - Описание
+      certificates: convertedCertificates, // F-L
       originalCertificates: originalCertificates,
-      beforeAfterPhotos: convertedBeforeAfterPhotos,
+      beforeAfterPhotos: convertedBeforeAfterPhotos, // M-P
       originalBeforeAfterPhotos: originalBeforeAfterPhotos,
       slug: this.generateSlug(name),
     }
+
+    // Отладка данных врача
+    this.debugDoctorData(doctor)
+    
+    return doctor
   }
 
   // ===== ПАРСИНГ ОПЫТА РАБОТЫ =====
@@ -244,10 +269,24 @@ class DoctorsPageManager {
 
   // ===== ИЗВЛЕЧЕНИЕ URL-ов =====
   extractUrls(cells) {
-    return cells
-      .filter((cell) => cell && cell.toString().trim())
-      .map((cell) => cell.toString().trim())
-      .filter((url) => url.startsWith("http"))
+    const urls = []
+    
+    console.log('Извлечение URL из ячеек:', cells)
+    
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i]
+      if (cell && cell.toString().trim()) {
+        const url = cell.toString().trim()
+        // Проверяем, что это действительно URL
+        if (url.startsWith("http") || url.includes("drive.google.com")) {
+          urls.push(url)
+          console.log(`Найден URL в позиции ${i}:`, url)
+        }
+      }
+    }
+    
+    console.log('Итого найдено URLs:', urls.length)
+    return urls
   }
 
   // ===== ГЕНЕРАЦИЯ SLUG =====
@@ -321,12 +360,9 @@ class DoctorsPageManager {
         <div class="doctor-content-beautiful">
           <div class="doctor-header-beautiful">
             <h3>${doctor.name}</h3>
-            </div>
           </div>
           
           <p class="doctor-position-beautiful">${doctor.specialization}</p>
-          
-
           
           <p class="doctor-description-beautiful">
             ${doctor.description || this.translations[this.currentLanguage].card_default_description}
@@ -362,45 +398,6 @@ class DoctorsPageManager {
         </div>
       </div>
     `
-  }
-
-  // ===== ПОЛУЧЕНИЕ ОСНОВНОЙ СПЕЦИАЛИЗАЦИИ =====
-  getMainSpecialty(specialization) {
-    if (!specialization) return this.translations[this.currentLanguage].specialization_default
-
-    const spec = specialization.toLowerCase()
-    if (spec.includes("терапевт")) return this.translations[this.currentLanguage].specialization_therapists.slice(0, -1)
-    if (spec.includes("ортодонт"))
-      return this.translations[this.currentLanguage].specialization_orthodontists.slice(0, -1)
-    if (spec.includes("эндодонт"))
-      return this.translations[this.currentLanguage].specialization_endodontists.slice(0, -2)
-    if (spec.includes("хирург")) return this.translations[this.currentLanguage].specialization_surgeons.slice(0, -1)
-    if (spec.includes("ортопед"))
-      return this.translations[this.currentLanguage].specialization_orthopedists.slice(0, -1)
-
-    return specialization.split(" ")[0] || this.translations[this.currentLanguage].specialization_default
-  }
-
-  // ===== ПОЛУЧЕНИЕ ДОПОЛНИТЕЛЬНЫХ СПЕЦИАЛИЗАЦИЙ =====
-  getAdditionalSpecialties(specialization) {
-    const additional = []
-    if (!specialization) return additional
-
-    const spec = specialization.toLowerCase()
-    if (spec.includes("эстетик") || spec.includes("реставрац"))
-      additional.push(this.translations[this.currentLanguage].specialization_aesthetic || "Эстетика")
-    if (spec.includes("эндодонт") || spec.includes("канал"))
-      additional.push(this.translations[this.currentLanguage].specialization_endodontists.slice(0, -2) || "Эндодонтия")
-    if (spec.includes("микроскоп"))
-      additional.push(this.translations[this.currentLanguage].specialization_microscope || "Микроскоп")
-    if (spec.includes("брекет") || spec.includes("элайнер"))
-      additional.push(this.translations[this.currentLanguage].specialization_braces || "Брекеты")
-    if (spec.includes("диагност"))
-      additional.push(this.translations[this.currentLanguage].specialization_diagnostics || "Диагностика")
-    if (spec.includes("профилакт"))
-      additional.push(this.translations[this.currentLanguage].specialization_prevention || "Профилактика")
-
-    return additional.slice(0, 2)
   }
 
   // ===== ИНИЦИАЛИЗАЦИЯ ОБРАБОТЧИКОВ КАРТОЧЕК =====
@@ -456,24 +453,32 @@ class DoctorsPageManager {
     const certificatesGrid = document.getElementById("certificatesGrid")
     const certificatesSection = document.getElementById("certificatesSection")
 
+    console.log("Рендеринг сертификатов:", certificates)
+
     if (!certificates || certificates.length === 0) {
+      console.log("Нет сертификатов для отображения")
       certificatesSection.style.display = "none"
       return
     }
 
     certificatesSection.style.display = "block"
     certificatesGrid.innerHTML = certificates
-      .map(
-        (cert, index) => `
-      <div class="certificate-item" onclick="window.doctorsManager.showImageViewer('${cert}', '${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}')">
-        <img src="${cert}" alt="${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}" loading="lazy" onerror="this.parentElement.style.display='none'">
-        <div class="certificate-overlay">
-          ${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}
+      .map((cert, index) => `
+        <div class="certificate-item" onclick="window.doctorsManager.showImageViewer('${cert}', '${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}')">
+          <img src="${cert}" 
+               alt="${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}" 
+               loading="lazy" 
+               onerror="console.error('Ошибка загрузки сертификата:', this.src); this.style.display='none';"
+               onload="console.log('Успешно загружен сертификат:', this.src)">
+          <div class="certificate-overlay">
+            <i class="fa-solid fa-certificate"></i>
+            ${this.translations[this.currentLanguage].modal_certificate_label} ${index + 1}
+          </div>
         </div>
-      </div>
-    `,
-      )
+      `)
       .join("")
+      
+    console.log(`Отображено ${certificates.length} сертификатов`)
   }
 
   // ===== ОТОБРАЖЕНИЕ ФОТО ДО И ПОСЛЕ =====
@@ -481,24 +486,33 @@ class DoctorsPageManager {
     const beforeAfterGrid = document.getElementById("beforeAfterGrid")
     const beforeAfterSection = document.getElementById("beforeAfterSection")
 
+    console.log("Рендеринг фото до/после:", photos)
+
     if (!photos || photos.length === 0) {
+      console.log("Нет фото до/после для отображения")
       beforeAfterSection.style.display = "none"
       return
     }
 
     beforeAfterSection.style.display = "block"
+    
     beforeAfterGrid.innerHTML = photos
-      .map(
-        (photo, index) => `
-      <div class="before-after-item" onclick="window.doctorsManager.showImageViewer('${photo}', '${this.translations[this.currentLanguage].modal_work_label} ${index + 1}')">
-        <img src="${photo}" alt="${this.translations[this.currentLanguage].modal_work_label} ${index + 1}" loading="lazy" onerror="this.parentElement.style.display='none'">
-        <div class="before-after-overlay">
-          ${this.translations[this.currentLanguage].modal_work_label} ${index + 1}
+      .map((photo, index) => `
+        <div class="before-after-item" onclick="window.doctorsManager.showImageViewer('${photo}', '${this.translations[this.currentLanguage].modal_work_label} ${index + 1}')">
+          <img src="${photo}" 
+               alt="${this.translations[this.currentLanguage].modal_work_label} ${index + 1}" 
+               loading="lazy" 
+               onerror="console.error('Ошибка загрузки изображения:', this.src); this.style.display='none';"
+               onload="console.log('Успешно загружено изображение:', this.src)">
+          <div class="before-after-overlay">
+            <i class="fa-solid fa-search-plus"></i>
+            ${this.translations[this.currentLanguage].modal_work_label} ${index + 1}
+          </div>
         </div>
-      </div>
-    `,
-      )
+      `)
       .join("")
+      
+    console.log(`Отображено ${photos.length} фото до/после`)
   }
 
   // ===== ПОКАЗ ПРОСМОТРЩИКА ИЗОБРАЖЕНИЙ =====
@@ -888,6 +902,36 @@ class DoctorsPageManager {
       `
     }
   }
+
+  // ===== ОТЛАДКА ДАННЫХ ВРАЧА =====
+  debugDoctorData(doctor) {
+    console.group(`=== ОТЛАДКА ДАННЫХ ВРАЧА: ${doctor.name} ===`)
+    console.log("Полные данные врача:", doctor)
+    
+    console.log("📋 Основная информация:")
+    console.log(`  - ФИО: ${doctor.name}`)
+    console.log(`  - Стаж: ${doctor.experience}`)
+    console.log(`  - Специализация: ${doctor.specialization}`)
+    console.log(`  - Описание: ${doctor.description}`)
+    
+    console.log("📸 Фото врача:")
+    console.log(`  - Оригинальная ссылка: ${doctor.originalPhotoUrl}`)
+    console.log(`  - Конвертированная ссылка: ${doctor.photoUrl}`)
+    
+    console.log("🏆 Сертификаты:")
+    console.log(`  - Количество: ${doctor.certificates.length}`)
+    doctor.certificates.forEach((cert, index) => {
+      console.log(`  - Сертификат ${index + 1}: ${cert}`)
+    })
+    
+    console.log("🔄 Фото до и после:")
+    console.log(`  - Количество: ${doctor.beforeAfterPhotos.length}`)
+    doctor.beforeAfterPhotos.forEach((photo, index) => {
+      console.log(`  - Фото ${index + 1}: ${photo}`)
+    })
+    
+    console.groupEnd()
+  }
 }
 
 // ===== УТИЛИТЫ ДЛЯ СТРАНИЦЫ ВРАЧЕЙ =====
@@ -923,7 +967,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM загружен, начинаем инициализацию страницы врачей...")
 
     // Создаем глобальный экземпляр менеджера врачей
-    // Ensure translations and currentLanguage are available before creating manager
     if (window.translations_doctors && window.currentLanguage_doctors) {
       window.doctorsManager = new DoctorsPageManager()
     } else {
@@ -988,13 +1031,13 @@ const translations_doctors = {
     filter_header_title: "Наши специалисты",
     filter_header_subtitle: "Выберите специализацию для поиска нужного врача",
     filter_all_doctors: "Все врачи",
-    filter_count_label: "Врачей", // This is for the count inside the button, not used directly as data-translate
+    filter_count_label: "Врачей",
     specialization_therapists: "Терапевты",
     specialization_orthodontists: "Ортодонты",
     specialization_endodontists: "Эндодонтисты",
     specialization_surgeons: "Хирурги",
     specialization_orthopedists: "Ортопеды",
-    specialization_default: "Стоматолог", // For default specialty tag
+    specialization_default: "Стоматолог",
 
     // Сетка врачей
     loading_doctors_text: "Загружаем информацию о врачах...",

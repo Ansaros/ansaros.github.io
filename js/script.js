@@ -63,7 +63,7 @@ const translations = {
       "Пациентка обратилась в клинику с жалобами на неэстетичный вид старых реставраций и боль в одном из зубов💁🏻‍♀️<br />На первом этапе терапевтом было проведено качественное эндодонтическое лечение и полная замена реставраций.<br />Для восстановления функциональности и эстетики пациентка была направлена к врачу-ортопеду.<br />Финальный этап — установка коронок и виниров, возвращающих уверенность в улыбке🦷<br />Результат — заслуга командной работы врачей клиники: точность, согласованность и забота о каждом этапе лечения💪🏻",
     case_2_title: "Лечение контактного кариеса",
     case_2_description:
-      "Пациент проходил ортодонтическое лечение, но из-за плохого ухода налёт скопился между зубами, с внутренней стороны, и развился контактный кариес.<br />Что сделали?<br />* Вылечили контактный кариес 1.1 и 2.1<br />* Местная анестезия + изоляция коффердамом<br />* Сняли дугу для качественной обработки<br />* Работа заняла 2 часа<br />* Материал: Micherium (Italy)",
+      "Пациент проходил ортодонтическое лечение, но из-за плохого ухода налёт скопился между зубами, с внутренней стороны, и развился контактный кариес.<br />Что сделали?<br • Вылечили контактный кариес 1.1 и 2.1<br />• Местная анестезия + изоляция коффердамом<br />• Сняли дугу для качественной обработки<br />• Работа заняла 2 часа<br />• Материал: Micherium (Italy)",
     case_3_title: "Брекет-система: металлические лигатурные",
     case_3_description:
       "Пациентка обратилась на долечивание, и за это время мы уже достигли значительных улучшений! Исправление прикуса, выравнивание зубного ряда — уверенно движемся к красивой и здоровой улыбке.",
@@ -170,6 +170,13 @@ case_19_description:
   "✅ Улыбка стала гармоничнее и эстетичнее<br />" +
   "✅ Работа выполнена с учётом функции и стабильности<br /><br />" +
   "Пациент получил не только красивую, но и здоровую улыбку с надёжным результатом.",
+case_20_title: "Эндодонтическое лечение и циркониевая коронка",
+case_20_description: "У пациента, 25 лет, был полностью разрушен жевательный зуб.<br />Мы провели эндодонтическое лечение (очистка и пломбировка каналов), после чего восстановили культю зуба с помощью билдапа.<br />На завершающем этапе установили циркониевую коронку — прочную, эстетичную и биосовместимую.<br />✅ В результате полностью восстановлены функция и анатомия зуба, пациент может полноценно жевать и улыбаться.",
+case_21_title: "Лечение скрытого кариеса с сохранением нерва",
+case_21_description: "Именно с неё всё и начинается. Пациент не чувствовал боли, внешне зуб выглядел почти идеально. Но при диагностике и препарировании открылись два глубоких очага кариеса😵‍💫<br />Мы провели полную изоляцию, аккуратное удаление поражённых тканей, обработку и восстановление зуба с сохранением живой пульпы.<br />Итог: зуб спасён, нерв цел, пациент спокоен💪🏻<br />Такие случаи напоминают: не жди, пока заболит. Кариес не всегда виден, но он всегда действует изнутри☝🏻<br />Регулярные осмотры — это не лишнее. Это ваша гарантия сохранения зубов✅",
+case_22_title: "Лечение скрытого кариеса с сохранением нерва",
+case_22_description: "На фото — не просто потемнение. Это кариес. И он глубже, чем кажется😳<br />Пациент пришёл с жалобой на «чёрные точки на зубе». Без боли. Но по внешнему виду мы сразу заподозрили глубокий кариес😩<br />Когда начали вскрытие, стало ясно: поражение ушло глубоко в ткани зуба, почти до пульпы. В некоторых клиниках такой зуб бы уже направили на удаление😬<br />Но в нашей практике — другой подход☝🏻 Мы делаем всё, чтобы сохранить даже те зубы, которые другие врачи уже списали.<br />Точный протокол, микроскоп, изоляция, современные материалы — всё это позволяет нам лечить максимально бережно и эффективно.<br />Важно: кариес не болит — пока не стало слишком поздно. Если откладывать лечение, можно потерять зуб навсегда😵‍💫",
+
 
 
 
@@ -254,7 +261,7 @@ case_19_description:
       "Пациент ескі реставрациялардың эстетикалық емес түріне және бір тістің ауырсынуына шағымданып клиникаға келді💁🏻‍♀️<br />Бірінші кезеңде терапевт сапалы эндодонтиялық емдеуді және реставрацияларды толық ауыстыруды жүргізді.<br />Функционалдылық пен эстетиканы қалпына келтіру үшін пациент ортопед дәрігерге жіберілді.<br />Соңғы кезең – күлкіге сенімділікті қайтаратын коронкалар мен винирлерді орнату🦷<br />Нәтиже – клиника дәрігерлерінің командалық жұмысының арқасы: дәлдік, келісімділік және емдеудің әр кезеңіне қамқорлық💪🏻",
     case_2_title: "Тістердің жанасу кариесін емдеу",
     case_2_description:
-      "Пациент ортодонтиялық емдеуден өтті, бірақ нашар күтімге байланысты тістер арасында, ішкі жағынан налет жиналып, жанасу кариесі дамыды.<br />Не істелді?<br />* 1.1 және 2.1 тістерінің жанасу кариесі емделді<br />* Жергілікті анестезия + коффердаммен оқшаулау<br />* Сапалы өңдеу үшін доға алынды<br />* Жұмыс 2 сағатқа созылды<br />* Материал: Micherium (Италия)",
+      "Пациент ортодонтиялық емдеуден өтті, бірақ нашар күтімге байланысты тістер арасында, ішкі жағынан налет жиналып, жанасу кариесі дамыды.<br />Не істелді?<br />• 1.1 және 2.1 тістерінің жанасу кариесі емделді<br />• Жергілікті анестезия + коффердаммен оқшаулау<br />• Сапалы өңдеу үшін доға алынды<br />• Жұмыс 2 сағатқа созылды<br />• Материал: Micherium (Италия)",
     case_3_title: "Брекет-жүйесі: металл лигатуралы",
     case_3_description:
       "Пациент емдеуді аяқтауға келді, және осы уақыт ішінде біз айтарлықтай жақсартуларға қол жеткіздік! Тістеуді түзету, тіс қатарын тегістеу – әдемі және сау күлкіге сенімді түрде жылжудамыз.",
@@ -358,6 +365,14 @@ case_19_description:
   "✅ Күлкі эстетикалық және үйлесімді болды<br />" +
   "✅ Жұмыс функция мен тұрақтылықты ескере отырып орындалды<br /><br />" +
   "Пациент әдемі ғана емес, сонымен қатар дені сау және ұзақ мерзімді нәтиже беретін күлкіге ие болды.",
+case_20_title: "Эндодонтикалық ем және цирконий тәж",
+case_20_description: "25 жастағы науқас толықтай бүлінген азу тісімен келді.<br />Біз түбір арналарын тазартып, пломбылау арқылы эндодонтикалық ем жүргіздік, кейін тістің пішінін билдап әдісімен қалпына келтірдік.<br />Соңында цирконий тәжін орнаттық — берік, эстетикалық және биологиялық үйлесімді материал.<br />✅ Нәтижесінде тістің анатомиясы мен функциясы толық қалпына келтірілді, науқас еркін шайнап, күле алады.",
+case_21_title: "Жасырын кариесті жүйке сақтай отырып емдеу",
+case_21_description: "Дәл осы кішкентай белгіден бәрі басталады. Науқас ешқандай ауырсыну сезбеген, ал тіс сырт көзге сау көрінген. Бірақ диагностика мен өңдеу кезінде екі терең кариозды ошақ анықталды😵‍💫<br />Біз толық изоляция жасап, зақымданған тіндерді мұқият алып тастап, тісті өңдеп, тірі пульпаны сақтай отырып қалпына келтірдік.<br />Нәтиже: тіс сақталды, жүйке аман, науқас тыныш💪🏻<br />Мұндай жағдайлар еске салады: ауырсынуды күтпеңіз. Кариес әрдайым іштен әсер етеді, көзге бірден көрінбеуі мүмкін☝🏻<br />Тұрақты тексерулер — артық емес, олар сіздің тістеріңізді сақтаудың кепілі✅",
+case_22_title: "Жасырын кариесті жүйке сақтай отырып емдеу",
+case_22_description: "Фотодағы жай ғана қарайған жер емес — бұл кариес. Және ол көрінгеннен әлдеқайда терең😳<br />Науқас «тістегі қара нүктелерге» шағымданып келді. Ауырсыну болмаған. Бірақ сыртқы түріне қарап-ақ біз терең кариесті бірден болжадық😩<br />Тісті ашқанда, зақым пульпаға дейін жеткені анықталды. Көп клиникаларда мұндай тіс бірден жұлуға жіберіледі😬<br />Ал біздің тәжірибеде — басқа әдіс☝🏻 Біз басқа дәрігерлер үмітсіз деп санайтын тістерді де сақтап қалуға тырысамыз.<br />Дәл емдеу хаттамасы, микроскоп, изоляция, заманауи материалдар — осылардың барлығы тісті барынша ұқыпты және тиімді емдеуге мүмкіндік береді.<br />Маңызды: кариес ауырмайды — әзірге кеш болмай тұрғанда. Егер емдеуді кейінге қалдырсаңыз, тістен айырылып қалуыңыз мүмкін😵‍💫",
+
+
 
 
     stories_title: "Біздің пациенттердің тарихы",
@@ -441,7 +456,7 @@ case_19_description:
       "The patient came to the clinic complaining of the unaesthetic appearance of old restorations and pain in one of the teeth💁🏻‍♀️<br />At the first stage, the therapist performed high-quality endodontic treatment and complete replacement of restorations.<br />For the restoration of functionality and aesthetics, the patient was referred to an orthopedic doctor.<br />The final stage is the installation of crowns and veneers, restoring confidence in the smile🦷<br />The result is the merit of the team work of the clinic's doctors: precision, consistency and care at every stage of treatment💪🏻",
     case_2_title: "Contact caries treatment",
     case_2_description:
-      "The patient underwent orthodontic treatment, but due to poor care, plaque accumulated between the teeth, on the inside, and contact caries developed.<br />What was done?<br />* Treated contact caries 1.1 and 2.1<br />* Local anesthesia + cofferdam isolation<br />* Archwire removed for quality processing<br />* The work took 2 hours<br />* Material: Micherium (Italy)",
+      "The patient underwent orthodontic treatment, but due to poor care, plaque accumulated between the teeth, on the inside, and contact caries developed.<br />What was done?<br />• Treated contact caries 1.1 and 2.1<br />• Local anesthesia + cofferdam isolation<br />• Archwire removed for quality processing<br />• The work took 2 hours<br />• Material: Micherium (Italy)",
     case_3_title: "Braces system: metal ligating",
     case_3_description:
       "The patient came for follow-up treatment, and during this time we have already achieved significant improvements! Bite correction, alignment of the dentition — we are confidently moving towards a beautiful and healthy smile.",
@@ -548,6 +563,13 @@ case_19_description:
   "✅ Smile became more harmonious and aesthetic<br />" +
   "✅ Treatment was done with focus on function and long-term stability<br /><br />" +
   "The patient received not only a beautiful but also a healthy smile with a lasting result.",
+case_20_title: "Endodontic Treatment and Zirconia Crown",
+case_20_description: "A 25-year-old patient presented with a completely destroyed molar tooth.<br />We performed endodontic treatment (cleaning and sealing of the root canals), then built up the tooth structure using a core buildup.<br />Finally, we placed a zirconia crown — durable, aesthetic, and biocompatible.<br />✅ As a result, the tooth’s function and anatomy were fully restored, allowing the patient to chew and smile confidently.",
+case_21_title: "Hidden Caries Treatment with Nerve Preservation",
+case_21_description: "This is how it often starts. The patient felt no pain, and the tooth looked almost perfect from the outside. But during diagnosis and preparation, two deep carious lesions were revealed😵‍💫<br />We ensured full isolation, carefully removed the affected tissues, disinfected, and restored the tooth while preserving the vital pulp.<br />Result: the tooth is saved, the nerve is intact, and the patient is calm💪🏻<br />Such cases remind us: do not wait until it hurts. Caries is not always visible, but it always works from the inside☝🏻<br />Regular check-ups are not optional — they are your guarantee of tooth preservation✅",
+case_22_title: "Hidden Caries Treatment with Nerve Preservation",
+case_22_description: "The photo doesn’t just show a dark spot — it’s caries. And it goes deeper than it looks😳<br />The patient came in complaining about 'black dots on the tooth', without any pain. But visually, we immediately suspected deep caries😩<br />Once we opened the cavity, it became clear: the damage had reached deep into the tooth tissue, almost to the pulp. In some clinics, such a tooth would be scheduled for extraction😬<br />But we have a different approach☝🏻 We do everything possible to save even those teeth that others would consider hopeless.<br />A precise protocol, microscope, isolation, and modern materials — all of this helps us treat gently and effectively.<br />Important: caries doesn't hurt — until it's too late. Delaying treatment can mean losing the tooth forever😵‍💫",
+
 
 
       stories_title: "Stories of our patients",

@@ -172,9 +172,9 @@ const translations_main = {
     // About section
     mission_title: "OUR MISSION",
     mission_text: `We believe that instilling skills of timely visits to the dentist,
-      proper oral hygiene, and using quality hygiene products leads to conscious
+      proper oral care, and using quality hygiene products leads to conscious
       patient care for their health. Using high-quality modern treatment methods,
-      the latest equipment, and time-tested materials, we achieve excellent
+      the latest equipment, and time-tested materials, we can achieve excellent
       long-term results as quickly, comfortably, and painlessly as possible. <br /><br />
       Our mission is to convey to the population of our beautiful country the
       importance of prevention and preservation of teeth from birth and for life!
