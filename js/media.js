@@ -209,13 +209,17 @@ async function switchLanguage(lang) {
   currentLanguage = lang
   localStorage.setItem("language", lang)
 
-  // Обновляем активные кнопки языка
-  document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
+  // Force remove active class from ALL language buttons first
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
     btn.classList.remove("active")
   })
-  document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
-    btn.classList.add("active")
-  })
+  
+  // Small delay to ensure DOM updates, then add active class
+  setTimeout(() => {
+    document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
+      btn.classList.add("active")
+    })
+  }, 10)
 
   translatePage()
 
@@ -250,13 +254,15 @@ async function switchLanguage(lang) {
     currentLanguage = previousLanguage
     localStorage.setItem("language", previousLanguage)
 
-    // Восстанавливаем активные кнопки
-    document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
-      btn.classList.remove("active")
-    })
+  // Restore active buttons with proper cleanup
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+  setTimeout(() => {
     document.querySelectorAll(`[data-lang="${previousLanguage}"]`).forEach((btn) => {
       btn.classList.add("active")
     })
+  }, 10)
 
     gallery.innerHTML = `
       <div class="error-message">
@@ -269,7 +275,15 @@ async function switchLanguage(lang) {
     `
   }
 }
-
+// Force refresh language buttons state
+function refreshLanguageButtons() {
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+  document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+}
 // ===== ЗАГРУЗКА ДАННЫХ =====
 async function loadVideosFromSheet(lang = currentLanguage) {
   if (isCacheValid(lang)) {
@@ -586,10 +600,13 @@ function initLanguageSwitchers() {
     })
   })
 
-  // Устанавливаем активный язык при загрузке
-  document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach((btn) => {
-    btn.classList.add("active")
-  })
+// Clear all active states first, then set current language
+document.querySelectorAll("[data-lang]").forEach((btn) => {
+  btn.classList.remove("active")
+})
+document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach((btn) => {
+  btn.classList.add("active")
+})
 }
 
 // ===== ОБРАБОТЧИКИ СОБЫТИЙ =====
@@ -601,7 +618,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Инициализируем языковые переключатели
   initLanguageSwitchers()
-
+  refreshLanguageButtons() // Add this line
   // Инициализируем мобильное меню
   initMobileMenu()
 
