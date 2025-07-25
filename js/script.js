@@ -641,16 +641,33 @@ function switchLanguage(lang) {
   currentLanguage = lang
   localStorage.setItem("language", lang)
 
-  // Update active language buttons globally
-  document.querySelectorAll(".lang-btn, .mobile-lang-btn").forEach((btn) => {
-    btn.classList.remove("active")
-  })
-  document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
-    btn.classList.add("active")
-  })
+  // Clear all active states first, then set current language
+document.querySelectorAll("[data-lang]").forEach((btn) => {
+  btn.classList.remove("active")
+})
+document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach((btn) => {
+  btn.classList.add("active")
+})
+  
+  // Small delay to ensure DOM updates, then add active class
+  setTimeout(() => {
+    document.querySelectorAll(`[data-lang="${lang}"]`).forEach((btn) => {
+      btn.classList.add("active")
+    })
+  }, 10)
 
   translatePage() // Re-translate the entire page
 }
+// Force refresh language buttons state
+function refreshLanguageButtons() {
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+  document.querySelectorAll(`[data-lang="${currentLanguage}"]`).forEach((btn) => {
+    btn.classList.add("active")
+  })
+}
+
 
 // ===== MOBILE MENU =====
 function initMobileMenu() {
@@ -2285,7 +2302,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLanguageSwitchers()
   initCounterAnimation() // Handles counters across all pages
   translatePage() // Initial translation for the entire page
-
+  refreshLanguageButtons() // Add this line
   // Smooth scrolling for anchor links (global)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
