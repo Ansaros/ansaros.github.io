@@ -958,7 +958,7 @@ body {
 }
 
 .doctor-content-beautiful {
-  padding: 30px;
+  padding: 17px;
 }
 
 .doctor-header-beautiful {
@@ -1057,7 +1057,7 @@ body {
 .primary-btn-doctors,
 .secondary-btn-doctors {
   flex: 1;
-  padding: 12px 20px;
+  padding: 12px 15px;
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
